@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.example.dao.MemberDao;
+import com.example.dao.MemberRegisterService;
 import com.example.dao.NoticeDao;
 
 @Configuration
@@ -31,4 +32,9 @@ public class JavaConfig {
 	public NoticeDao noticeDao() {
 		return new NoticeDao(dataSource());
 	}
+    @Bean
+    public MemberRegisterService memberRegSvc() {
+          return new MemberRegisterService(memberDao());
+    }
+
 }

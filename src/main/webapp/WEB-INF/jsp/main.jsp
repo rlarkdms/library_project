@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>╦чюн</title>
+
+<title>К╘■Л²╦</title>
 </head>
 <body>
-         <p>х╞©╣гу╢о╢ы.</p>   
-         <p><a href="register/step1" /> [х╦©Ь ╟║ютго╠Б] </a>
+         <p>М≥≤Л≤│М∙╘К▀┬К▀╓.</p>   
+         <p><a href="/register/step1" /> [М ▄Л⌡░ Й╟─Л·┘М∙≤Й╦╟] </a>
 
 </body>
 </html>
