@@ -14,7 +14,7 @@ public class JavaConfig {
 	DataSource ds = new DataSource();
 	ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 	ds.setUrl("jdbc:mysql://localhost:3306/project?characterEncoding=utf8&serverTimezone=UTC");
-	ds.setUsername("spring5");
+	ds.setUsername("root");
 	ds.setPassword("1234");
 	ds.setInitialSize(2);
 	ds.setMaxActive(10);

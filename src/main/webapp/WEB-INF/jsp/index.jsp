@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -131,6 +133,12 @@ pageEncoding="utf-8" %>
     </style>
   </HEAD>
   <body>
+    <ul>
+<c:forEach var="notice" items="${notice}" varStatus="status">
+<li> ${notice.notice_title},${notice.notice_date}</li>
+</c:forEach>
+</ul>
+  
     <header>
       <form action="search.jsp" method="POST" class="search">
         <label style="display: block">

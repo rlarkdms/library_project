@@ -117,12 +117,7 @@ pageEncoding="utf-8" %>
     </style>
   </HEAD>
   <body>
-  
-  <ul>
-<c:forEach var="notice" items="${notice}" varStatus="status">
-<li> ${notice.notice_title} </li>
-</c:forEach>
-</ul>
+ 
     <div class="white">
       <header>
         <form action="/search" method="POST" class="search">
