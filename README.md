@@ -1,8 +1,8 @@
 # library_project📖
 ### 도서관시스템을 웹에서 만드는 기말 대체 과제
 
-Front-end 최은정<br>
-Back-end+DB 김가은
+<b>Front-end 최은정</b><br>
+<b>Back-end+DB 김가은</b>
 <br>
 ### ERD
 ![ERD](https://user-images.githubusercontent.com/31676033/120523058-70726c80-c410-11eb-9b9d-adde3bfcb3ea.png)
