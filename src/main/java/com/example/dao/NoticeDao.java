@@ -1,4 +1,4 @@
-package Dao;
+package com.example.dao;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import Data.Member;
-import Data.Notice;
+import com.example.data.Member;
+import com.example.data.Notice;
 
 public class NoticeDao {
 	private JdbcTemplate jdbcTemplate;

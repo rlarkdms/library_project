@@ -1,26 +1,26 @@
-package Data;
+package com.example.data;
 
 import java.time.LocalDateTime;
 
 public class Member {
-	private Long id;
+	private String id;
 	private String email;
 	private String password;
 	private String name;
 	private String phone;
-	private LocalDateTime registerDateTime;
-	public Member(String email, String password, String name, String phone, LocalDateTime regDateTime)
+	//private LocalDateTime registerDateTime;
+	public Member(String email, String password, String name, String phone)
 	{
 	this.email = email;
 	this.password = password;
 	this.name = name;
 	this.phone=phone;
-	this.registerDateTime = regDateTime;
+	//this.registerDateTime = regDateTime;
 	}
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getEmail() {
@@ -48,11 +48,5 @@ public class Member {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public LocalDateTime getRegisterDateTime() {
-		return registerDateTime;
-	}
-	public void setRegisterDateTime(LocalDateTime registerDateTime) {
-		this.registerDateTime = registerDateTime;
-	}
-	
+
 }

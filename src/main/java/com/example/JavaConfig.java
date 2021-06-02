@@ -1,10 +1,11 @@
-package spring;
+package com.example;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import Dao.MemberDao;
+import com.example.dao.MemberDao;
+import com.example.dao.NoticeDao;
 
 @Configuration
 public class JavaConfig {
@@ -12,7 +13,7 @@ public class JavaConfig {
 	public DataSource dataSource() {
 	DataSource ds = new DataSource();
 	ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-	ds.setUrl("jdbc:mysql://localhost/project?characterEncoding=utf8&serverTimezone=UTC");
+	ds.setUrl("jdbc:mysql://localhost:3306/project?characterEncoding=utf8&serverTimezone=UTC");
 	ds.setUsername("spring5");
 	ds.setPassword("1234");
 	ds.setInitialSize(2);
@@ -25,5 +26,9 @@ public class JavaConfig {
 	@Bean
 	public MemberDao memberDao() {
 	return new MemberDao(dataSource());
+	}
+	@Bean
+	public NoticeDao noticeDao() {
+		return new NoticeDao(dataSource());
 	}
 }

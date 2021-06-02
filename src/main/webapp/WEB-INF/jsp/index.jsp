@@ -160,13 +160,12 @@ pageEncoding="utf-8" %>
         <div class="boardTitle">공지사항</div>
         <ul>
           <li>
-            <a href="/noti1.jsp"
-              >▪ 도서관 이용 규칙
+            <a href="/noti1">▪ 도서관 이용 규칙
             </a>
             <span class="date">2021-06-01</span>
           </li>
           <li>
-            <a href="noti2.jsp"
+            <a href="/noti2"
               >▪ 마스크 착용 의무화 및 제재 안내</a
             >
             <span class="date">2021-06-01</span>

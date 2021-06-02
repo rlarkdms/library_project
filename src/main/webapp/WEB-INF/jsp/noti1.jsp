@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -116,9 +117,15 @@ pageEncoding="utf-8" %>
     </style>
   </HEAD>
   <body>
+  
+  <ul>
+<c:forEach var="notice" items="${notice}" varStatus="status">
+<li> ${notice.notice_title} </li>
+</c:forEach>
+</ul>
     <div class="white">
       <header>
-        <form action="search.jsp" method="POST" class="search">
+        <form action="/search" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -127,13 +134,13 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="/index.jsp">홈으로</a>
+            <a href="/index">홈으로</a>
           </span>
           <span class="login">
-            <a href="/login.jsp">로그인</a>
+            <a href="/login">로그인</a>
           </span>
           <span class="signup">
-            <a href="/signup.jsp">회원가입</a>
+            <a href="/signup">회원가입</a>
           </span>
         </div>
       </header>
