@@ -1,5 +1,5 @@
 # library_project📖
-### 도서관시스템을 웹에서 만드는 기말 대체 과제
+### 도서관시스템 제작 기말 대체 과제
 
 <b>Front-end+web design 최은정</b><br>
 <b>Back-end+DB 김가은</b>
