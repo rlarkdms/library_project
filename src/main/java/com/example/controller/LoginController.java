@@ -48,6 +48,7 @@ public class LoginController {
 					
 					
 					model.addAttribute("id", memberlist);
+					System.out.print(memberlist);
 					return "/login/loginCheck";
 				}
 		}else {

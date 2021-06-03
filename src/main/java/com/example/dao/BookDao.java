@@ -15,10 +15,15 @@ public class BookDao {
 	this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	public List<Book> selectAll(String keyword) {
-	List<Book> results = jdbcTemplate.query("select * from Book where book_name like '%?%' or writer like '%?%' or publisher like '%?%' ",
-	(ResultSet rs, int rowNum) -> new Book(rs.getLong("notice_id"), rs.getString("admin_id"), rs.getString("notice_title"),
-			rs.getTimestamp("REGDATE").toLocalDateTime(),rs.getString("notice_content")),keyword,keyword,keyword);
+	List<Book> results = jdbcTemplate.query(("select * from Book where book_name like '%"+keyword+"%' or writer like '%"+keyword+"%' or publisher like '%"+keyword+"%' "),
+	(ResultSet rs, int rowNum) -> {
+		Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"));
+		book.setBook_id(rs.getLong("book_id"));
 	
+	return book;
+
+	});
 	return results;
-	}	
+	}
 }

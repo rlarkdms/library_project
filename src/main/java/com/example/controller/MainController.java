@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,11 +34,15 @@ public class MainController {
 	return "index";
 	}
 	
-	@RequestMapping(value = "/search/searchBook", method=RequestMethod.POST)
+	@PostMapping("/search/searchBook")
 	public String book(@RequestParam("keyword") String keyword, Model model) {
+		System.out.print("값이오는지"+keyword);
 		List<Book> bookList = bookDao.selectAll(keyword);
+		System.out.print("제대로 오고 있음");
 		model.addAttribute("book", bookList);//멤버 리스트를 다 주는 것.
-		return "/search/searchbook";
+		System.out.print(bookList);
+		
+		return "/search/searchBook";
 	}
 
 }
