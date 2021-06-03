@@ -127,12 +127,13 @@ pageEncoding="utf-8" %>
     </style>
     <script type = "text/javascript">
       function CheckForm(){
-		var password= document.getElementById("password");
-		var pwcomfirm= document.getElementById("pwcomfirm");
+		var password= document.getElementById("password").value;
+		var pwcomfirm= document.getElementById("pwcomfirm").value;
+		console.log(password, pwcomfirm);
 		if(password !== pwcomfirm)
 			alert("비밀번호가 일치하지 않습니다!");
 		else {
-			document.signUpForm.submit();
+			document.getElementById("signUpForm").submit();
 		}
 	  }
 	</script>
@@ -140,7 +141,7 @@ pageEncoding="utf-8" %>
   <body>    
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search" id="signUpForm"> 
+        <form action="searchBook" method="POST" class="search"> 
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -149,7 +150,7 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="http://localhost:9200">홈으로</a>
+            <a href="../">홈으로</a>
           </span>
         </div>
       </header>
@@ -157,7 +158,7 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
-        <form action="/register/step3" method="POST" class="search">
+        <form action="step3" method="POST" class="search" id="signUpForm">
           <label class="signupLabel">
             <span>ID</span>
             <input
