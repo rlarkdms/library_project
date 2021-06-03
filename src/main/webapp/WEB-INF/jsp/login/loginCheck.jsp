@@ -7,9 +7,7 @@ pageEncoding="utf-8" %>
   </head>
   <body>
   	<%
-  		String id = request.getParameter("id");
-  		System.out.println(id);
-  		session.setAttribute("id", id);
+  		session.setAttribute("id",  request.getAttribute("id"));
   	%>
   	<jsp:forward page="../index.jsp"></jsp:forward>
   </body>
