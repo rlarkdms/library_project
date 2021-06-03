@@ -59,6 +59,10 @@ public class LoginController {
 		
 		return "/login/loginCheck";
 	}
+	@GetMapping("/login/logout")
+	public String logout() {
+		return "login/logout";
+	}
 
 	@GetMapping("/index")
 	public String index() {
