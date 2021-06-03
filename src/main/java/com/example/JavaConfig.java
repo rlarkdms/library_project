@@ -4,6 +4,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.example.dao.AdminDao;
 import com.example.dao.BookDao;
 import com.example.dao.MemberDao;
 import com.example.dao.MemberRegisterService;
@@ -41,5 +42,10 @@ public class JavaConfig {
     public BookDao bookDao() {
     	return new BookDao(dataSource());
     }
-
+    @Bean
+    public AdminDao adminDao() {
+    	return new AdminDao(dataSource());
+    	
+    }
+    
 }

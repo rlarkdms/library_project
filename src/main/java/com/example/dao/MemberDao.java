@@ -34,26 +34,26 @@ public class MemberDao {
 	});
 	return results;
 	}	
-    public Member selectByEmail(String email) { 
-        List<Member> results = jdbcTemplate.query("select * from member where email=?",
+    public Member selectByID(String id) { 
+        List<Member> results = jdbcTemplate.query("select * from member where member_id=?",
         		(ResultSet rs, int rowNum)->new Member(rs.getString("member_id"), rs.getString("EMAIL"), rs.getString("PASSWORD"),
-        			rs.getString("NAME"),rs.getString("PHONE")),email);
+        			rs.getString("NAME"),rs.getString("PHONE")),id);
 
         return results.isEmpty() ? null : results.get(0);
   }  
 
     public void insert(Member member) {
-    	String sql="INSERT INTO member(member_id,password,name,email,phone)VALUES (?, ?, ?, ?, ?)";
-    	this.jdbcTemplate.update(sql,member.getId(),member.getPassword(),member.getName(),member.getEmail(),member.getPhone());
+    	String sql="INSERT INTO member(member_id,password,name,email,phone)VALUES (?, ?, ?, ?, ?,?)";
+    	this.jdbcTemplate.update(sql,member.getId(),member.getPassword(),member.getName(),member.getEmail(),member.getPhone(),false);
     	
     }
-    public List<Member> ConfirmIDPWD(String ID,String PWD) {
-        List<Member> results = jdbcTemplate.query("select * from member where member_id=? and password=?",
-        		(ResultSet rs, int rowNum)->new Member(rs.getString("member_id"), rs.getString("EMAIL"), rs.getString("PASSWORD"),
-        			rs.getString("NAME"),rs.getString("PHONE")),ID,PWD);
+    public String ConfirmIDPWD(String ID,String PWD) {
+    	
+        String result = jdbcTemplate.queryForObject ("select member_id from member where member_id=? and password=?",
+        		String.class,ID,PWD);
 
         
-        return results.isEmpty() ? null : results;
+        return result.isEmpty() ? null : result;
     	
     }
 

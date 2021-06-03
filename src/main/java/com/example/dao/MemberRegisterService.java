@@ -11,7 +11,7 @@ public class MemberRegisterService {
     }
 
     public String regist(RegisterRequest req) throws Exception {
-        Member member = memberDao.selectByEmail(req.getEmail());
+        Member member = memberDao.selectByID(req.getId());
         if (member != null) {
             throw new Exception("DuplicateMemberException");
         }
