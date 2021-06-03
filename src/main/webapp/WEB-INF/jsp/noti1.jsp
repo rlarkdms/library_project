@@ -119,10 +119,10 @@ pageEncoding="utf-8" %>
   <body>
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search">
+        <form action="/search/searchBook" method="POST" class="search">
           <label style="display: block">
             🔎
-            <input type="text" name="title" />
+            <input type="text" name="keyword" />
             <input type="submit" value="검색" />
           </label>
         </form>

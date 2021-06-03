@@ -138,7 +138,7 @@ pageEncoding="utf-8" %>
       <form action="/search/searchBook" method="POST" class="search">
         <label style="display: block">
           🔎
-          <input type="text" name="book_name" />
+          <input type="text" name="keyword" />
           <input type="submit" value="검색" />
         </label>
       </form>
