@@ -144,10 +144,7 @@ pageEncoding="utf-8" %>
       </form>
       <div class="user">
         <%
-        
-        	String id = (String)session.getAttribute("id");
-        System.out.print("index login id"+id);
-        
+        	String id = (String)session.getAttribute("id");      
         	if(id == null) { %>
 		        <span class="login">
 		          <a href="/login/login">로그인</a>
