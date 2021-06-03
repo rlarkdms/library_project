@@ -138,7 +138,11 @@ pageEncoding="utf-8" %>
       <div class="background">
         <div class="title">Spring Library</div>
       </div>
-      <div class="searchedTerm">검색된 도서 : ${book_name}</div>
+      <div class="searchedTerm">
+      	<%
+      		out.println("검색된 도서 : " + request.getParameter("keyword"));
+      	%>
+      </div>
       <table>
       	<tr>
 	        <th>도서 ID</th>
@@ -149,14 +153,14 @@ pageEncoding="utf-8" %>
 	        <th>대여 여부</th>
 	        <th>대여하기</th>
         </tr>
-        <c:forEach var="notice" items="${book}" varStatus="status">
+        <c:forEach var="book" items="${book}" varStatus="status">
 	        <tr align="center">
-	          <td>${book_id}</td>
-	          <td>${book_name}</td>
-	          <td>${writer}</td>
-	          <td>${publisher}</td>
-	          <td>${genre}</td>
-	          <td>${borrow_confirm}</td>
+	          <td>${book.book_id}</td>
+	          <td>${book.book_name}</td>
+	          <td>${book.writer}</td>
+	          <td>${book.publisher}</td>
+	          <td>${book.genre}</td>
+	          <td>${book.borrow_confirm}</td>
 	          <td>대여버튼</td>
 	        </tr>
         </c:forEach>
