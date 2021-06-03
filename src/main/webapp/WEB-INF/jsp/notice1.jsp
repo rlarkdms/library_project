@@ -3,7 +3,7 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
-    <TITLE>Log In</TITLE>
+    <TITLE>공지사항</TITLE>
     <style>
       body {
         display: flex;
@@ -32,9 +32,13 @@ pageEncoding="utf-8" %>
       }
       .search,
       .goHome,
+      .login,
       .signup {
         font-size: 17px;
         font-weight: bold;
+      }
+      .login {
+        margin: 0 10px;
       }
       input[type="text"] {
         padding: 5px;
@@ -42,7 +46,6 @@ pageEncoding="utf-8" %>
         width: 250px;
         outline: none;
       }
-      .signup,
       input[type="submit"] {
         padding: 5px 10px;
         background-color: #ff6d00;
@@ -72,41 +75,27 @@ pageEncoding="utf-8" %>
         color: #ff6d00;
         margin: 20px 0;
       }
-      .formBox {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 50px 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      .textBox {
+        margin: 30px;
+        font-size: 20px;
       }
-      form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      .pageTitle {
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: 3px solid #ff6d00;
       }
-      .signupLabel {
-        margin: 10px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      input[name="id"],
-      input[name="password"],
-      input[name="pwcomfirm"],
-      input[name="name"],
-      input[name="email"],
-      input[name="phone"] {
-        margin-left: 10px;
-        padding: 10px 20px;
-      }
-      input[name="signup"] {
-        padding: 10px 15px;
-        font-size: 18px;
-        border-radius: 10px;
+      .notiTitle {
         margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .date {
+        color: gray;
+        font-size: 18px;
+        margin-top: 5px;
+      }
+      li {
+        margin-bottom: 5px;
       }
       footer {
         position: absolute;
@@ -138,71 +127,34 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="http://localhost:8080/jsp/index.jsp">홈으로</a>
+            <a href="/index.jsp">홈으로</a>
+          </span>
+          <span class="login">
+            <a href="/login.jsp">로그인</a>
+          </span>
+          <span class="signup">
+            <a href="/signup.jsp">회원가입</a>
           </span>
         </div>
       </header>
       <div class="background">
         <div class="title">Spring Library</div>
       </div>
-      <div class="formBox">
-        <form action="step3" method="POST" class="search">
-          <label class="signupLabel">
-            <span>ID</span>
-            <input
-              type="text"
-              name="id"
-              value="${registerRequest.id}"
-              required
-            />
-          </label>
-          <label class="signupLabel">
-            <span>PW</span>
-            <input
-              type="text"
-              name="password"
-              value="${registerRequest.password}"
-              required
-            />
-          </label>
-          <label class="signupLabel">
-            <span>PW 확인</span>
-            <input
-              type="text"
-              name="pwcomfirm"
-              value="${registerRequest.confirmPassword}"
-              required
-            />
-          </label>
-          <label class="signupLabel">
-            <span>이름</span>
-            <input
-              type="text"
-              name="name"
-              value="${registerRequest.name}"
-              required
-            />
-          </label>
-          <label class="signupLabel">
-            <span>이메일</span>
-            <input
-              type="text"
-              name="email"
-              value="${registerRequest.email}"
-              required
-            />
-          </label>
-          <label class="signupLabel">
-            <span>휴대폰</span>
-            <input
-              type="text"
-              name="phone"
-              value="${registerRequest.phone}"
-              required
-            />
-          </label>
-          <input type="submit" value="회원가입" name="signup" />
-        </form>
+      <div class="textBox">
+        <div class="pageTitle">공지사항</div>
+        <div class="notiTitle">도서관 이용 규칙</div>
+        <div class="date">2021-06-01</div>
+        <div class="content">
+          <ul>
+            <li>한 명당 대여는 5권까지 가능합니다.</li>
+            <li>대여 기간은 빌린 시점부터 일주일동안 입니다.</li>
+            <li>연장은 권 당 딱 한 번, 일주일까지 하실 수 있습니다</li>
+            <li>
+              연체가 된 도서가 경우에는 연체된 기간만큼 도서 대여가 불가능하며
+              반납만 하실 수 있습니다.
+            </li>
+          </ul>
+        </div>
       </div>
       <footer>
         <span class="subTitle">2017301080 최은정</span>
