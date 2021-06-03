@@ -20,8 +20,8 @@ public class LoginController {
 	}
 	@RequestMapping("/loginCheck")
 	public ModelAndView hello(ModelAndView mav,
-			@RequestParam(value = "id", required = false) String id,
-			@RequestParam(value = "pwd", required = false) String pwd) {
+			@RequestParam(value = "id", required = true) String id,
+			@RequestParam(value = "pwd", required = true) String pwd) {
 		//login check
 		if (id.equals("gaeun")&&pwd.equals("1234")) {
 			mav.addObject("LOGIN_OK","welcome "+id);

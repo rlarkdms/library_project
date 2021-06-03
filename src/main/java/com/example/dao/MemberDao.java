@@ -47,5 +47,14 @@ public class MemberDao {
     	this.jdbcTemplate.update(sql,member.getId(),member.getPassword(),member.getName(),member.getEmail(),member.getPhone());
     	
     }
+    public List<Member> ConfirmIDPWD(String ID,String PWD) {
+        List<Member> results = jdbcTemplate.query("select * from member where member_id=? and password=?",
+        		(ResultSet rs, int rowNum)->new Member(rs.getString("member_id"), rs.getString("EMAIL"), rs.getString("PASSWORD"),
+        			rs.getString("NAME"),rs.getString("PHONE")),ID,PWD);
+
+        
+        return results.isEmpty() ? null : results;
+    	
+    }
 
 }
