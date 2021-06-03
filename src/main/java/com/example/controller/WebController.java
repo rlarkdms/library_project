@@ -34,18 +34,21 @@ public class WebController {
 
     
     @PostMapping("/register/step3")
-    public String handleStep3(RegisterRequest regReq) {
+    public String handleStep3(RegisterRequest regReq,Model model) {
         try {
               memberRegisterService.regist(regReq);
               System.out.print("여기까지 들어오는지 확인");
               
+              
+           
               return "register/step3";
         } catch (Exception ex) {
 
         	System.out.print(ex);
             
         	System.out.print("여기까지 들어오는지 확인");
-              return "register/step2";
+            model.addAttribute("error","중복된 이메일 입니다.");
+        	return "register/error";
         }
     }
 
