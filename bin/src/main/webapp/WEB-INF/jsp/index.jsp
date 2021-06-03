@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -111,7 +109,6 @@ pageEncoding="utf-8" %>
       input[type="submit"] {
         padding: 5px 10px;
         background-color: #ff6d00;
-        
         color: white;
         border: none;
         cursor: pointer;
@@ -133,9 +130,9 @@ pageEncoding="utf-8" %>
       }
     </style>
   </HEAD>
-  <body>  
+  <body>
     <header>
-      <form action="searchBook" method="POST" class="search">
+      <form action="search.jsp" method="POST" class="search">
         <label style="display: block">
           🔎
           <input type="text" name="title" />
@@ -144,10 +141,10 @@ pageEncoding="utf-8" %>
       </form>
       <div class="user">
         <span class="login">
-          <a href="/login">로그인</a>
+          <a href="/login.jsp">로그인</a>
         </span>
         <span class="signup">
-          <a href="/register/step2">회원가입</a>
+          <a href="/signup.jsp">회원가입</a>
         </span>
       </div>
     </header>
@@ -163,12 +160,13 @@ pageEncoding="utf-8" %>
         <div class="boardTitle">공지사항</div>
         <ul>
           <li>
-            <a href="/noti1">▪ 도서관 이용 규칙
+            <a href="/noti1.jsp"
+              >▪ 도서관 이용 규칙
             </a>
             <span class="date">2021-06-01</span>
           </li>
           <li>
-            <a href="/noti2"
+            <a href="noti2.jsp"
               >▪ 마스크 착용 의무화 및 제재 안내</a
             >
             <span class="date">2021-06-01</span>
@@ -179,13 +177,13 @@ pageEncoding="utf-8" %>
         <div class="boardTitle">이번달 소식</div>
         <ul>
           <li>
-            <a href="/bestSeller"
+            <a href="/bestSeller.jsp"
               >▪ 인기 도서 TOP 10</a
             >
             <span class="date">2021-06-01</span>
           </li>
           <li>
-            <a href="/newBooks">▪ 신작</a>
+            <a href="/newBooks.jsp">▪ 신작</a>
             <span class="date">2021-06-01</span>
           </li>
         </ul>

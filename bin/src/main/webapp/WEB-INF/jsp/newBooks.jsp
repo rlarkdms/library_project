@@ -3,7 +3,7 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
-    <TITLE>공지사항</TITLE>
+    <TITLE>이번달 소식</TITLE>
     <style>
       body {
         display: flex;
@@ -77,7 +77,6 @@ pageEncoding="utf-8" %>
       }
       .textBox {
         margin: 30px;
-        margin-bottom: 0;
         font-size: 20px;
       }
       .pageTitle {
@@ -95,19 +94,13 @@ pageEncoding="utf-8" %>
         font-size: 18px;
         margin-top: 5px;
       }
-      .content {
-        margin: 20px 0;
-      }
-      .li,
-      .text {
+      li {
         margin-bottom: 5px;
       }
-      .ul {
-        margin: 20px 0 5px 0;
-        font-weight: bold;
-      }
       footer {
-        background-color: white;
+        position: absolute;
+        bottom: 0%;
+        width: 50%;
         padding: 30px 0;
         display: flex;
         align-items: center;
@@ -125,7 +118,7 @@ pageEncoding="utf-8" %>
   <body>
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search">
+        <form action="search.jsp" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -140,7 +133,7 @@ pageEncoding="utf-8" %>
             <a href="/login.jsp">로그인</a>
           </span>
           <span class="signup">
-            <a href="/register/step2">회원가입</a>
+            <a href="/signup.jsp">회원가입</a>
           </span>
         </div>
       </header>
@@ -148,35 +141,21 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="textBox">
-        <div class="pageTitle">공지사항</div>
-        <div class="notiTitle">
-          도서관 내 마스크 마스크 착용 의무화 및 제재 안내
-        </div>
+        <div class="pageTitle">이번달 소식</div>
+        <div class="notiTitle">신작</div>
         <div class="date">2021-06-01</div>
         <div class="content">
-          <div class="text">
-            "마스크 착용 의무화 행정명령"에 따라 도서관 내에서는 반드시 마스크를
-            착용하여야 합니다.
-          </div>
-          <div class="text">
-            마스크 미착용 시 다음과 같은 도서관 이용이 제한되오니 양지하시기
-            바랍니다.
-          </div>
           <ul>
-            <div class="ul">1. 마스크 착용 기준</div>
-            <li>입과 코를 모두 가리지 않으면 미착용으로 간주</li>
-            <li>밸브형 마스크, 스카프, 옷가지 등은 마스크로 인정 불가</li>
-            <div class="ul">2. 적발 시 제재사항</div>
-            <li>1회 적발 : 구두 경고</li>
-            <li>2회 적발 : 즉시 퇴실 및 10일간 도서관 출입불가</li>
-            <div class="ul">3. 제재 근거</div>
-            <li>도서관 이용 규정 제6장 18조 1항 5호</li>
-            <li>
-              질서유지를 위한 도서관 직원의 요구 불응 : 10일 이상 3개월 이하의
-              도서관 이용 중지
-            </li>
-            <div class="ul">4. 시행기간</div>
-            <li>2020년 11월 18일 ~ 별도 공지시 까지</li>
+            <li>매매의 기술 | 박병창 저</li>
+            <li>미드나잇 나이브러리 | 매트 헤이그 저</li>
+            <li>완전한 행복 / 정유정 저</li>
+            <li>달러구트 꿈 백화점 | 이미예 저</li>
+            <li>고구려7 | 김진명 저</li>
+            <li>문명1 | 베르나르 베르베르 저</li>
+            <li>문명2 | 베르나르 베르베르 저</li>
+            <li>작은 별이지만 빛나고 있어 | 소윤 저</li>
+            <li>부의 시나리오 | 오건영 저</li>
+            <li>종의 기원 | 정유정 저</li>
           </ul>
         </div>
       </div>

@@ -3,7 +3,7 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
-    <TITLE>Log In</TITLE>
+    <TITLE>회원가입</TITLE>
     <style>
       body {
         display: flex;
@@ -102,7 +102,7 @@ pageEncoding="utf-8" %>
         margin-left: 10px;
         padding: 10px 20px;
       }
-      input[name="signup"] {
+      .signup {
         padding: 10px 15px;
         font-size: 18px;
         border-radius: 10px;
@@ -125,11 +125,22 @@ pageEncoding="utf-8" %>
         margin: 0 10px;
       }
     </style>
+    <script type = "text/javascript">
+      function CheckForm(){
+		var password= document.getElementById("password");
+		var pwcomfirm= document.getElementById("pwcomfirm");
+		if(password !== pwcomfirm)
+			alert("비밀번호가 일치하지 않습니다!");
+		else {
+			document.signUpForm.submit();
+		}
+	  }
+	</script>
   </HEAD>
-  <body>
+  <body>    
     <div class="white">
       <header>
-        <form action="search.jsp" method="POST" class="search">
+        <form action="searchBook" method="POST" class="search" id="signUpForm"> 
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -138,7 +149,7 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="http://localhost:8080/jsp/index.jsp">홈으로</a>
+            <a href="http://localhost:9200">홈으로</a>
           </span>
         </div>
       </header>
@@ -146,7 +157,7 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
-        <form action="step3" method="POST" class="search">
+        <form action="/register/step3" method="POST" class="search">
           <label class="signupLabel">
             <span>ID</span>
             <input
@@ -159,7 +170,8 @@ pageEncoding="utf-8" %>
           <label class="signupLabel">
             <span>PW</span>
             <input
-              type="text"
+              type="password"
+              id="password"
               name="password"
               value="${registerRequest.password}"
               required
@@ -168,7 +180,8 @@ pageEncoding="utf-8" %>
           <label class="signupLabel">
             <span>PW 확인</span>
             <input
-              type="text"
+              type="password"
+              id="pwcomfirm"
               name="pwcomfirm"
               value="${registerRequest.confirmPassword}"
               required
@@ -188,6 +201,7 @@ pageEncoding="utf-8" %>
             <input
               type="text"
               name="email"
+              placeholder="중복 불가"
               value="${registerRequest.email}"
               required
             />
@@ -201,7 +215,7 @@ pageEncoding="utf-8" %>
               required
             />
           </label>
-          <input type="submit" value="회원가입" name="signup" />
+          <input type="button" value="회원가입" class="signup" onclick="CheckForm();"/>
         </form>
       </div>
       <footer>

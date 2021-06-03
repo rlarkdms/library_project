@@ -77,7 +77,6 @@ pageEncoding="utf-8" %>
       }
       .textBox {
         margin: 30px;
-        margin-bottom: 0;
         font-size: 20px;
       }
       .pageTitle {
@@ -95,19 +94,13 @@ pageEncoding="utf-8" %>
         font-size: 18px;
         margin-top: 5px;
       }
-      .content {
-        margin: 20px 0;
-      }
-      .li,
-      .text {
+      li {
         margin-bottom: 5px;
       }
-      .ul {
-        margin: 20px 0 5px 0;
-        font-weight: bold;
-      }
       footer {
-        background-color: white;
+        position: absolute;
+        bottom: 0%;
+        width: 50%;
         padding: 30px 0;
         display: flex;
         align-items: center;
@@ -125,7 +118,7 @@ pageEncoding="utf-8" %>
   <body>
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search">
+        <form action="search.jsp" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -140,7 +133,7 @@ pageEncoding="utf-8" %>
             <a href="/login.jsp">로그인</a>
           </span>
           <span class="signup">
-            <a href="/register/step2">회원가입</a>
+            <a href="/signup.jsp">회원가입</a>
           </span>
         </div>
       </header>
@@ -149,34 +142,17 @@ pageEncoding="utf-8" %>
       </div>
       <div class="textBox">
         <div class="pageTitle">공지사항</div>
-        <div class="notiTitle">
-          도서관 내 마스크 마스크 착용 의무화 및 제재 안내
-        </div>
+        <div class="notiTitle">도서관 이용 규칙</div>
         <div class="date">2021-06-01</div>
         <div class="content">
-          <div class="text">
-            "마스크 착용 의무화 행정명령"에 따라 도서관 내에서는 반드시 마스크를
-            착용하여야 합니다.
-          </div>
-          <div class="text">
-            마스크 미착용 시 다음과 같은 도서관 이용이 제한되오니 양지하시기
-            바랍니다.
-          </div>
           <ul>
-            <div class="ul">1. 마스크 착용 기준</div>
-            <li>입과 코를 모두 가리지 않으면 미착용으로 간주</li>
-            <li>밸브형 마스크, 스카프, 옷가지 등은 마스크로 인정 불가</li>
-            <div class="ul">2. 적발 시 제재사항</div>
-            <li>1회 적발 : 구두 경고</li>
-            <li>2회 적발 : 즉시 퇴실 및 10일간 도서관 출입불가</li>
-            <div class="ul">3. 제재 근거</div>
-            <li>도서관 이용 규정 제6장 18조 1항 5호</li>
+            <li>한 명당 대여는 5권까지 가능합니다.</li>
+            <li>대여 기간은 빌린 시점부터 일주일동안 입니다.</li>
+            <li>연장은 권 당 딱 한 번, 일주일까지 하실 수 있습니다</li>
             <li>
-              질서유지를 위한 도서관 직원의 요구 불응 : 10일 이상 3개월 이하의
-              도서관 이용 중지
+              연체가 된 도서가 경우에는 연체된 기간만큼 도서 대여가 불가능하며
+              반납만 하실 수 있습니다.
             </li>
-            <div class="ul">4. 시행기간</div>
-            <li>2020년 11월 18일 ~ 별도 공지시 까지</li>
           </ul>
         </div>
       </div>
