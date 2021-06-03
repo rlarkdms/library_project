@@ -15,9 +15,6 @@ import com.example.data.RegisterRequest;
 public class WebController {
     @Autowired
     private MemberRegisterService memberRegisterService;
-
-    @RequestMapping( {"/", "/main"} )
-    public String main() {   return "main";   }
     
     @RequestMapping("/register/step1")
     public String handleStep1() {   return "register/step1";  }

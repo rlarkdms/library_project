@@ -117,10 +117,9 @@ pageEncoding="utf-8" %>
     </style>
   </HEAD>
   <body>
- 
     <div class="white">
       <header>
-        <form action="/search" method="POST" class="search">
+        <form action="searchBook" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -135,7 +134,7 @@ pageEncoding="utf-8" %>
             <a href="/login">로그인</a>
           </span>
           <span class="signup">
-            <a href="/signup">회원가입</a>
+            <a href="/register/step2">회원가입</a>
           </span>
         </div>
       </header>

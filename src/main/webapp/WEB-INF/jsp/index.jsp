@@ -147,7 +147,7 @@ pageEncoding="utf-8" %>
           <a href="/login">로그인</a>
         </span>
         <span class="signup">
-          <a href="/signup">회원가입</a>
+          <a href="/register/step2">회원가입</a>
         </span>
       </div>
     </header>

@@ -3,7 +3,7 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>약관 동의</title>
 </head>
 <body>
 <h2>약관</h2>
@@ -14,6 +14,5 @@ pageEncoding="utf-8" %>
 	</label>
 	<input type="submit" value="다음 단계" />
 	</form>
-
 </body>
 </html>
