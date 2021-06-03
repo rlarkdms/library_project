@@ -128,7 +128,7 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="/index">홈으로</a>
+            <a href="index">홈으로</a>
           </span>
           <span class="login">
             <a href="/login">로그인</a>

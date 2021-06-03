@@ -10,7 +10,7 @@ pageEncoding="utf-8" %>
       <strong>${error}</strong>
     </p>
     <p>
-      <a href="index">홈으로</a>
+      <a href="../">홈으로</a>
     </p>
   </body>
 </html>

@@ -7,6 +7,6 @@ pageEncoding="utf-8" %>
   </head>
   <body>
     <p><strong>${registerRequest.name}님</strong> 회원 가입을 완료했습니다.</p>
-    <p><a href="index">홈으로</a></p>
+    <p><a href="../">홈으로</a></p>
   </body>
 </html>
