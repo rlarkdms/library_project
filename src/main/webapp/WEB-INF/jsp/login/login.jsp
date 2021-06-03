@@ -146,15 +146,15 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
-        <div class="loginType">
-          <input
-            type="radio"
-            name="status"
-            value="normal"
-            checked="checked"
-          />일반 <input type="radio" name="status" value="admin" />관리자
-        </div>
         <form action="loginCheck" method="POST" class="search">
+	        <div class="loginType">
+	          <input
+	            type="radio"
+	            name="status"
+	            value="normal"
+	            checked="checked"
+	          />일반 <input type="radio" name="status" value="admin" />관리자
+	        </div>
           <label style="display: block" class="loginLabel">
             <span>ID</span>
             <input
@@ -166,7 +166,7 @@ pageEncoding="utf-8" %>
           <label style="display: block" class="loginLabel">
             <span>PW</span>
             <input
-              type="text"
+              type="password"
               name="password"
               required
             />
