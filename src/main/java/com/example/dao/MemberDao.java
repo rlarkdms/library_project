@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -48,12 +49,16 @@ public class MemberDao {
     	
     }
     public String ConfirmIDPWD(String ID,String PWD) {
-    	
+    	try {
         String result = jdbcTemplate.queryForObject ("select member_id from member where member_id=? and password=?",
         		String.class,ID,PWD);
 
-        
         return result.isEmpty() ? null : result;
+    	
+    }catch(EmptyResultDataAccessException e) {
+    	System.out.print("회원가입 실패");
+    	return null;
+    }
     	
     }
 

@@ -33,11 +33,11 @@ public class MainController {
 	return "index";
 	}
 	
-	@RequestMapping(value = "/searchBook", method=RequestMethod.GET)
+	@RequestMapping(value = "/search/searchBook", method=RequestMethod.GET)
 	public String book(@RequestParam("keyword") String keyword, Model model) {
 		List<Book> bookList = bookDao.selectAll(keyword);
 		model.addAttribute("book", bookList);//멤버 리스트를 다 주는 것.
-		return "searchbook";
+		return "/search/searchbook";
 	}
 
 }

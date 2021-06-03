@@ -39,8 +39,7 @@ public class LoginController {
 			System.out.print("들어갔는지 확인하기");
 			String memberlist= memberDao.ConfirmIDPWD(id, pwd);
 			
-			System.out.print(memberlist);
-				if (memberlist.equals(null)) {
+				if (memberlist==null) {
 						model.addAttribute("error","아이디와 비밀번호가 맞지 않습니다.");
 						return "redirect:/login/login";
 			
