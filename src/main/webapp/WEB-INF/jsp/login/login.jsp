@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
-    <TITLE>공지사항</TITLE>
+    <TITLE>Log In</TITLE>
     <style>
       body {
         display: flex;
@@ -33,13 +32,9 @@ pageEncoding="utf-8" %>
       }
       .search,
       .goHome,
-      .login,
       .signup {
         font-size: 17px;
         font-weight: bold;
-      }
-      .login {
-        margin: 0 10px;
       }
       input[type="text"] {
         padding: 5px;
@@ -47,6 +42,7 @@ pageEncoding="utf-8" %>
         width: 250px;
         outline: none;
       }
+      .signup,
       input[type="submit"] {
         padding: 5px 10px;
         background-color: #ff6d00;
@@ -76,27 +72,34 @@ pageEncoding="utf-8" %>
         color: #ff6d00;
         margin: 20px 0;
       }
-      .textBox {
-        margin: 30px;
-        font-size: 20px;
+      .formBox {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 100px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
-      .pageTitle {
-        font-size: 30px;
-        font-weight: bold;
-        border-bottom: 3px solid #ff6d00;
+      .loginLabel {
+        margin: 20px 0;
       }
-      .notiTitle {
+      input[name="member_id"],
+      input[name="password"] {
+        margin-left: 10px;
+        padding: 10px 20px;
+      }
+      .loginBottom {
         margin-top: 20px;
-        font-size: 24px;
-        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
       }
-      .date {
-        color: gray;
+      .signup,
+      input[name="login"] {
+        padding: 10px 15px;
         font-size: 18px;
-        margin-top: 5px;
-      }
-      li {
-        margin-bottom: 5px;
+        border-radius: 10px;
       }
       footer {
         position: absolute;
@@ -114,12 +117,19 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
+      .warning {
+      	color: crimson
+      }
     </style>
+    <script type="text/javascript">
+      $("input:radio[name='status']:radio[value='normal']").prop("checked", true); // 선택하기
+      $("input:radio[name='status']:radio[value='admin']").prop("checked", false); // 해제하기
+    </script>
   </HEAD>
   <body>
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search">
+        <form action="../search/searchBook" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -128,45 +138,47 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="index">홈으로</a>
+            <a href="../">홈으로</a>
           </span>
-          <%
-        	String id = (String)session.getAttribute("id");
-        	if(id == null) { %>
-		        <span class="login">
-		          <a href="/login/login">로그인</a>
-		        </span>
-		        <span class="signup">
-		          <a href="/register/step2">회원가입</a>
-		        </span> <%
-	        } else { %>
-	        	<span class="login">
-		          <a href="/session/mypage">마이페이지</a>
-		        </span>
-		        <span class="signup">
-		          <a href="/login/logout">로그아웃</a>
-		        </span> <%
-	        } %>
         </div>
       </header>
       <div class="background">
         <div class="title">Spring Library</div>
       </div>
-      <div class="textBox">
-        <div class="pageTitle">공지사항</div>
-        <div class="notiTitle">도서관 이용 규칙</div>
-        <div class="date">2021-06-01</div>
-        <div class="content">
-          <ul>
-            <li>한 명당 대여는 5권까지 가능합니다.</li>
-            <li>대여 기간은 빌린 시점부터 일주일동안 입니다.</li>
-            <li>연장은 권 당 딱 한 번, 일주일까지 하실 수 있습니다</li>
-            <li>
-              연체가 된 도서가 경우에는 연체된 기간만큼 도서 대여가 불가능하며
-              반납만 하실 수 있습니다.
-            </li>
-          </ul>
+      <div class="formBox">
+        <div class="loginType">
+          <input
+            type="radio"
+            name="status"
+            value="normal"
+            checked="checked"
+          />일반 <input type="radio" name="status" value="admin" />관리자
         </div>
+        <form action="loginCheck" method="POST" class="search">
+          <label style="display: block" class="loginLabel">
+            <span>ID</span>
+            <input
+              type="text"
+              name="member_id"
+              required
+            />
+          </label>
+          <label style="display: block" class="loginLabel">
+            <span>PW</span>
+            <input
+              type="text"
+              name="password"
+              required
+            />
+          </label>
+   		  <div class="warning">${error}</div>
+          <div class="loginBottom">
+            <div class="signup">
+              <a href="../register/step1">회원가입</a>
+            </div>
+            <input type="submit" value="로그인" name="login" />
+          </div>
+        </form>
       </div>
       <footer>
         <span class="subTitle">2017301080 최은정</span>

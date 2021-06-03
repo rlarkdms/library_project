@@ -129,12 +129,23 @@ pageEncoding="utf-8" %>
           <span class="goHome">
             <a href="index">홈으로</a>
           </span>
-          <span class="login">
-            <a href="/login.jsp">로그인</a>
-          </span>
-          <span class="signup">
-            <a href="/register/step2">회원가입</a>
-          </span>
+        <%
+        	String id = (String)session.getAttribute("id");
+        	if(id == null) { %>
+		        <span class="login">
+		          <a href="/login/login">로그인</a>
+		        </span>
+		        <span class="signup">
+		          <a href="/register/step2">회원가입</a>
+		        </span> <%
+	        } else { %>
+	        	<span class="login">
+		          <a href="/session/mypage">마이페이지</a>
+		        </span>
+		        <span class="signup">
+		          <a href="/login/logout">로그아웃</a>
+		        </span> <%
+	        } %>
         </div>
       </header>
       <div class="background">

@@ -141,7 +141,7 @@ pageEncoding="utf-8" %>
   <body>    
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search"> 
+        <form action="../search/searchBook" method="POST" class="search"> 
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -164,6 +164,7 @@ pageEncoding="utf-8" %>
             <input
               type="text"
               name="id"
+               placeholder="중복 불가"
               value="${registerRequest.id}"
               required
             />
@@ -202,7 +203,6 @@ pageEncoding="utf-8" %>
             <input
               type="text"
               name="email"
-              placeholder="중복 불가"
               value="${registerRequest.email}"
               required
             />

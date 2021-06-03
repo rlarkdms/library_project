@@ -3,11 +3,11 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>회원가입 에러</title>
+    <title>로그인 에러</title>
   </head>
   <body>
     <p>
-      <strong>중복된 아이디입니다!</strong>
+      <strong>틀린 아이디이거나 비밀번호입니다.</strong>
     </p>
     <p>
       <a href="../">홈으로</a>
