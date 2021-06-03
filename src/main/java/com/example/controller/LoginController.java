@@ -1,11 +1,15 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.dao.MemberDao;
+import com.example.data.Member;
 
 @Controller
 public class LoginController {
@@ -19,15 +23,12 @@ public class LoginController {
 		return mav;
 	}
 	@RequestMapping("/loginCheck")
-	public ModelAndView hello(ModelAndView mav,
+	public String hello(
 			@RequestParam(value = "id", required = true) String id,
-			@RequestParam(value = "pwd", required = true) String pwd) {
-		//login check
-		if (id.equals("gaeun")&&pwd.equals("1234")) {
-			mav.addObject("LOGIN_OK","welcome "+id);
-			
-		}else{mav.addObject("LOGIN_OK","Wrond ID/Password");}
-		mav.setViewName("loginCheck");//loginCheck.jsp
-		return mav;
+			@RequestParam(value = "pwd", required = true) String pwd,Model model) {
+		List<Member> member= memberDao.ConfirmIDPWD(id, pwd);
+		
+
+		return "logincheck";
 	}
 }
