@@ -99,7 +99,7 @@ pageEncoding="utf-8" %>
         font-size: 18px;
       }
       th,
-      tr {
+      td {
         padding: 5px;
       }
     </style>
@@ -116,21 +116,21 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="index">홈으로</a>
+            <a href="../">홈으로</a>
           </span>
           <% String id = (String)session.getAttribute("id"); if(id == null) { %>
           <span class="login">
-            <a href="/login/login">로그인</a>
+            <a href="../login/login">로그인</a>
           </span>
           <span class="signup">
-            <a href="/register/step2">회원가입</a>
+            <a href="../register/step2">회원가입</a>
           </span>
           <% } else { %>
           <span class="login">
-            <a href="/session/mypage">마이페이지</a>
+            <a href="../session/mypage">마이페이지</a>
           </span>
           <span class="signup">
-            <a href="/login/logout">로그아웃</a>
+            <a href="../login/logout">로그아웃</a>
           </span>
           <% } %>
         </div>
