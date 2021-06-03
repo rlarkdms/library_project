@@ -15,6 +15,9 @@ public class MemberRegisterService {
         if (member != null) {
             throw new Exception("DuplicateMemberException");
         }
+        if(!req.getPassword().equals(req.getConfirmPassword())){
+        	throw new Exception("ErrorPasswordConfirm");
+        }
         System.out.print("저장 부분까지 들어왔다.");
         System.out.print(req.getId()+req.getEmail()+req.getPassword()+ 
 				req.getName()+req.getPhone());
