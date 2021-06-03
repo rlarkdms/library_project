@@ -19,7 +19,8 @@ public class LoginController {
 	
 
 	@GetMapping("/login/login")
-	public String loing() {
+	public String loing(Model model) {
+		model.addAttribute("error","");
 		return "/login/login";
 	}
 	
@@ -30,8 +31,15 @@ public class LoginController {
 			@RequestParam(value = "member_id", required = true) String id,
 			@RequestParam(value = "password", required = true) String pwd,Model model) {
 		if(status.equals("normal")) {
-		String memberlist= memberDao.ConfirmIDPWD(id, pwd);
-		model.addAttribute("id", memberlist);
+			String memberlist= memberDao.ConfirmIDPWD(id, pwd);
+				if (memberlist.equals(null)) {
+						model.addAttribute("error","아이디와 비밀번호가 맞지 않습니다.");
+						return "redirect:/login/login";
+			
+				}
+				else {
+					model.addAttribute("id", memberlist);
+				}
 		}else {
 			//관리자 나중에 만들기.
 			
@@ -39,4 +47,5 @@ public class LoginController {
 		
 		return "/login/loginCheck";
 	}
+
 }
