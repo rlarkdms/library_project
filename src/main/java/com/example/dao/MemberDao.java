@@ -1,5 +1,7 @@
 package com.example.dao;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -8,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -44,6 +47,7 @@ public class MemberDao {
   }  
 
     public void insert(Member member) {
+
     	String sql="INSERT INTO member(member_id,password,name,email,phone)VALUES (?, ?, ?, ?, ?,?)";
     	this.jdbcTemplate.update(sql,member.getId(),member.getPassword(),member.getName(),member.getEmail(),member.getPhone(),false);
     	
