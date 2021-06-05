@@ -30,13 +30,18 @@ public class BookController {
 //		return "/search/searchBook";
 //	}
  
-	@GetMapping("/book/bookDetail")
-	public String handleStep2Get()
-	{  return "/book/bookDetail"; }
+	@GetMapping("/book/bookDetail")//책 디테일 페이지.
+	public String handleStep2Get(@RequestParam("book_id")Long book_id,Model model)
+	{  
+		
+		List<Book> book=bookDao.selectBook(book_id);
+		
+		model.addAttribute("detail",book);
+		return "/book/bookDetail"; }
 
 	    
 	
-	@PostMapping("/search/loan")//대출 서비스
+	@PostMapping("/book/bookLoan")//대출 서비스
 	public  String loan(@RequestParam("id") String id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
@@ -44,16 +49,16 @@ public class BookController {
 		String value=bookDao.loan(id, book_id);
 		model.addAttribute("loan",value );
 		
-		return "/search/loan";
+		return "/book/bookLoan";
 		
 	}
-	@PostMapping("/book/return")//반납 서비스
+	@PostMapping("/book/bookReturn")//반납 서비스
 	public String turn(@RequestParam("id") String id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
 		String value=bookDao.turn(id,book_id);
 		model.addAttribute("turn",value);
-		return "/book/return";
+		return "/book/bookReturn";
 	}
 	
 //	@PostMapping("/book/extension")

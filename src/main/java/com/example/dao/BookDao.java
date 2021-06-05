@@ -30,6 +30,14 @@ public class BookDao {
 	return results;
 	}
 	
+	public List<Book> selectBook(Long id){
+	    List<Book> results = jdbcTemplate.query("select * from book where book_id=?",
+	        		(ResultSet rs, int rowNum)->new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+	        				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre")),id);
+
+	        return results.isEmpty() ? null : results;
+	 	
+	}
 	public String loan(String id,Long book_id) {//대출 서비스.
 		
 		try {
