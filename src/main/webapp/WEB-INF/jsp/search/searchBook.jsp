@@ -151,21 +151,19 @@ pageEncoding="utf-8" %>
 	        <th>출판사</th>
 	        <th>장르</th>
 	        <th>대여 여부</th>
-	        <th>대여하기</th>
         </tr>
         <c:forEach var="book" items="${book}" varStatus="status">
 	        <tr align="center">
 	          <td>${book.book_id}</td>
-	          <td>${book.book_name}</td>
+	          <c:url value="../book/bookDetail?book_id" var="bookURL" />
+	          <td><a href="${bookURL}+${book.book_id}">${book.book_name}</a></td>
 	          <td>${book.writer}</td>
 	          <td>${book.publisher}</td>
 	          <td>${book.genre}</td>
 	          <td>${book.borrow_confirm}</td>
-	          <td>대여버튼</td>
 	        </tr>
         </c:forEach>
       </table>
-
       <footer>
         <span class="subTitle">2017301080 최은정</span>
         <span class="subTitle">2017301004 김가은</span>
