@@ -211,7 +211,7 @@ pageEncoding="utf-8" %>
           </tr>
         </table>
 		
-		<form action="../book/bookReturn" method="POST">			
+		<!--<form action="../book/bookReturn" method="POST">			
 	        <div class="tableName">연체중인 도서</div>
 	        <table>
 	          <th>도서 ID</th>
@@ -241,7 +241,7 @@ pageEncoding="utf-8" %>
 		        </c:forEach>
 	          </tr>
 	        </table>      	
-      	</form>
+      	</form> -->
       </div>
 
       <footer>
