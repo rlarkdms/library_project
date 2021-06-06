@@ -3,7 +3,7 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
-    <TITLE>회원가입</TITLE>
+    <TITLE>회원 정보 수정</TITLE>
     <style>
       body {
         display: flex;
@@ -166,7 +166,7 @@ pageEncoding="utf-8" %>
       <div class="formBox">
         <form action="editCheck" method="POST" class="search" id="signUpForm">
           <label class="signupLabel">
-            <span>ID (수정불가)</span>
+           <span>ID (수정불가)</span>
            <input 
              type="text"
              readonly="readonly"
