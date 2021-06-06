@@ -89,7 +89,7 @@ public class BookDao {
 		
 		System.out.print(book_id);
 		
-		String sql1="UPDATE borrow_list set return_confrim=1 where member_id=? and book_id=?";
+		String sql1="UPDATE borrow_list set return_confrim=1 where member_id=? and book_id=? and return_confrim=0";
 		this.jdbcTemplate.update(sql1,member_id,book_id);
 		
 		String sql2="UPDATE book set borrow_confirm='가능' where book_id=?";
@@ -102,8 +102,12 @@ public class BookDao {
 		}
 		
 	}
-	public String extension(Long Id) {
+	public String extension(String member_id,Long book_id) {
 		try {
+			int results = jdbcTemplate.queryForObject("select extend_confirm from borrow_list where member_id=? and book_id=? and return_confrim=0",int.class,member_id,book_id);
+			if(results==1) {
+				return "이미 연장을 한번 하셨습니다.";
+			}
 		       Calendar cal = Calendar.getInstance();
 		        Date date = cal.getTime();
 		        String dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
@@ -113,11 +117,12 @@ public class BookDao {
 		        date = cal.getTime();
 		        dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 	        
-			String sql="UPDATE INTO borrow_list set book_return_date=? where Id=?";
-			this.jdbcTemplate.update(sql,dateString);
-			return "success";
+			String sql="UPDATE borrow_list set book_return_date=? where member_id=? and book_id=? and return_confrim=0 and extend_confirm=0";
+			this.jdbcTemplate.update(sql,dateString,member_id,book_id);
+			return "연장되었습니다.";
 		}catch(Exception e) {
-			return "fail";
+			System.out.print(e);
+			return "연장에 실패하였습니다. 관리자에게 문릐해주세요.";
 		}
 	}
 }

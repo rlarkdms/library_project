@@ -82,6 +82,7 @@ public class BookController {
 		
 		String value=bookDao.turn(member_id,book_id);
 		model.addAttribute("turn",value);
+		model.addAttribute("member_id",member_id);
 		return "/book/bookReturn";
 	}
 	
@@ -99,12 +100,14 @@ public class BookController {
 //		return "/book/bookReturn";
 //	}
 	
-	@PostMapping("/book/extension")
-	public String extension(@RequestParam("book_id") Long Id,
+	@RequestMapping("/book/bookExtend")
+	public String extension(@RequestParam("book_id") Long book_id,
+			@RequestParam("member_id") String member_id,
 			Model model) {
-		String value=bookDao.extension(Id);
-		model.addAttribute("extension",value);
-		return "/book/extension";
+		String value=bookDao.extension(member_id,book_id);
+		model.addAttribute("extend",value);
+		model.addAttribute("member_id",member_id);
+		return "/book/bookExtend";
 		
 	}
 
