@@ -31,8 +31,7 @@ pageEncoding="utf-8" %>
         color: black;
       }
       .search,
-      .goHome,
-      .signup {
+      .user {
         font-size: 17px;
         font-weight: bold;
       }
@@ -93,7 +92,7 @@ pageEncoding="utf-8" %>
         align-items: center;
         justify-content: space-between;
       }
-      input[name="id"],
+      input[name="member_id"],
       input[name="password"],
       input[name="pwcomfirm"],
       input[name="name"],
@@ -152,10 +151,10 @@ pageEncoding="utf-8" %>
           <span class="login">
             <a href="../session/edit">수정하기</a>
           </span>
-          <span class="signup">
+          <span class="logout">
             <a href="../login/logout">로그아웃</a>
           </span>
-          <span class="signup">
+          <span class="leave">
             <a href="../session/leave">탈퇴하기</a>
           </span>
         </div>
@@ -171,7 +170,7 @@ pageEncoding="utf-8" %>
              type="text"
              readonly="readonly"
              name="member_id"
-             placeholder=<c:out value='${param.member_id}'/>"
+             placeholder="${param.member_id}"
              value="<c:out value='${param.member_id}'/>"
             />
           </label>
