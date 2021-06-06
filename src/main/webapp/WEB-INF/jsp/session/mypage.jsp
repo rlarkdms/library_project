@@ -95,13 +95,12 @@ pageEncoding="utf-8" %>
         padding-top: 30px;
       }
       .userName {
-        margin-bottom: 20px;
         font-size: 20px;
         font-weight: bold;
       }
       .tableName {
         font-size: 18px;
-        margin-bottom: 10px;
+        margin: 10px 0;
         font-weight: bold;
       }
       table {
@@ -158,40 +157,91 @@ pageEncoding="utf-8" %>
       </div>
 
       <div class="content">
-      	<c:forEach var="detail" items="${user}" varStatus="status">
+		<c:forEach var="detail" items="${user}" varStatus="status">
         	<div class="userName">${user.name}님, 환영합니다.</div>
 		</c:forEach>
-        <div class="tableName">대여중인 도서 (몇 권)</div>
+		
+        <div class="tableName">대여중인 도서</div>
         <table>
+       	  <th>도서 ID</th>
           <th>도서 제목</th>
           <th>반납일</th>
           <th>반납하기</th>
-          <th>연장 여부</th>
           <th>연장하기</th>
-          <tr align="center">
-            <td>ㅇㅇㅇㅇㅇ</td>
-            <td>12341234</td>
-            <td>반납버튼</td>
-            <td>X</td>
-            <td>연장버튼</td>
+          <tr align="center">		          
+          	<c:forEach var="detail" items="${book}" varStatus="status">
+          		<form action="../book/bookReturn" method="POST">
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="member_id"
+		              value="<c:out value='${param.member_id}'/>"
+		             />
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="book_id"
+		              value="<c:out value='${book.book_id}'/>"
+		             />			             	
+		          	<td>${book.book_id}</td>
+		            <td>${book.book_name}</td>
+		            <td>${book.return_date}</td>
+		            <td>
+		            	<input type="submit" value="반납" /> 
+		            </td>
+				</form>
+          		<form action="../book/bookExtend" method="POST">
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="member_id"
+		              value="<c:out value='${param.member_id}'/>"
+		             />
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="book_id"
+		              value="<c:out value='${book.book_id}'/>"
+		             />				             					
+	            	<td>
+	            		<input type="submit" value="연장" /> 
+	            	</td>
+	            </form>
+	         </c:forEach>
           </tr>
         </table>
-
-        <div class="tableName">연체중인 도서 (몇 권)</div>
-        <table>
-          <th>도서 제목</th>
-          <th>반납일</th>
-          <th>반납하기</th>
-          <th>연장 여부</th>
-          <th>연장하기</th>
-          <tr align="center">
-            <td>ㅇㅇㅇㅇㅇ</td>
-            <td>12341234</td>
-            <td>반납버튼</td>
-            <td>X</td>
-            <td>연장버튼</td>
-          </tr>
-        </table>
+		
+		<form action="../book/bookReturn" method="POST">			
+	        <div class="tableName">연체중인 도서</div>
+	        <table>
+	          <th>도서 ID</th>
+	          <th>도서 제목</th>
+	          <th>반납일</th>
+	          <th>반납하기</th>
+	          <tr align="center">
+				<c:forEach var="detail" items="${book}" varStatus="status">
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="member_id"
+		              value="<c:out value='${param.member_id}'/>"
+		             />
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="book_id"
+		              value="<c:out value='${book.book_id}'/>"
+		             />			             	          
+		          	<td>${book.book_id}</td>
+		            <td>${book.book_name}</td>
+		            <td>${book.return_date}</td>
+		            <td>
+		            	<input type="submit" value="반납" /> 
+		            </td>
+		        </c:forEach>
+	          </tr>
+	        </table>      	
+      	</form>
       </div>
 
       <footer>
