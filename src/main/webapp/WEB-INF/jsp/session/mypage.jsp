@@ -168,8 +168,8 @@ pageEncoding="utf-8" %>
           <th>반납일</th>
           <th>반납하기</th>
           <th>연장하기</th>
-          <tr align="center">		          
-          	<c:forEach var="book" items="${book}" varStatus="status">
+          <c:forEach var="book" items="${book}" varStatus="status">
+          	<tr align="center">		          
           		<form action="../book/bookReturn" method="POST">
 		            <input 
 		              type="hidden"
@@ -207,8 +207,8 @@ pageEncoding="utf-8" %>
 	            		<input type="submit" value="연장" /> 
 	            	</td>
 	            </form>
-	         </c:forEach>
-          </tr>
+          	</tr>
+	      </c:forEach>
         </table>
 		
 		<!--<form action="../book/bookReturn" method="POST">			
