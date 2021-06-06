@@ -55,6 +55,6 @@ public class MainController {
 	@GetMapping("/newBooks")
 	public String newBooks() {
 	
-	return "/newBooks";
+	return "/newBookss";
 }
 }

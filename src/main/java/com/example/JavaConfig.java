@@ -8,6 +8,7 @@ import com.example.dao.AdminDao;
 import com.example.dao.BookDao;
 import com.example.dao.MemberDao;
 import com.example.dao.MemberRegisterService;
+import com.example.dao.MyPageDao;
 import com.example.dao.NoticeDao;
 
 @Configuration
@@ -46,6 +47,10 @@ public class JavaConfig {
     public AdminDao adminDao() {
     	return new AdminDao(dataSource());
     	
+    }
+    @Bean
+    public MyPageDao mypageDao() {
+    	return new MyPageDao(dataSource());
     }
     
 }

@@ -74,7 +74,7 @@ public class BookDao {
 		this.jdbcTemplate.update(sql_update1,book_id);
     	
     	
-    	return "success";
+    	return "대여가 완료되었습니다.";
 		}catch(Exception e) {
 			System.out.print(e);
 			return "fail";

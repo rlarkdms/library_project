@@ -48,7 +48,7 @@ public class WebController {
             
         	System.out.print("여기까지 들어오는지 확인");
             model.addAttribute("error","중복된 이메일 입니다.");
-        	return "redirect:/register/error";
+        	return "redirect:/regisgitter/error";
         }
     }
     @GetMapping("/register/error")
