@@ -223,7 +223,7 @@ pageEncoding="utf-8" %>
 	          <th>반납일</th>
 	          <th>반납하기</th>
 			  <form action="../book/bookReturn" method="POST">			
-			  <c:forEach var="expried" items="${expried}" varStatus="status">
+			  <c:forEach var="expired" items="${expired}" varStatus="status">
 	          	<tr align="center">
 		            <input 
 		              type="hidden"
@@ -235,11 +235,11 @@ pageEncoding="utf-8" %>
 		              type="hidden"
 		              readonly="readonly"
 		              name="book_id"
-		              value="<c:out value='${expried.book_id}'/>"
+		              value="<c:out value='${expired.book_id}'/>"
 		             />			             	          
-		          	<td>${expried.book_id}</td>
-		            <td>${expried.book_name}</td>
-		            <td>${expried.return_date}</td>
+		          	<td>${expired.book_id}</td>
+		            <td>${expired.book_name}</td>
+		            <td>${expired.return_date}</td>
 		            <td>
 		            	<input type="submit" value="반납" /> 
 		            </td>
