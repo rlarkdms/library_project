@@ -31,11 +31,15 @@ public class BookDao {
 	}
 	
 	public List<Book> selectBook(Long id){
-	    List<Book> results = jdbcTemplate.query("select * from book where book_id=?",
-	        		(ResultSet rs, int rowNum)->new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-	        				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image")),id);
+	    List<Book> results = jdbcTemplate.query("select * from book where book_id='"+id+"';",
+	        		(ResultSet rs, int rowNum)->{
+	        			Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+	        				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+	        			
+	        			return book;
+	        		});
 
-	        return results.isEmpty() ? null : results;
+	    return results;
 	 	
 	}
 	public String loan(String id,Long book_id) {//대출 서비스.
