@@ -48,6 +48,13 @@ public class MainController {
 	
 	@GetMapping("/bestSeller")
 		public String bestSeller() {
+		
 		return "/bestSeller";
 	}
+	
+	@GetMapping("/newBooks")
+	public String newBooks() {
+	
+	return "/newBooks";
+}
 }

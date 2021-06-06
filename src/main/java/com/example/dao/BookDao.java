@@ -45,13 +45,13 @@ public class BookDao {
 	
 	public String loan(String id,Long book_id) {//대출 서비스.
 		
+		int zero_num=0;
 		try {
-		System.out.print(id);
-		System.out.print(book_id);
+
 		String results = jdbcTemplate.queryForObject("select borrow_confirm from Book where book_id=?",String.class,book_id);
         System.out.print(results);
 		if (results.equals("대여중")) {
-        	return "fail";
+        	return "이미 대여중이라 대여가 불가능합니다.";
         }
 		Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
@@ -63,11 +63,15 @@ public class BookDao {
         cal.add(Calendar.DATE, 7);
         date = cal.getTime();
         dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
-    	String sql="INSERT INTO borrow_list (member_id,book_id,book_return_date,extend_confirm,return_confrim)VALUES (?, ?, ?, ?, ?)";
-    	this.jdbcTemplate.update(sql,id,book_id,dateString,0,0);
+		System.out.print(id);
+		System.out.print(book_id);
+        String sql="INSERT INTO borrow_list (member_id,book_id,book_return_date) VALUES (?, ?, ?)";
+    	this.jdbcTemplate.update(sql,id,book_id,dateString);
     	System.out.print("이거 되는지 확인");
-		String sql_update="UPDATE book set borrow_confirm='대여중' where book_id=?";
-		this.jdbcTemplate.update(sql,book_id);
+    	
+		String sql_update1="UPDATE book set borrow_confirm='대여중' where book_id=?";
+
+		this.jdbcTemplate.update(sql_update1,book_id);
     	
     	
     	return "success";
