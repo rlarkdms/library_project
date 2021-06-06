@@ -157,7 +157,7 @@ pageEncoding="utf-8" %>
                   <a href="../">홈으로</a>
                 </span>           
               <span class="login">
-                <a href="../session/mypage">마이페이지</a>
+                <a href="../session/mypage?member_id=<%out.print(id);%>">마이페이지</a>
               </span>
               <span class="signup">
                 <a href="../login/logout">로그아웃</a>

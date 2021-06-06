@@ -9,8 +9,10 @@ pageEncoding="utf-8" %>
   </head>
   <body>
     <div>
-     	<c:out value="${loan}" />
+    	<script type="text/javascript">
+    		alert('<c:out value="${loan}" />');
+    		history.back();
+    	</script>
     </div>
-    <button type="button" name="back" onclick="history.back()">뒤로가기</button>
   </body>
 </html>
