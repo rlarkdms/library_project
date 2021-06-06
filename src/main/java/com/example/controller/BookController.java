@@ -72,10 +72,10 @@ public class BookController {
 	}
 
 	@PostMapping("/book/bookReturn")//반납 서비스
-	public String turn(@RequestParam("id") String id,
+	public String turn(@RequestParam("id") String member_id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
-		String value=bookDao.turn(id,book_id);
+		String value=bookDao.turn(member_id,book_id);
 		model.addAttribute("turn",value);
 		return "/book/bookReturn";
 	}

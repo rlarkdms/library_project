@@ -80,11 +80,11 @@ public class BookDao {
 			return "fail";
 		}
 	}
-	public String turn(String id,Long book_id) {//반납 서비스.
+	public String turn(String member_id,Long book_id) {//반납 서비스.
 		try {
 			
 		String sql1="UPDATE INTO borrow_list set return_confirm=true where id=? and book_id";
-		this.jdbcTemplate.update(sql1,id,book_id);
+		this.jdbcTemplate.update(sql1,member_id,book_id);
 		
 		String sql2="UPDATE INTO book borrow_confirm='가능' where book_id=?";
 		this.jdbcTemplate.update(sql2,book_id);
