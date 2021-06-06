@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -166,7 +167,7 @@ pageEncoding="utf-8" %>
 	        } %>       
 
         <form method="POST">
-        	<c:set value="${detail}" var="book" />
+        	<c var="detail" items="${detail}" >
 	        <div class="bookTitle">${detail.book_name}</div>
 	        <span class="bookID">Book ID : </span>
 	        <input 
@@ -194,5 +195,6 @@ pageEncoding="utf-8" %>
         <span class="subTitle">2017301004 김가은</span>
       </footer>
     </div>
+    </c>
   </body>
 </HTML>

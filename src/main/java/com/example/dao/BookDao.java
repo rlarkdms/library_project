@@ -42,6 +42,7 @@ public class BookDao {
 	    return results;
 	 	
 	}
+	
 	public String loan(String id,Long book_id) {//대출 서비스.
 		
 		try {

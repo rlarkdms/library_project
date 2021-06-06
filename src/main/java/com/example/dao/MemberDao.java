@@ -48,7 +48,7 @@ public class MemberDao {
 
     public void insert(Member member) {
 
-    	String sql="INSERT INTO member(member_id,password,name,email,phone)VALUES (?, ?, ?, ?, ?,?)";
+    	String sql="INSERT INTO member(member_id,password,name,email,phone,borrow_confirm)VALUES (?, ?, ?, ?,?,?)";
     	this.jdbcTemplate.update(sql,member.getId(),member.getPassword(),member.getName(),member.getEmail(),member.getPhone(),false);
     	
     }
