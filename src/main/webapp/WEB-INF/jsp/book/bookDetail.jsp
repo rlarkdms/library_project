@@ -108,11 +108,11 @@ pageEncoding="utf-8" %>
         margin: 0 10px;
       }
       .bookID {
-      	font-size: 16px;
+         font-size: 16px;
       }
       .noStyle {
-      	outline : none;
-      	border : none;
+         outline : none;
+         border : none;
       }
       .bookinfo {
       	font-size: 18px;
@@ -132,28 +132,28 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <%
-        	String id = (String)session.getAttribute("id");      
-        	if(id == null) { %>
-        		<span class="goHome">
-            		<a href="../">홈으로</a>
-          		</span>
-		        <span class="login">
-		          <a href="../login/login">로그인</a>
-		        </span>
-		        <span class="signup">
-		          <a href="../register/step2">회원가입</a>
-		        </span> <%
-	        } else { %>
-        		<span class="goHome">
-            		<a href="../">홈으로</a>
-          		</span>	        
-	        	<span class="login">
-		          <a href="../session/mypage">마이페이지</a>
-		        </span>
-		        <span class="signup">
-		          <a href="../login/logout">로그아웃</a>
-		        </span> <%
-	        } %>
+           String id = (String)session.getAttribute("id");      
+           if(id == null) { %>
+              <span class="goHome">
+                  <a href="../">홈으로</a>
+                </span>
+              <span class="login">
+                <a href="../login/login">로그인</a>
+              </span>
+              <span class="signup">
+                <a href="../register/step2">회원가입</a>
+              </span> <%
+           } else { %>
+              <span class="goHome">
+                  <a href="../">홈으로</a>
+                </span>           
+              <span class="login">
+                <a href="../session/mypage">마이페이지</a>
+              </span>
+              <span class="signup">
+                <a href="../login/logout">로그아웃</a>
+              </span> <%
+           } %>
         </div>
       </header>
       <div class="background">
@@ -162,6 +162,7 @@ pageEncoding="utf-8" %>
       <div class="textBox">
         <div class="pageTitle">도서 정보 조회</div>
         <form method="POST">
+
         	<c:forEach var="detail" items="${detail}" varStatus="status">
 	        	<div class="bookTitle">${detail.book_name}</div>
 		        <span class="bookID">Book ID : </span>
@@ -189,6 +190,34 @@ pageEncoding="utf-8" %>
 	            />       	
         		<input type="submit" value="대여하기" /> 
 	        <% } %>       
+
+           <c:forEach var="detail" items="${detail}" varStatus="status">
+              <div class="bookTitle">도서 이름 : ${detail.book_name}</div>
+              <span class="bookID">Book ID : </span>
+              <input 
+               type="text"
+                readonly="readonly"
+                name="book_id"
+                class="noStyle bookID"
+                placeholder="<c:out value='${param.book_id}'/>"
+                value="<c:out value='${param.book_id}'/>"
+               />
+               <div>${detail.writer}</div>
+               <div>${detail.publisher}</div>
+               <div>${detail.genre}</div>
+               <div>${detail.story}</div>
+           </c:forEach>
+           <%  
+           if(id != null) { %>
+               <input 
+               type="hidden"
+                readonly="readonly"
+                name="id"             
+                value="<%session.getAttribute("id");%>"
+               />          
+              <input type="submit" value="대여하기" /> 
+           <% } %>       
+
         </form>
       </div>
       <footer>

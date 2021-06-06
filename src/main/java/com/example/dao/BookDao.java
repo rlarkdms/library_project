@@ -31,13 +31,13 @@ public class BookDao {
 	}
 	
 	public List<Book> selectBook(Long id){
-	    List<Book> results = jdbcTemplate.query("select * from book where book_id='"+id+"';",
-	        		(ResultSet rs, int rowNum)->{
-	        			Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-	        				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
-	        			
-	        			return book;
-	        		});
+	    List<Book> results = jdbcTemplate.query("select * from book where book_id="+id+";",
+	        (ResultSet rs, int rowNum)->{
+	        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+	        	rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+	        	book.setBook_id(rs.getLong("book_id"));
+	        		return book;
+	    });
 
 	    return results;
 	 	
