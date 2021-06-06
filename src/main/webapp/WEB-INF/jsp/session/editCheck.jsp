@@ -5,14 +5,13 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>회원탈퇴</title>
+    <title>회원 정보 수정 결과</title>
   </head>
   <body>
     <div>
     	<script type="text/javascript">
-    		session.removeAttribute("id");
-    		alert('회원탈퇴가 완료되었습니다.');
-    		window.location.href = "http://localhost:9200/"
+    		alert('<c:out value="${edit}" />');
+    		window.location.href="http://localhost:9200/session/mypage?member_id=<c:out value="${member_id}" />";
     	</script>
     </div>
   </body>
