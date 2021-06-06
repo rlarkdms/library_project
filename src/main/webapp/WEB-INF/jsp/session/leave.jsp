@@ -11,7 +11,7 @@ pageEncoding="utf-8" %>
     <div>
     	<script type="text/javascript">
     		session.removeAttribute("id");
-    		alert('회원탈퇴가 완료되었습니다.');
+    		alert('<c:out value="${leave}" />');
     		window.location.href = "http://localhost:9200/"
     	</script>
     </div>
