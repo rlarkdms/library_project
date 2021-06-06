@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
-=======
 
->>>>>>> 828b93d9757a1a8d9ddf831dd7badf23e8611a6e
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -117,6 +114,10 @@ pageEncoding="utf-8" %>
       	outline : none;
       	border : none;
       }
+      .bookinfo {
+      	font-size: 18px;
+      	margin-right: 5px;
+      }
     </style>
   </HEAD>
   <body>
@@ -161,21 +162,8 @@ pageEncoding="utf-8" %>
       <div class="textBox">
         <div class="pageTitle">도서 정보 조회</div>
         <form method="POST">
-<<<<<<< HEAD
-        	<c var="detail" items="${detail}" >
-	        <div class="bookTitle">${detail.book_name}</div>
-	        <span class="bookID">Book ID : </span>
-	        <input 
-	         type="text"
-             readonly="readonly"
-             name="book_id"
-             class="noStyle"
-             placeholder="<c:out value='${param.book_id}'/>"
-             value="<c:out value='${param.book_id}'/>"
-            />
-=======
         	<c:forEach var="detail" items="${detail}" varStatus="status">
-	        	<div class="bookTitle">도서 이름 : ${detail.book_name}</div>
+	        	<div class="bookTitle">${detail.book_name}</div>
 		        <span class="bookID">Book ID : </span>
 		        <input 
 		         type="text"
@@ -185,12 +173,12 @@ pageEncoding="utf-8" %>
 	             placeholder="<c:out value='${param.book_id}'/>"
 	             value="<c:out value='${param.book_id}'/>"
 	            />
-	            <div>${detail.writer}</div>
-	            <div>${detail.publisher}</div>
-	            <div>${detail.genre}</div>
-	            <div>${detail.story}</div>
+	            <div>
+		            <span class="bookinfo">${detail.writer}</span>
+		            <span class="bookinfo">${detail.publisher}</span>
+		            <span class="bookinfo">${detail.genre}</span>	            
+	            </div>
 	        </c:forEach>
->>>>>>> 828b93d9757a1a8d9ddf831dd7badf23e8611a6e
         	<%  
         	if(id != null) { %>
 	 	        <input 
@@ -208,6 +196,5 @@ pageEncoding="utf-8" %>
         <span class="subTitle">2017301004 김가은</span>
       </footer>
     </div>
-    </c>
   </body>
 </HTML>
