@@ -11,7 +11,7 @@ pageEncoding="utf-8" %>
     <div>
     	<script type="text/javascript">
     		alert('<c:out value="${turn}" />');
-    		history.back();
+    		history.go(0);
     	</script>
     </div>
   </body>

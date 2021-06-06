@@ -10,8 +10,8 @@ pageEncoding="utf-8" %>
   <body>
     <div>
     	<script type="text/javascript">
-    		alert('<c:out value="${return}" />');
-    		history.back();
+    		alert('<c:out value="${extend}" />');
+    		history.go(0);
     	</script>
     </div>
   </body>
