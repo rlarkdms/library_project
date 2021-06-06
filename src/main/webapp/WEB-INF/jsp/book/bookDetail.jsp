@@ -90,6 +90,7 @@ pageEncoding="utf-8" %>
         margin-top: 20px;
         font-size: 20px;
         font-weight: bold;
+        margin-right: 10px;
       }
       footer {
         position: absolute;
@@ -107,19 +108,24 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
-      .bookID {
-         font-size: 16px;
-      }
-      .noStyle {
-         outline : none;
-         border : none;
-      }
       .bookinfo {
          font-size: 18px;
          margin-right: 5px;
       }
       img {
       	margin: 10px 0;
+      	margin-right: 20px;
+      }
+      .mainInfo {
+      	display: flex;
+      	align-item: center;
+      }
+      .story {
+      	margin-top: 10px;
+      }
+      .row {
+      	display: flex;
+        align-items: center;
       }
     </style>
   </HEAD>
@@ -166,23 +172,25 @@ pageEncoding="utf-8" %>
         <div class="pageTitle">도서 정보 조회</div>
         <form action="bookLoan" method="POST">
            <c:forEach var="detail" items="${detail}" varStatus="status">
-              <div class="bookTitle">${detail.book_name}</div>
-              <span class="bookID">Book ID : </span>
+			  <div class="bookTitle">${detail.book_name}</div>
               <input 
-               type="text"
+                type="hidden"
                 readonly="readonly"
                 name="book_id"
-                class="noStyle bookID"
                 placeholder="<c:out value='${param.book_id}'/>"
                 value="<c:out value='${param.book_id}'/>"
                />
-               <div>
-                  <span class="bookinfo">${detail.writer}</span>
-                  <span class="bookinfo">${detail.publisher}</span>
-                  <span class="bookinfo">${detail.genre}</span>               
+               <div class="mainInfo">               
+	               <img alt="" src="${detail.image}"/>
+	               <div class="right">
+		               <div>
+		                  <span class="bookinfo">작가 : ${detail.writer} | </span>
+		                  <span class="bookinfo">출판사 : ${detail.publisher} | </span>
+		                  <span class="bookinfo">장르 : ${detail.genre}</span>               
+		               </div>
+		               <div class="story">${detail.story}</div>	               
+	               </div>
                </div>
-               <img alt="" src="${detail.image}"/>
-               <div>${detail.story}</div>
            </c:forEach>
            <%  
            if(id != null) { %>
@@ -190,7 +198,7 @@ pageEncoding="utf-8" %>
                 type="hidden"
                 readonly="readonly"
                 name="id"             
-                value="<%session.getAttribute("id");%>"
+                value="<%out.println(id);%>"
                />          
               <input type="submit" value="대여하기" /> 
            <% } %>       
