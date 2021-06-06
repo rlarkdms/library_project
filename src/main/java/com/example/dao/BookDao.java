@@ -46,11 +46,11 @@ public class BookDao {
 	public String loan(String id,Long book_id) {//대출 서비스.
 		
 		try {
-		System.out.print("Loan 값이 들어오는지 확인");
 		System.out.print(id);
 		System.out.print(book_id);
 		String results = jdbcTemplate.queryForObject("select borrow_confirm from Book where book_id=?",String.class,book_id);
-        if (results.equals("대여중")) {
+        System.out.print(results);
+		if (results.equals("대여중")) {
         	return "fail";
         }
 		Calendar cal = Calendar.getInstance();
@@ -61,7 +61,7 @@ public class BookDao {
         cal.add(Calendar.DATE, 7);
         date = cal.getTime();
         dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
-    	String sql="INSERT INTO borrow_list (member_id,book_id,book_return_date,extend_confirm,return_confirm)VALUES (?, ?, ?, ?, ?,?)";
+    	String sql="INSERT INTO borrow_list (member_id,book_id,book_return_date,extend_confirm,return_confirm)VALUES (?, ?, ?, ?, ?)";
     	this.jdbcTemplate.update(sql,id,book_id,dateString,false,false);
     	
     	return "success";
