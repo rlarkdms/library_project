@@ -90,4 +90,17 @@ public class MemberDao {
     
     }
 
+    public String leave(String member_id) {
+    	try {
+    	
+    		String sql1="delete from member where member_id=?";
+    		this.jdbcTemplate.update(sql1,member_id);
+    		
+    	return "탈퇴되었습니다.";
+    	}catch(Exception e) {
+    		System.out.print(e);
+    		
+    	return "탈퇴에 실패하였습니다. 관리자에게 문의하세요.";	
+    	}
+    }
 }

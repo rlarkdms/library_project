@@ -70,6 +70,20 @@ public class MyPageController {
 		
 		return "/session/editCheck";
 	}
+	@GetMapping("/session/leave")
+	public String leave() {
+		return "/session/leave";
+	}
+	
+	@PostMapping("/session/leave")
+	public String leave_check(@RequestParam(value="member_id",required=true)String member_id,Model model) {
+		
+		String status=memberDao.leave(member_id);
+		
+		model.addAttribute("leave",status);
+		
+		return "/session/leave";
+	}
 	
 	
 }
