@@ -70,11 +70,6 @@ public class BookController {
 		return "/book/bookLoan";
 		
 	}
-    
-	@GetMapping("/book/bookReturn")
-	public String turn() {
-		return "/book/bookReturn";
-	}
 
 	@PostMapping("/book/bookReturn")//반납 서비스
 	public String turn(@RequestParam("id") String id,

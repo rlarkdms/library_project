@@ -31,6 +31,7 @@ public class MyPageController {
 		model.addAttribute("book",turn);
 		return "/session/mypage";
 	}
+	
     
 	@GetMapping("/session/edit")
 	public String edit() {

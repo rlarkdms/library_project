@@ -5,13 +5,13 @@ import java.sql.Date;
 public class Return_List {
 
 	private Long book_id;
-	private String Book_name;
+	private String book_name;
 	private String return_date;
 	private Long extend_confirm;
 	
-	public Return_List(Long book_id,String Book_name,String return_date,Long extend_confirm) {
+	public Return_List(Long book_id,String book_name,String return_date,Long extend_confirm) {
 		this.book_id=book_id;
-		this.Book_name=Book_name;
+		this.book_name=book_name;
 		this.return_date=return_date;
 		this.extend_confirm=extend_confirm;
 		
@@ -28,13 +28,16 @@ public class Return_List {
 	}
 
 
+
 	public String getBook_name() {
-		return Book_name;
+		return book_name;
 	}
 
+
 	public void setBook_name(String book_name) {
-		Book_name = book_name;
+		this.book_name = book_name;
 	}
+
 
 	public String getReturn_date() {
 		return return_date;
