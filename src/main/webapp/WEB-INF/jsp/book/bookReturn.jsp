@@ -10,7 +10,7 @@ pageEncoding="utf-8" %>
   <body>
     <div>
     	<script type="text/javascript">
-    		alert('<c:out value="${return}" />');
+    		alert('<c:out value="${turn}" />');
     		history.back();
     	</script>
     </div>
