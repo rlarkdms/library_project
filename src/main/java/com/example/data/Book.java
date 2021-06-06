@@ -25,6 +25,23 @@ public class Book {
 	this.image=image;
 
 	}
+	
+	public String getStory() {
+		return story;
+	}
+
+	public void setStory(String story) {
+		this.story = story;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public Long getBook_id() {
 		return book_id;
 	}
