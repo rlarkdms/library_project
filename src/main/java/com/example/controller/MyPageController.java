@@ -61,7 +61,7 @@ public class MyPageController {
 			@RequestParam(value="email",required=true)String email,
 			@RequestParam(value="phone",required=true)String phone,Model model) {
 		
-	String status=memberDao.update(member_id, password, pwcomfirm, name, email, phone);
+	String status=memberDao.edit(member_id, password, pwcomfirm, name, email, phone);
 		
 	System.out.print("확인");
 	System.out.print(status);
