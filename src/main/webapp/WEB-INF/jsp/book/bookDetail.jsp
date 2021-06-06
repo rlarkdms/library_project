@@ -107,9 +107,12 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
-      .hidden {
-      	visibility:hidden;
-      	position:absolute;
+      .bookID {
+      	font-size: 12px;
+      }
+      .noStyle {
+      	outline : none;
+      	border : none;
       }
     </style>
   </HEAD>
@@ -157,19 +160,21 @@ pageEncoding="utf-8" %>
         <form method="POST">
         	<c:set value="${detail}" var="book" />
 	        <div class="bookTitle">${detail.book_name}</div>
+	        <span class="bookID">Book ID : </span>
 	        <input 
 	         type="text"
              readonly="readonly"
              name="book_id"
-             placeholder="Book ID : <%request.getParameter("book_id");%>"
-             value="<%request.getParameter("book_id");%>"
+             class="noStyle"
+             placeholder="<c:out value='${param.book_id}'/>"
+             value="<c:out value='${param.book_id}'/>"
             />
         	<%  
         	if(id != null) { %>
 	 	        <input 
-		         type="text"
+		         type="hidden"
 	             readonly="readonly"
-	             class="hidden"	          
+	             name="id"	          
 	             value="<%session.getAttribute("id");%>"
 	            />       	
         		<input type="submit" value="대여하기" /> 
