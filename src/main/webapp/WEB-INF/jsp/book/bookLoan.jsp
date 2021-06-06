@@ -9,7 +9,7 @@ pageEncoding="utf-8" %>
   </head>
   <body>
     <div>
-    	<c:out value="${loan}" />
+     	<c:out value="${loan}" />
     </div>
     <button type="button" name="back" onclick="history.back()">뒤로가기</button>
   </body>
