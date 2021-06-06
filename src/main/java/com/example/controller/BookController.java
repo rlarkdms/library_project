@@ -50,11 +50,11 @@ public class BookController {
 		return "/book/bookDetail"; }
 
 	    
-	@GetMapping("/book/bookLoan")
-	public String loan() {
-		return "/book/bookLoan";
-	}
-	
+//	@GetMapping("/book/bookLoan")
+//	public String loan() {
+//		return "/book/bookLoan";
+//	}
+//	
 	
 	@PostMapping("/book/bookLoan")//대출 서비스
 	public  String loan(@RequestParam("id") String id,
@@ -64,7 +64,7 @@ public class BookController {
 		String value=bookDao.loan(id, book_id);
 		model.addAttribute("loan",value);
 		
-		return "/book/bookLoan";
+		return "redirect:/book/bookLoan";
 		
 	}
     

@@ -46,7 +46,11 @@ public class BookDao {
 	public String loan(String id,Long book_id) {//대출 서비스.
 		
 		try {
-        Calendar cal = Calendar.getInstance();
+		String results = jdbcTemplate.queryForObject("select borrow_confirm from Book where book_id=?",String.class,book_id);
+        if (results.equals("대여중")) {
+        	return "fail";
+        }
+		Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
         String dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 
