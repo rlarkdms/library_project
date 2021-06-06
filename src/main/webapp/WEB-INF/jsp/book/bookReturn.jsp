@@ -11,7 +11,7 @@ pageEncoding="utf-8" %>
     <div>
     	<script type="text/javascript">
     		alert('<c:out value="${turn}" />');
-    		history.go("http://localhost:9200/session/mypage?member_id=<c:out value="${member_id}" />");
+    		window.location.href="http://localhost:9200/session/mypage?member_id=<c:out value="${member_id}" />";
     	</script>
     </div>
   </body>
