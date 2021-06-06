@@ -118,6 +118,9 @@ pageEncoding="utf-8" %>
          font-size: 18px;
          margin-right: 5px;
       }
+      img {
+      	margin: 10px 0;
+      }
     </style>
   </HEAD>
   <body>
@@ -178,6 +181,8 @@ pageEncoding="utf-8" %>
                   <span class="bookinfo">${detail.publisher}</span>
                   <span class="bookinfo">${detail.genre}</span>               
                </div>
+               <img alt="" src="${detail.image}"/>
+               <div>${detail.story}</div>
            </c:forEach>
            <%  
            if(id != null) { %>
