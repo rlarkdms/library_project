@@ -164,7 +164,7 @@ pageEncoding="utf-8" %>
       </div>
       <div class="textBox">
         <div class="pageTitle">도서 정보 조회</div>
-        <form method="POST">
+        <form action="bookLoan" method="POST">
            <c:forEach var="detail" items="${detail}" varStatus="status">
               <div class="bookTitle">${detail.book_name}</div>
               <span class="bookID">Book ID : </span>
@@ -187,7 +187,7 @@ pageEncoding="utf-8" %>
            <%  
            if(id != null) { %>
                <input 
-               type="hidden"
+                type="hidden"
                 readonly="readonly"
                 name="id"             
                 value="<%session.getAttribute("id");%>"
