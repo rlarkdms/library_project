@@ -21,6 +21,16 @@ public class MyPageController {
 	@Autowired
 	private MyPageDao mypageDao;
 	
+	@GetMapping("/session/mypage")
+	public String page(@RequestParam(value="member_id",required=true) String member_id,Model model) {
+	
+		List<Return_List> turn = mypageDao.selectReturnAll(member_id);
+		System.out.print("확인");
+		System.out.print(turn);
+		model.addAttribute("book",turn);
+		return "/session/mypage";
+	}
+	
     
 	@PostMapping("/session/mypage")
 	public String mypage(@RequestParam(value="member_id",required=true) String member_id,Model model) {

@@ -82,16 +82,22 @@ public class BookDao {
 	}
 	public String turn(String member_id,Long book_id) {//반납 서비스.
 		try {
-			
-		String sql1="UPDATE INTO borrow_list set return_confirm=true where id=? and book_id";
+		
+	
+		System.out.print("turn 확인");
+		System.out.print(member_id);
+		
+		System.out.print(book_id);
+		
+		String sql1="UPDATE borrow_list set return_confrim=1 where member_id=? and book_id=?";
 		this.jdbcTemplate.update(sql1,member_id,book_id);
 		
-		String sql2="UPDATE INTO book borrow_confirm='가능' where book_id=?";
+		String sql2="UPDATE book set borrow_confirm='가능' where book_id=?";
 		this.jdbcTemplate.update(sql2,book_id);
 			
 		return "반납에 성공했습니다.";
 		}catch(Exception e) {
-			
+			System.out.print(e);
 			return "반납에 실패하였습니다. 관리자에게 문의해주세요";
 		}
 		

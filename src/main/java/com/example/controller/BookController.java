@@ -57,7 +57,7 @@ public class BookController {
 	
 	
 	@PostMapping("/book/bookLoan")//대출 서비스
-	public  String loan(@RequestParam("id") String id,
+	public  String loan(@RequestParam(value="id") String id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
 		
@@ -71,14 +71,33 @@ public class BookController {
 		
 	}
 
-	@PostMapping("/book/bookReturn")//반납 서비스
-	public String turn(@RequestParam("id") String member_id,
+	@RequestMapping("/book/bookReturn")//반납 서비스
+	public String re_turn(@RequestParam("member_id") String member_id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
+		
+		System.out.print("반납 확인_get");
+		System.out.print(member_id);
+		System.out.print(book_id);
+		
 		String value=bookDao.turn(member_id,book_id);
 		model.addAttribute("turn",value);
 		return "/book/bookReturn";
 	}
+	
+//	@PostMapping("/book/bookReturn")//반납 서비스
+//	public String turn(@RequestParam("member_id") String member_id,
+//			@RequestParam("book_id") Long book_id,
+//			Model model) {
+//		
+//		System.out.print("반납 확인_postS");
+//		System.out.print(member_id);
+//		System.out.print(book_id);
+//		
+//		String value=bookDao.turn(member_id,book_id);
+//		model.addAttribute("turn",value);
+//		return "/book/bookReturn";
+//	}
 	
 	@PostMapping("/book/extension")
 	public String extension(@RequestParam("book_id") Long Id,
