@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -105,6 +107,10 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
+      .hidden {
+      	visibility:hidden;
+      	position:absolute;
+      }
     </style>
   </HEAD>
   <body>
@@ -148,12 +154,27 @@ pageEncoding="utf-8" %>
       </div>
       <div class="textBox">
         <div class="pageTitle">도서 정보 조회</div>
-        <div class="bookTitle">도서 이름</div>
-   		<%  
-   			String book_id = request.getParameter("book_id");
+        <form method="POST">
+        	<c:set value="${detail}" var="book" />
+	        <div class="bookTitle">${detail.book_name}</div>
+	        <input 
+	         type="text"
+             readonly="readonly"
+             name="book_id"
+             placeholder="Book ID : <%request.getParameter("book_id");%>"
+             value="<%request.getParameter("book_id");%>"
+            />
+        	<%  
         	if(id != null) { %>
-        		<button>대여하기</button> <%
-	        } %>       
+	 	        <input 
+		         type="text"
+	             readonly="readonly"
+	             class="hidden"	          
+	             value="<%session.getAttribute("id");%>"
+	            />       	
+        		<input type="submit" value="대여하기" /> 
+	        <% } %>       
+        </form>
       </div>
       <footer>
         <span class="subTitle">2017301080 최은정</span>
