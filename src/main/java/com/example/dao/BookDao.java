@@ -105,6 +105,8 @@ public class BookDao {
 	public String extension(String member_id,Long book_id) {
 		try {
 			int results = jdbcTemplate.queryForObject("select extend_confirm from borrow_list where member_id=? and book_id=? and return_confrim=0",int.class,member_id,book_id);
+			System.out.print("연장여부");
+			System.out.print(results);
 			if(results==1) {
 				return "이미 연장을 한번 하셨습니다.";
 			}
@@ -117,8 +119,11 @@ public class BookDao {
 		        date = cal.getTime();
 		        dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 	        
-			String sql="UPDATE borrow_list set book_return_date=? where member_id=? and book_id=? and return_confrim=0 and extend_confirm=0";
-			this.jdbcTemplate.update(sql,dateString,member_id,book_id);
+			String sql1="UPDATE borrow_list set book_return_date=? where member_id=? and book_id=? and return_confrim=0 and extend_confirm=0";
+			this.jdbcTemplate.update(sql1,dateString,member_id,book_id);
+			
+			String sql2="UPDATE borrow_list set extend_confirm=1 where member_id=? and book_id=? and return_confrim=0 and extend_confirm=0";
+			this.jdbcTemplate.update(sql2,member_id,book_id);
 			return "연장되었습니다.";
 		}catch(Exception e) {
 			System.out.print(e);
