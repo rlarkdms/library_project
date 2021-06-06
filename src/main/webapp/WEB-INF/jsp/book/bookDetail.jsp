@@ -115,6 +115,8 @@ pageEncoding="utf-8" %>
       img {
       	margin: 10px 0;
       	margin-right: 20px;
+      	width: 350px;
+      	height: 350px;
       }
       .mainInfo {
       	display: flex;
