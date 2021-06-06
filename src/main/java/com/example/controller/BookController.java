@@ -33,16 +33,18 @@ public class BookController {
 //		return "/search/searchBook";
 //	}
  
-	@GetMapping("/book/bookDetail")
-	public String Detail() {
-		return "/book/bookDetail";
-	}
-	
+//	@GetMapping("/book/bookDetail")
+//	public String Detail() {
+//		return "/book/bookDetail";
+//	}
+//	
 	@RequestMapping("/book/bookDetail")//책 디테일 페이지.
 	public String handleStep2Get(@RequestParam("book_id")Long book_id,Model model)
 	{  
 		
 		List<Book> book=bookDao.selectBook(book_id);
+		System.out.print("이거 가고있음");
+		System.out.print(book);
 		
 		model.addAttribute("detail",book);
 		return "/book/bookDetail"; }
