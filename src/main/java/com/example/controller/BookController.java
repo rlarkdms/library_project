@@ -28,7 +28,7 @@ public class BookController {
 //		List<Book> bookList = bookDao.selectAll(keyword);
 //		System.out.print("제대로 오고 있음");
 //		model.addAttribute("book", bookList);//멤버 리스트를 다 주는 것.
-//		System.out.print(bookList);
+//		System.out.print(bookList);git 
 //		
 //		return "/search/searchBook";
 //	}
@@ -80,14 +80,13 @@ public class BookController {
 		return "/book/bookReturn";
 	}
 	
-//	@PostMapping("/book/extension")
-//	public String extension(@RequestParam("") String id,
-//			@RequestParam("book_id") Long book_id,
-//			Model model) {
-//		String value=bookDao.extension(id,book_id);
-//		model.addAttribute("extension",value);
-//		return "/book/extension";
-//		
-//	}
+	@PostMapping("/book/extension")
+	public String extension(@RequestParam("book_id") Long Id,
+			Model model) {
+		String value=bookDao.extension(Id);
+		model.addAttribute("extension",value);
+		return "/book/extension";
+		
+	}
 
 }
