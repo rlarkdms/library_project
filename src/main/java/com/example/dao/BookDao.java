@@ -46,6 +46,9 @@ public class BookDao {
 	public String loan(String id,Long book_id) {//대출 서비스.
 		
 		try {
+		System.out.print("Loan 값이 들어오는지 확인");
+		System.out.print(id);
+		System.out.print(book_id);
 		String results = jdbcTemplate.queryForObject("select borrow_confirm from Book where book_id=?",String.class,book_id);
         if (results.equals("대여중")) {
         	return "fail";
