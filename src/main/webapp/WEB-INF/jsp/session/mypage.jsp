@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -156,8 +158,9 @@ pageEncoding="utf-8" %>
       </div>
 
       <div class="content">
-        <div class="userName">누구누구님, 환영합니다.</div>
-
+      	<c:forEach var="detail" items="${user}" varStatus="status">
+        	<div class="userName">${user.name}님, 환영합니다.</div>
+		</c:forEach>
         <div class="tableName">대여중인 도서 (몇 권)</div>
         <table>
           <th>도서 제목</th>
