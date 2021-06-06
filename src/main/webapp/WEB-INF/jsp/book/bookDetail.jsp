@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 828b93d9757a1a8d9ddf831dd7badf23e8611a6e
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -87,7 +91,7 @@ pageEncoding="utf-8" %>
       }
       .bookTitle {
         margin-top: 20px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
       }
       footer {
@@ -106,21 +110,19 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
-
       .bookID {
-      	font-size: 12px;
+      	font-size: 16px;
       }
       .noStyle {
       	outline : none;
       	border : none;
       }
-
     </style>
   </HEAD>
   <body>
     <div class="white">
       <header>
-        <form action="search.jsp" method="POST" class="search">
+        <form action="../search/searchBook" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="title" />
@@ -158,15 +160,8 @@ pageEncoding="utf-8" %>
       </div>
       <div class="textBox">
         <div class="pageTitle">도서 정보 조회</div>
-
-        <div class="bookTitle">도서 이름</div>
-   		<%  
-   			String book_id = request.getParameter("book_id");
-        	if(id != null) { %>
-        		<button>대여하기</button> <%
-	        } %>       
-
         <form method="POST">
+<<<<<<< HEAD
         	<c var="detail" items="${detail}" >
 	        <div class="bookTitle">${detail.book_name}</div>
 	        <span class="bookID">Book ID : </span>
@@ -178,6 +173,24 @@ pageEncoding="utf-8" %>
              placeholder="<c:out value='${param.book_id}'/>"
              value="<c:out value='${param.book_id}'/>"
             />
+=======
+        	<c:forEach var="detail" items="${detail}" varStatus="status">
+	        	<div class="bookTitle">도서 이름 : ${detail.book_name}</div>
+		        <span class="bookID">Book ID : </span>
+		        <input 
+		         type="text"
+	             readonly="readonly"
+	             name="book_id"
+	             class="noStyle bookID"
+	             placeholder="<c:out value='${param.book_id}'/>"
+	             value="<c:out value='${param.book_id}'/>"
+	            />
+	            <div>${detail.writer}</div>
+	            <div>${detail.publisher}</div>
+	            <div>${detail.genre}</div>
+	            <div>${detail.story}</div>
+	        </c:forEach>
+>>>>>>> 828b93d9757a1a8d9ddf831dd7badf23e8611a6e
         	<%  
         	if(id != null) { %>
 	 	        <input 
