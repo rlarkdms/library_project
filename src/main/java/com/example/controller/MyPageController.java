@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.MemberDao;
@@ -70,16 +71,17 @@ public class MyPageController {
 		
 		return "/session/editCheck";
 	}
-	@GetMapping("/session/leave")
-	public String leave() {
-		return "/session/leave";
-	}
-	
-	@PostMapping("/session/leave")
+//	@GetMapping("/session/leave")
+//	public String leave() {
+//		return "/session/leave";
+//	}
+//	
+	@RequestMapping("/session/leave")
 	public String leave_check(@RequestParam(value="member_id",required=true)String member_id,Model model) {
 		
 		String status=memberDao.leave(member_id);
 		
+		System.out.print(status);
 		model.addAttribute("leave",status);
 		
 		return "/session/leave";

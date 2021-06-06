@@ -95,12 +95,12 @@ public class MemberDao {
     	
     		String sql1="delete from member where member_id=?";
     		this.jdbcTemplate.update(sql1,member_id);
-    		
+    		System.out.print("확인 여기까지 되나?");
     	return "탈퇴되었습니다.";
     	}catch(Exception e) {
     		System.out.print(e);
     		
-    	return "탈퇴에 실패하였습니다. 관리자에게 문의하세요.";	
+    	return "빌린도서를 다 반납하세요.탈퇴에 실패하였습니다.";	
     	}
     }
 }
