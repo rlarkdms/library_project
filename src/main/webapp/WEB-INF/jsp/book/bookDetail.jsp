@@ -198,7 +198,7 @@ pageEncoding="utf-8" %>
                 type="hidden"
                 readonly="readonly"
                 name="id"             
-                value="<%out.println(id);%>"
+                value="<%out.print(id);%>"
                />          
               <input type="submit" value="대여하기" /> 
            <% } %>       
