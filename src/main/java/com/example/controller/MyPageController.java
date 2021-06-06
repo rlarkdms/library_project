@@ -25,9 +25,12 @@ public class MyPageController {
 	public String page(@RequestParam(value="member_id",required=true) String member_id,Model model) {
 	
 		List<Return_List> turn = mypageDao.selectReturnAll(member_id);
+		List<Return_List> expired = mypageDao.selectexpiredAll(member_id);
 		System.out.print("확인");
 		System.out.print(turn);
+		System.out.print(expired);
 		model.addAttribute("book",turn);
+		model.addAttribute("expired",expired);
 		return "/session/mypage";
 	}
 	
