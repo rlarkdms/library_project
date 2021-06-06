@@ -11,7 +11,9 @@ public class Book {
 	private String genre;
 	private Boolean borrow_confirm;
 	private LocalDateTime registrationdate;
-	public Book(Long book_id,String book_name, String writer, String publisher,Long times,String genre)
+	private String story;
+	private String image;
+	public Book(Long book_id,String book_name, String writer, String publisher,Long times,String genre,String story,String image)
 	{
 	this.book_id=book_id;
 	this.book_name = book_name;
@@ -19,7 +21,8 @@ public class Book {
 	this.publisher= publisher;
 	this.genre=genre;
 	this.times=times;
-	this.times=times;
+	this.story=story;
+	this.image=image;
 
 	}
 	public Long getBook_id() {

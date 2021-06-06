@@ -21,7 +21,7 @@ public class BookDao {
 	List<Book> results = jdbcTemplate.query(("select * from Book where book_name like '%"+keyword+"%' or writer like '%"+keyword+"%' or publisher like '%"+keyword+"%' "),
 	(ResultSet rs, int rowNum) -> {
 		Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"));
+				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("stroy"),rs.getString("image"));
 		book.setBook_id(rs.getLong("book_id"));
 	
 	return book;
@@ -33,7 +33,7 @@ public class BookDao {
 	public List<Book> selectBook(Long id){
 	    List<Book> results = jdbcTemplate.query("select * from book where book_id=?",
 	        		(ResultSet rs, int rowNum)->new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-	        				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre")),id);
+	        				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("stroy"),rs.getString("image")),id);
 
 	        return results.isEmpty() ? null : results;
 	 	

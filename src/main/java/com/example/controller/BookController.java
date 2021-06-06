@@ -3,9 +3,11 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.BookDao;
@@ -13,6 +15,7 @@ import com.example.dao.MemberDao;
 import com.example.dao.NoticeDao;
 import com.example.data.Book;
 
+@Controller
 public class BookController {
 
 	@Autowired
@@ -30,7 +33,12 @@ public class BookController {
 //		return "/search/searchBook";
 //	}
  
-	@GetMapping("/book/bookDetail")//책 디테일 페이지.
+	@GetMapping("/book/bookDetail")
+	public String Detail() {
+		return "/book/bookDetail";
+	}
+	
+	@RequestMapping("/book/bookDetail")//책 디테일 페이지.
 	public String handleStep2Get(@RequestParam("book_id")Long book_id,Model model)
 	{  
 		
@@ -40,6 +48,11 @@ public class BookController {
 		return "/book/bookDetail"; }
 
 	    
+	@GetMapping("/book/bookLoan")
+	public String loan() {
+		return "/book/bookLoan";
+	}
+	
 	
 	@PostMapping("/book/bookLoan")//대출 서비스
 	public  String loan(@RequestParam("id") String id,
@@ -52,6 +65,12 @@ public class BookController {
 		return "/book/bookLoan";
 		
 	}
+    
+	@GetMapping("/book/bookReturn")
+	public String turn() {
+		return "/book/bookReturn";
+	}
+
 	@PostMapping("/book/bookReturn")//반납 서비스
 	public String turn(@RequestParam("id") String id,
 			@RequestParam("book_id") Long book_id,
