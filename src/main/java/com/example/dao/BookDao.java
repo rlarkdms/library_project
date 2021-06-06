@@ -57,15 +57,22 @@ public class BookDao {
         Date date = cal.getTime();
         String dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 
+        System.out.println("여기까지 되는지 확인");
+
         // 1일 더한다.
         cal.add(Calendar.DATE, 7);
         date = cal.getTime();
         dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
-    	String sql="INSERT INTO borrow_list (member_id,book_id,book_return_date,extend_confirm,return_confirm)VALUES (?, ?, ?, ?, ?)";
-    	this.jdbcTemplate.update(sql,id,book_id,dateString,false,false);
+    	String sql="INSERT INTO borrow_list (member_id,book_id,book_return_date,extend_confirm,return_confrim)VALUES (?, ?, ?, ?, ?)";
+    	this.jdbcTemplate.update(sql,id,book_id,dateString,0,0);
+    	System.out.print("이거 되는지 확인");
+		String sql_update="UPDATE book set borrow_confirm='대여중' where book_id=?";
+		this.jdbcTemplate.update(sql,book_id);
+    	
     	
     	return "success";
 		}catch(Exception e) {
+			System.out.print(e);
 			return "fail";
 		}
 	}

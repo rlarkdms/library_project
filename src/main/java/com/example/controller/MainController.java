@@ -45,4 +45,9 @@ public class MainController {
 		return "/search/searchBook";
 	}
 
+	
+	@GetMapping("/bestSeller")
+		public String bestSeller() {
+		return "/bestSeller";
+	}
 }
