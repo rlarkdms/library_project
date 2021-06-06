@@ -146,13 +146,13 @@ pageEncoding="utf-8" %>
           </span>
           <% } else { %>
           <span class="login">
-            <a href="../session/edit">수정하기</a>
+            <a href="../session/edit?member_id=<%out.print(id);%>">수정하기</a>
           </span>
           <span class="signup">
             <a href="../login/logout">로그아웃</a>
           </span>
           <span class="signup">
-            <a href="../session/leave">탈퇴하기</a>
+            <a href="../session/leave?member_id=<%out.print(id);%>">탈퇴하기</a>
           </span>
           <% } %>
         </div>
@@ -216,15 +216,15 @@ pageEncoding="utf-8" %>
 	      </c:forEach>
         </table>
 		
-		<!--<form action="../book/bookReturn" method="POST">			
+		<form action="../book/bookReturn" method="POST">			
 	        <div class="tableName">연체중인 도서</div>
 	        <table>
 	          <th>도서 ID</th>
 	          <th>도서 제목</th>
 	          <th>반납일</th>
 	          <th>반납하기</th>
-	          <tr align="center">
-				<c:forEach var="book" items="${book}" varStatus="status">
+			  <c:forEach var="book" items="${book}" varStatus="status">
+	          	<tr align="center">
 		            <input 
 		              type="hidden"
 		              readonly="readonly"
@@ -243,10 +243,10 @@ pageEncoding="utf-8" %>
 		            <td>
 		            	<input type="submit" value="반납" /> 
 		            </td>
-		        </c:forEach>
-	          </tr>
+	 	         </tr>
+		       </c:forEach>
 	        </table>      	
-      	</form> -->
+      	</form>
       </div>
 
       <footer>
