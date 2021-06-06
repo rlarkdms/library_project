@@ -117,6 +117,11 @@ pageEncoding="utf-8" %>
         padding: 5px;
       }
     </style>
+  	<script>
+  		$(document).on("pageload",function(){
+  			window.location.reload(true);
+		});
+  	</script>
   </HEAD>
   <body>
     <div class="white">
