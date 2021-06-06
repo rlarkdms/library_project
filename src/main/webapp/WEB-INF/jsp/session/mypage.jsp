@@ -223,7 +223,7 @@ pageEncoding="utf-8" %>
 	          <th>반납일</th>
 	          <th>반납하기</th>
 			  <form action="../book/bookReturn" method="POST">			
-			  <c:forEach var="book" items="${expried}" varStatus="status">
+			  <c:forEach var="expried" items="${expried}" varStatus="status">
 	          	<tr align="center">
 		            <input 
 		              type="hidden"
