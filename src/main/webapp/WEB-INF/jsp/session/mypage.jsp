@@ -216,14 +216,14 @@ pageEncoding="utf-8" %>
 	      </c:forEach>
         </table>
 		
-		<form action="../book/bookReturn" method="POST">			
-	        <div class="tableName">연체중인 도서</div>
+	    <div class="tableName">연체중인 도서</div>
 	        <table>
 	          <th>도서 ID</th>
 	          <th>도서 제목</th>
 	          <th>반납일</th>
 	          <th>반납하기</th>
-			  <c:forEach var="book" items="${book}" varStatus="status">
+			  <form action="../book/bookReturn" method="POST">			
+			  <c:forEach var="book" items="${expried}" varStatus="status">
 	          	<tr align="center">
 		            <input 
 		              type="hidden"
@@ -235,18 +235,18 @@ pageEncoding="utf-8" %>
 		              type="hidden"
 		              readonly="readonly"
 		              name="book_id"
-		              value="<c:out value='${book.book_id}'/>"
+		              value="<c:out value='${expried.book_id}'/>"
 		             />			             	          
-		          	<td>${book.book_id}</td>
-		            <td>${book.book_name}</td>
-		            <td>${book.return_date}</td>
+		          	<td>${expried.book_id}</td>
+		            <td>${expried.book_name}</td>
+		            <td>${expried.return_date}</td>
 		            <td>
 		            	<input type="submit" value="반납" /> 
 		            </td>
 	 	         </tr>
 		       </c:forEach>
-	        </table>      	
-      	</form>
+      		</form>
+	     </table>      	
       </div>
 
       <footer>
