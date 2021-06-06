@@ -102,6 +102,10 @@ pageEncoding="utf-8" %>
       td {
         padding: 5px;
       }
+      th {
+      	border-top : 1px solid black;
+      	border-bottom: 1px solid black;
+      }
     </style>
   </HEAD>
   <body>
@@ -140,7 +144,7 @@ pageEncoding="utf-8" %>
       </div>
       <div class="searchedTerm">
       	<%
-      		out.println("검색된 도서 : " + request.getParameter("keyword"));
+      		out.println("검색어 : " + request.getParameter("keyword"));
       	%>
       </div>
       <table>
@@ -160,7 +164,7 @@ pageEncoding="utf-8" %>
 	          <td>${book.writer}</td>
 	          <td>${book.publisher}</td>
 	          <td>${book.genre}</td>
-	          <td><a href="${bookURL}=${book.book_id}">=></a></td>
+	          <td><a href="${bookURL}=${book.book_id}">➡</a></td>
 	        </tr>
         </c:forEach>
       </table>

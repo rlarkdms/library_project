@@ -169,7 +169,10 @@ pageEncoding="utf-8" %>
 	             placeholder="<c:out value='${param.book_id}'/>"
 	             value="<c:out value='${param.book_id}'/>"
 	            />
-
+	            <div>${detail.writer}</div>
+	            <div>${detail.publisher}</div>
+	            <div>${detail.genre}</div>
+	            <div>${detail.story}</div>
 	        </c:forEach>
         	<%  
         	if(id != null) { %>
