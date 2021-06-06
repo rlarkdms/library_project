@@ -62,7 +62,7 @@ public class BookController {
 			Model model) {
 		
 		String value=bookDao.loan(id, book_id);
-		model.addAttribute("loan",value );
+		model.addAttribute("loan",value);
 		
 		return "/book/bookLoan";
 		

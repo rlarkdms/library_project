@@ -115,8 +115,8 @@ pageEncoding="utf-8" %>
          border : none;
       }
       .bookinfo {
-      	font-size: 18px;
-      	margin-right: 5px;
+         font-size: 18px;
+         margin-right: 5px;
       }
     </style>
   </HEAD>
@@ -162,37 +162,8 @@ pageEncoding="utf-8" %>
       <div class="textBox">
         <div class="pageTitle">도서 정보 조회</div>
         <form method="POST">
-
-        	<c:forEach var="detail" items="${detail}" varStatus="status">
-	        	<div class="bookTitle">${detail.book_name}</div>
-		        <span class="bookID">Book ID : </span>
-		        <input 
-		         type="text"
-	             readonly="readonly"
-	             name="book_id"
-	             class="noStyle bookID"
-	             placeholder="<c:out value='${param.book_id}'/>"
-	             value="<c:out value='${param.book_id}'/>"
-	            />
-	            <div>
-		            <span class="bookinfo">${detail.writer}</span>
-		            <span class="bookinfo">${detail.publisher}</span>
-		            <span class="bookinfo">${detail.genre}</span>	            
-	            </div>
-	        </c:forEach>
-        	<%  
-        	if(id != null) { %>
-	 	        <input 
-		         type="hidden"
-	             readonly="readonly"
-	             name="id"	          
-	             value="<%session.getAttribute("id");%>"
-	            />       	
-        		<input type="submit" value="대여하기" /> 
-	        <% } %>       
-
            <c:forEach var="detail" items="${detail}" varStatus="status">
-              <div class="bookTitle">도서 이름 : ${detail.book_name}</div>
+              <div class="bookTitle">${detail.book_name}</div>
               <span class="bookID">Book ID : </span>
               <input 
                type="text"
@@ -202,10 +173,11 @@ pageEncoding="utf-8" %>
                 placeholder="<c:out value='${param.book_id}'/>"
                 value="<c:out value='${param.book_id}'/>"
                />
-               <div>${detail.writer}</div>
-               <div>${detail.publisher}</div>
-               <div>${detail.genre}</div>
-               <div>${detail.story}</div>
+               <div>
+                  <span class="bookinfo">${detail.writer}</span>
+                  <span class="bookinfo">${detail.publisher}</span>
+                  <span class="bookinfo">${detail.genre}</span>               
+               </div>
            </c:forEach>
            <%  
            if(id != null) { %>
@@ -217,7 +189,6 @@ pageEncoding="utf-8" %>
                />          
               <input type="submit" value="대여하기" /> 
            <% } %>       
-
         </form>
       </div>
       <footer>
