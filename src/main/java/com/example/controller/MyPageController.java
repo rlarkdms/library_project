@@ -21,6 +21,10 @@ public class MyPageController {
 	@Autowired
 	private MyPageDao mypageDao;
 	
+	@Autowired
+	private MemberDao memberDao;
+	
+	
 	@GetMapping("/session/mypage")
 	public String page(@RequestParam(value="member_id",required=true) String member_id,Model model) {
 	
@@ -34,21 +38,38 @@ public class MyPageController {
 		return "/session/mypage";
 	}
 	
-    
-	@PostMapping("/session/mypage")
-	public String mypage(@RequestParam(value="member_id",required=true) String member_id,Model model) {
-	
-		List<Return_List> turn = mypageDao.selectReturnAll(member_id);
-		System.out.print("확인");
-		System.out.print(turn);
-		model.addAttribute("book",turn);
-		return "/session/mypage";
-	}
-	
-    
+//    
+//	@PostMapping("/session/mypage")
+//	public String mypage(@RequestParam(value="member_id",required=true) String member_id,Model model) {
+//	
+//		List<Return_List> turn = mypageDao.selectReturnAll(member_id);
+//		System.out.print("확인");
+//		System.out.print(turn);
+//		model.addAttribute("book",turn);
+//		return "/session/mypage";
+//	}
+
 	@GetMapping("/session/edit")
 	public String edit() {
 		return "/session/edit";
 	}
+	@PostMapping("/session/editCheck")
+	public String editCheck(@RequestParam(value="member_id",required=true) String member_id,
+			@RequestParam(value="password",required=true) String password,
+			@RequestParam(value="pwcomfirm",required=true)String pwcomfirm,
+			@RequestParam(value="name",required=true) String name,
+			@RequestParam(value="email",required=true)String email,
+			@RequestParam(value="phone",required=true)String phone,Model model) {
+		
+	String status=memberDao.update(member_id, password, pwcomfirm, name, email, phone);
+		
+	System.out.print("확인");
+	System.out.print(status);
+		model.addAttribute("edit",status);
+		model.addAttribute("member_id",member_id);
+		
+		return "/session/editCheck";
+	}
+	
 	
 }

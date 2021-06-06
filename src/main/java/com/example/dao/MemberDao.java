@@ -63,7 +63,31 @@ public class MemberDao {
     	System.out.print("회원가입 실패");
     	return null;
     }
+    
+    }
+   
+    public String edit(String member_id,String password,String pwconfirm,String name,String email,String phone) {
+    try {
     	
+		String sql1="UPDATE member set password=? where member_id=?";
+		this.jdbcTemplate.update(sql1,password,member_id);
+		String sql2="UPDATE member set name=? where member_id=?";
+		this.jdbcTemplate.update(sql2,name,member_id);
+		String sql3="UPDATE member set email=? where member_id=?";
+		this.jdbcTemplate.update(sql3,email,member_id);
+		String sql4="UPDATE member set phone=? where member_id=?";
+		this.jdbcTemplate.update(sql4,phone,member_id);
+
+		
+		
+    	return "수정되었습니다.";
+    }catch(Exception e) {
+    	
+    	System.out.print(e);
+    	return "수정에 실패하였습니다.";
+    }
+    
+    
     }
 
 }
