@@ -158,11 +158,17 @@ pageEncoding="utf-8" %>
         <table>
        	  <th>도서 ID</th>
           <th>도서 제목</th>
+          <th>작가</th>
+          <th>출판사</th>
+          <th>장르</th>
           <th>삭제하기</th>
-          <c:forEach var="book" items="${book}" varStatus="status">
+          <c:forEach var="book" items="${book_list}" varStatus="status">
           	<tr align="center">		          	             	
 	          	<td>${book.book_id}</td>
 	            <td>${book.book_name}</td>
+	            <td>${book.writer}</td>
+	            <td>${book.publiser}</td>
+	            <td>${book.genre}</td>
           		<form action="bookDelete" method="POST">
 		            <input 
 		              type="hidden"
