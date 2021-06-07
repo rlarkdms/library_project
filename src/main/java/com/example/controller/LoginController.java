@@ -51,6 +51,7 @@ public class LoginController {
 					
 					
 					model.addAttribute("id", memberlist);
+					model.addAttribute("result","로그인 성공했습니다.");
 					System.out.print(memberlist);
 					return "/login/loginCheck";
 				}
@@ -60,6 +61,7 @@ public class LoginController {
 			
 			String adminlist=adminDao.ConfirmIDPWD(id,pwd);
 				if (adminlist==null) {
+					System.out.print("관리자 로그인 없는 경우이다.");
 					model.addAttribute("result","아이디와 비밀번호가 맞지 않습니다.");
 					return "/login/loginCheck";
 	
@@ -68,6 +70,7 @@ public class LoginController {
 			
 					System.out.print(adminlist);
 					model.addAttribute("admin", adminlist);
+					model.addAttribute("result","로그인 성공했습니다.");
 					System.out.print(adminlist);
 					return "/login/loginCheck";
 				}
