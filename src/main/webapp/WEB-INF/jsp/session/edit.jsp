@@ -126,13 +126,21 @@ pageEncoding="utf-8" %>
     </style>
     <script type = "text/javascript">
       function CheckForm(){
-		var password= document.getElementById("password").value;
-		var pwcomfirm= document.getElementById("pwcomfirm").value;
-		console.log(password, pwcomfirm);
-		if(password !== pwcomfirm)
-			alert("비밀번호가 일치하지 않습니다!");
-		else {
-			document.getElementById("signUpForm").submit();
+		var password = document.getElementById("password").value;
+		var pwcomfirm = document.getElementById("pwcomfirm").value;
+		var name = document.getElementById("name").value;
+		var email = document.getElementById("email").value;
+		var phone = document.getElementById("phone").value;
+		
+		if(password !== "" && pwcomfirm !== "" && name !== "" && email !== "" && phone !== "") {
+			if(password !== pwcomfirm) {
+				alert("비밀번호가 일치하지 않습니다!");
+			}
+			else {
+				document.getElementById("signUpForm").submit();
+			}
+		} else {
+			alert("모든 정보를 기입해주세요!");
 		}
 	  }
 	</script>
@@ -148,9 +156,6 @@ pageEncoding="utf-8" %>
           </label>
         </form>
         <div class="user">
-          <span class="login">
-            <a href="../session/edit">수정하기</a>
-          </span>
           <span class="logout">
             <a href="../login/logout">로그아웃</a>
           </span>
@@ -171,7 +176,7 @@ pageEncoding="utf-8" %>
              readonly="readonly"
              name="member_id"
              placeholder="${param.member_id}"
-             value="<c:out value='${param.member_id}'/>"
+             value="${param.member_id}"
             />
           </label>
           <label class="signupLabel">
@@ -198,6 +203,7 @@ pageEncoding="utf-8" %>
             <span>이름</span>
             <input
               type="text"
+              id="name"
               name="name"
               value="${editRequest.name}"
               required
@@ -207,6 +213,7 @@ pageEncoding="utf-8" %>
             <span>이메일</span>
             <input
               type="text"
+              id="email"
               name="email"
               value="${editRequest.email}"
               required
@@ -216,6 +223,7 @@ pageEncoding="utf-8" %>
             <span>휴대폰</span>
             <input
               type="text"
+              id="phone"
               name="phone"
               value="${editRequest.phone}"
               required
