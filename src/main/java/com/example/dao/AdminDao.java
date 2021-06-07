@@ -1,8 +1,10 @@
 package com.example.dao;
 
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -29,8 +31,19 @@ public class AdminDao {
     	return null;
     	}
     }
-    
-    
+	public List<Book> selectAll() {//전부다 고르는거
+	List<Book> results = jdbcTemplate.query(("select * from Book ORDER BY book_id ASC" ),
+	(ResultSet rs, int rowNum) -> {
+		Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+		book.setBook_id(rs.getLong("book_id"));
+	
+	return book;
+
+	});
+	return results;
+	}
+	
     public String insert(Book book) {
     	try {
     	Calendar cal = Calendar.getInstance();

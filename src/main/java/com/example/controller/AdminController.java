@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +26,13 @@ public class AdminController {
 	//관리자 페이지 책 기능 (책 생성,수정,삭제)///////////////////////////////////////////////////////////////// 
 	
 	@GetMapping("/admin/adminPage")
-	public String amdinPage() {
+	public String amdinPage(Model model) {
+		List<Book> booklist=adminDao.selectAll();
+		
+		model.addAttribute("book_list",booklist);
+		
 		return "admin/adminPage";
 	}
-	 
 	
 	@RequestMapping("/admin/bookInsert")
 	public String bookInsert(@RequestParam("admin_id") Long book_id,
@@ -45,8 +50,11 @@ public class AdminController {
         
 		return "/admin/bookInsert";
 	}
+	
+	
 	@RequestMapping("/admin/bookDelete")
 	public String bookDelete(@RequestParam("book_id") Long book_id, Model model) {
+		
 		
 		
 		return "/admin/bookDelete";
