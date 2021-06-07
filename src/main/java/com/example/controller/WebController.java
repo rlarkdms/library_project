@@ -39,7 +39,7 @@ public class WebController {
               memberRegisterService.regist(regReq);
               System.out.print("회원가입 완료");
               
-              
+              model.addAttribute("result","회원가입이 완료되었습니다.");
            
               return "/register/step3";
         } catch (Exception ex) {
