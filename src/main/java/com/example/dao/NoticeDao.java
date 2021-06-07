@@ -65,4 +65,19 @@ public class NoticeDao {
     	}
     	
     }
+	public String delete(Long notice_id) {
+		try {
+	    	
+    		String sql1="delete from notice where notice_id=?";
+    		this.jdbcTemplate.update(sql1,notice_id);
+    		System.out.print("삭제 완료");
+    		
+    	return "공지사항이 삭제되었습니다.";
+    	}catch(Exception e) {
+    		System.out.print(e);
+    		
+    	return "공지사항이 삭제가 안됐습니다. 관리자에게 문의하세요.";	
+    	}
+	}
+    
 }

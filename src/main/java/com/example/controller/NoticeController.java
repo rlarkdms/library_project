@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.NoticeDao;
@@ -39,7 +40,7 @@ public class NoticeController {
 		return "/admin/noticeInsert";
 	}
 	
-	@PostMapping("/admin/noticeInsertCheck")
+	@RequestMapping("/admin/noticeInsertCheck")
 	public String insert(@RequestParam("admin_id") String admin_id,
 			@RequestParam("notice_title") String notice_title,
 			@RequestParam("notice_content") String notice_content, Model model) {
@@ -49,14 +50,19 @@ public class NoticeController {
 		String result=noticeDao.insert(notice);
 		
 		model.addAttribute("result", result);//멤버 리스트를 다 주는 것.
+		model.addAttribute("admin_id", admin_id);
 	
 		return "notice/noticeInsertCheck";
 	}
-	@PostMapping("/notice/noticeDelete")
-	public String delete(@RequestParam("notice_id") String notice_id,Model model) {
+	@RequestMapping("/notice/noticeDelete")
+	public String delete(@RequestParam("admin_id") String admin_id,
+			@RequestParam("notice_id") Long notice_id,Model model) {
 		
+		String delete_status=noticeDao.delete(notice_id);
 		
-	
+		model.addAttribute("result",delete_status);
+		model.addAttribute("admin_id",admin_id);
+		
 		
 		return "/notice/noticeDelete";
 	}
