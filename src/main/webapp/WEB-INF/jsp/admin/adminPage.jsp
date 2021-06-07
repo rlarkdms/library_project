@@ -48,12 +48,20 @@ pageEncoding="utf-8" %>
         width: 250px;
         outline: none;
       }
+      button,
       input[type="submit"] {
         padding: 5px 10px;
         background-color: #ff6d00;
         color: white;
         border: none;
         cursor: pointer;
+      }
+      .row {
+      	display: flex;
+      	align-items: center;
+      }
+      button {
+      	margin-left: 20px;
       }
       label {
         font-size: 20px;
@@ -149,11 +157,10 @@ pageEncoding="utf-8" %>
       </div>
 
       <div class="content">
-		<c:forEach var="user" items="${user}" varStatus="status">
-        	<div class="userName">관리자 ${user.name}님</div>
-		</c:forEach>      
-      
-        <button onclick="location='http://localhost:9200/admin/bookInsert.jsp'">도서 추가</button> 
+      	<div class="row">
+			<div class="userName">관리자 <c:out value='${admin_name}'/>님, 환영합니다.</div>	           
+	        <button onclick="location='http://localhost:9200/admin/bookInsert?admin_id=<%out.print(admin);%>'">도서 추가</button>       	
+      	</div>
         
         <div class="tableName">총 도서 목록</div>
         <table>
@@ -170,7 +177,7 @@ pageEncoding="utf-8" %>
 	            <td>${book.writer}</td>
 	            <td>${book.publisher}</td>
 	            <td>${book.genre}</td>
-          		<form action="bookDelete" method="POST">
+          		<form action="bookDelete?admin_id=<%out.print(admin);%>" method="POST">
 		            <input 
 		              type="hidden"
 		              readonly="readonly"
