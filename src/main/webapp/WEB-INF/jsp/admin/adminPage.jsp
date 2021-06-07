@@ -158,15 +158,11 @@ pageEncoding="utf-8" %>
         <table>
        	  <th>도서 ID</th>
           <th>도서 제목</th>
-          <th>수정하기</th>
           <th>삭제하기</th>
           <c:forEach var="book" items="${book}" varStatus="status">
           	<tr align="center">		          	             	
 	          	<td>${book.book_id}</td>
 	            <td>${book.book_name}</td>
-	            <td>
-	            	<button onclick="location='http://localhost:9200/admin/bookEdit.jsp'">수정</button> 
-	            </td>
           		<form action="bookDelete" method="POST">
 		            <input 
 		              type="hidden"

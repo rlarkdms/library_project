@@ -9,12 +9,10 @@ pageEncoding="utf-8" %>
      <%
         String id = (String)request.getAttribute("id");
         String admin = (String)request.getAttribute("admin");
-        System.out.print("admin check " + admin);
         if(id != null)
            session.setAttribute("id",  request.getAttribute("id"));
         else if(admin != null) {
            session.setAttribute("admin",  request.getAttribute("admin"));
-           System.out.print("session setting!");
         }
      %>
      <jsp:forward page="../index.jsp"></jsp:forward>
