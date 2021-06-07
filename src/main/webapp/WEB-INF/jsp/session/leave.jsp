@@ -8,12 +8,12 @@ pageEncoding="utf-8" %>
     <title>회원탈퇴</title>
   </head>
   <body>
-		<script type="text/javascript">
-    		alert('<c:out value="${leave}" />');
-    	</script>
-    	<%
+      	<%
   			session.removeAttribute("id");
   		%>
-  		<jsp:forward page="../index.jsp"></jsp:forward>	
+		<script type="text/javascript">
+    		alert('<c:out value="${leave}" />');
+    		window.location.href="http://localhost:9200";
+    	</script>
   </body>
 </html>
