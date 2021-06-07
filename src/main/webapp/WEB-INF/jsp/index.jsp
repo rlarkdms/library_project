@@ -184,7 +184,7 @@ pageEncoding="utf-8" %>
         <ul>
         	<c:forEach var="notice" items="${notice}" varStatus="status">
 	          <li>
-	            <a href="http://localhost:9200/notice?notice_id=${notice.notice_id}">${notice.notice_title}</a>
+	            <a href="http://localhost:9200/notice?notice_id=${notice.notice_id}">▪ ${notice.notice_title}</a>
 	            <span class="date">${notice.notice_date}</span>
 	          </li>        	
         	</c:forEach>
