@@ -68,9 +68,11 @@ public class MainController {
 		return "/bestSeller";
 	}
 	
-	@GetMapping("/newBooks")
-	public String newBooks() {
+	@RequestMapping("/newBooks")
+	public String newBooks(Model model) {
 	
+		List<Book> book_list=bookDao.newBooks();
+		model.addAttribute("newBooks", book_list);
 	return "/newBooks";
 }
 }

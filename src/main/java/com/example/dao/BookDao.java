@@ -148,7 +148,20 @@ public class BookDao {
 		    return results;
 		 	
 		
+	}
+	public List<Book> newBooks(){
+	    List<Book> results = jdbcTemplate.query("SELECT * from book where year(registrationdate) = year(now()) and month(registrationdate) = month(now()) order by book_id ASC",
+		        (ResultSet rs, int rowNum)->{
+		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+		        	rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+		        	book.setBook_id(rs.getLong("book_id"));
+		        		return book;
+		    });
+
+		    return results;
+		 	
 		
 	}
+	
 	
 }
