@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.AdminDao;
 import com.example.dao.BookDao;
+import com.example.dao.NoticeDao;
 import com.example.data.Book;
 import com.example.data.Member;
+import com.example.data.Notice;
 
 @Controller
 public class AdminController {
@@ -24,6 +26,9 @@ public class AdminController {
 	@Autowired
 	private AdminDao adminDao;
 	
+	@Autowired
+	private NoticeDao noticeDao;
+	
 	//관리자 페이지 책 기능 (책 생성,수정,삭제)///////////////////////////////////////////////////////////////// 
 	
 	@RequestMapping("/admin/adminPage")
@@ -31,11 +36,12 @@ public class AdminController {
 			Model model) {
 		List<Book> booklist=adminDao.selectAll();
 		String admin_name=adminDao.selectadminName(admin_id);
+		List<Notice> notice_list=noticeDao.selectAll(admin_id);
 		System.out.print("관리자 책검색");
 		System.out.print(booklist);
 		model.addAttribute("book_list",booklist);
 		model.addAttribute("admin_name",admin_name);
-		
+		model.addAttribute("notice_list",notice_list);
 		return "admin/adminPage";
 	}
 	

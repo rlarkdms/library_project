@@ -30,8 +30,8 @@ public class MainController {
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String list(Model model) {
-	List<Notice> noticeList = noticeDao.selectAll();
-	model.addAttribute("notice", noticeList);//멤버 리스트를 다 주는 것.
+	//List<Notice> noticeList = noticeDao.selectAll();
+	//model.addAttribute("notice", noticeList);//멤버 리스트를 다 주는 것.
 	return "index";
 	}
 	

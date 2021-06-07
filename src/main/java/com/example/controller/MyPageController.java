@@ -74,11 +74,7 @@ public class MyPageController {
 		
 		return "/session/editCheck";
 	}
-//	@GetMapping("/session/leave")
-//	public String leave() {
-//		return "/session/leave";
-//	}
-//	
+
 	@RequestMapping("/session/leave")
 	public String leave_check(@RequestParam(value="member_id",required=true)String member_id,Model model) {
 		
