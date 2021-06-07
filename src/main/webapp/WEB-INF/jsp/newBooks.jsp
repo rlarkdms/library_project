@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -118,10 +119,10 @@ pageEncoding="utf-8" %>
   <body>
     <div class="white">
       <header>
-        <form action="/search/searchBook" method="POST" class="search">
+        <form action="search.jsp" method="POST" class="search">
           <label style="display: block">
             🔎
-            <input type="text" name="keyword" />
+            <input type="text" name="title" />
             <input type="submit" value="검색" />
           </label>
         </form>
@@ -129,9 +130,9 @@ pageEncoding="utf-8" %>
           <span class="goHome">
             <a href="index">홈으로</a>
           </span>
-       	  <%
+ 			<%
         	String id = (String)session.getAttribute("id");
-        	String admin = (String)session.getAttribute("admin");      
+        	String admin = (String)session.getAttribute("admin");
         	if(id == null && admin==null) { %>
 		        <span class="login">
 		          <a href="/login/login">로그인</a>
@@ -147,7 +148,7 @@ pageEncoding="utf-8" %>
 		          <a href="/login/logout">로그아웃</a>
 		        </span> <%    	        	
 	        }
-	        else if(admin == null &&id!=null) { %>
+        	else if(admin == null &&id!=null) { %>
 	        	<span class="login">
 		          <a href="/session/mypage?member_id=<%out.print(id);%>">마이페이지</a>
 		        </span>
@@ -155,7 +156,6 @@ pageEncoding="utf-8" %>
 		          <a href="/login/logout">로그아웃</a>
 		        </span> <%
 	        } %>
-        </div>
       </header>
       <div class="background">
         <div class="title">Spring Library</div>
@@ -163,19 +163,11 @@ pageEncoding="utf-8" %>
       <div class="textBox">
         <div class="pageTitle">이번달 소식</div>
         <div class="notiTitle">신작</div>
-        <div class="date">2021-06-01</div>
         <div class="content">
           <ul>
-            <li>매매의 기술 | 박병창 저</li>
-            <li>미드나잇 나이브러리 | 매트 헤이그 저</li>
-            <li>완전한 행복 / 정유정 저</li>
-            <li>달러구트 꿈 백화점 | 이미예 저</li>
-            <li>고구려7 | 김진명 저</li>
-            <li>문명1 | 베르나르 베르베르 저</li>
-            <li>문명2 | 베르나르 베르베르 저</li>
-            <li>작은 별이지만 빛나고 있어 | 소윤 저</li>
-            <li>부의 시나리오 | 오건영 저</li>
-            <li>종의 기원 | 정유정 저</li>
+          	<c:forEach var="newBooks" items="${newBooks}" varStatus="status">
+          		<li>${newBooks.book_name} | ${newBooks.writer} 저 | <a href="http://localhost:9200/book/bookDetail?book_id=${newBooks.book_id}">자세히보기➡</a></li>
+          	</c:forEach>
           </ul>
         </div>
       </div>

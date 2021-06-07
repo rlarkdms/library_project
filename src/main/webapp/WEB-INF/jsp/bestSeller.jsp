@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
@@ -161,20 +162,12 @@ pageEncoding="utf-8" %>
       </div>
       <div class="textBox">
         <div class="pageTitle">이번달 소식</div>
-        <div class="notiTitle">인기 도서 TOP 10</div>
-        <div class="date">2021-06-01</div>
+        <div class="notiTitle">인기 도서 순위</div>
         <div class="content">
           <ul>
-            <li>매매의 기술 | 박병창 저</li>
-            <li>미드나잇 나이브러리 | 매트 헤이그 저</li>
-            <li>완전한 행복 / 정유정 저</li>
-            <li>달러구트 꿈 백화점 | 이미예 저</li>
-            <li>고구려7 | 김진명 저</li>
-            <li>문명1 | 베르나르 베르베르 저</li>
-            <li>문명2 | 베르나르 베르베르 저</li>
-            <li>작은 별이지만 빛나고 있어 | 소윤 저</li>
-            <li>부의 시나리오 | 오건영 저</li>
-            <li>종의 기원 | 정유정 저</li>
+          	<c:forEach var="bestSeller" items="${bestSeller}" varStatus="status">
+          		<li>${bestSeller.book_name} | ${bestSeller.writer} 저 | <a href="http://localhost:9200/book/bookDetail?book_id=${bestSeller.book_id}">자세히보기➡</a></li>
+          	</c:forEach>
           </ul>
         </div>
       </div>
