@@ -102,6 +102,7 @@ pageEncoding="utf-8" %>
         align-items: center;
         justify-content: center;
         padding-top: 30px;
+        margin-bottom: 20px;
       }
       .userName {
         font-size: 20px;
@@ -200,7 +201,6 @@ pageEncoding="utf-8" %>
        	  <th>공지 ID</th>
           <th>공지 제목</th>
           <th>작성자</th>
-          <th>수정</th>
           <th>삭제</th>
           <th>자세히 보기</th>
           <c:forEach var="noti" items="${notice_list}" varStatus="status">
@@ -219,27 +219,11 @@ pageEncoding="utf-8" %>
 	            		<input type="submit" value="삭제" /> 
 	            	</td>
 	            </form>	            
-          		<form action="noticeDelete?admin_id=<%out.print(admin);%>" method="POST">
-		            <input 
-		              type="hidden"
-		              readonly="readonly"
-		              name="notice_id"
-		              value="${noti.notice_id}"
-		             />		             				             					
-	            	<td>
-	            		<input type="submit" value="수정" /> 
-	            	</td>
-	            </form>
 	            <td><a href="http://localhost:9200/notice?notice_id=${noti.notice_id}">➡</a></td>
           	</tr>
 	      </c:forEach>
-        </table>        
-        	  
+        </table>           	  
 	  </div>		
     </div>
-      <footer>
-        <span class="subTitle">2017301080 최은정</span>
-        <span class="subTitle">2017301004 김가은</span>
-      </footer>
   </body>
 </HTML>
