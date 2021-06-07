@@ -47,14 +47,13 @@ public class AdminController {
 	@RequestMapping("/admin/bookInsertCheck")
 	public String bookInsert(
 			@RequestParam("admin_id") String admin_id,
-			@RequestParam("book_id") Long book_id,
 			@RequestParam("book_name") String book_name,
 			@RequestParam("writer") String writer,
 			@RequestParam("publisher") String publisher,
 			@RequestParam("genre") String genre,
 			@RequestParam("story") String story,
 			@RequestParam("image") String image_thing,Model model) {
-        Book newbook = new Book(book_id,book_name,writer,publisher,(long) 0,genre,story,image_thing);
+        Book newbook = new Book((long)0,book_name,writer,publisher,(long) 0,genre,story,image_thing);
         
         String book_insert=adminDao.insert(newbook);
 		

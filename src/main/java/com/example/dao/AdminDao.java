@@ -52,8 +52,8 @@ public class AdminDao {
         String dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 
 
-    	String sql="INSERT INTO book(book_id,book_name,writer,publisher,times,genre,borrow_confirm,registrationdate,story,image)VALUES (?, ?, ?, ?,?,?,?,?,?,?)";
-    	this.jdbcTemplate.update(sql,book.getBook_id(),book.getBook_name(),book.getWriter(),book.getPublisher(),book.getTimes(),book.getGenre(),"가능",dateString,book.getStory(),book.getImage());
+    	String sql="INSERT INTO book(book_name,writer,publisher,times,genre,borrow_confirm,registrationdate,story,image)VALUES (?, ?, ?, ?,?,?,?,?,?,?)";
+    	this.jdbcTemplate.update(sql,book.getBook_name(),book.getWriter(),book.getPublisher(),book.getTimes(),book.getGenre(),"가능",dateString,book.getStory(),book.getImage());
     	
     	return "책 등록에 성공하였습니다.";
     }catch(Exception e) {
