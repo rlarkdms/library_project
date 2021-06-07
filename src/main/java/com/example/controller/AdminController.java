@@ -36,7 +36,7 @@ public class AdminController {
 			Model model) {
 		List<Book> booklist=adminDao.selectAll();
 		String admin_name=adminDao.selectadminName(admin_id);
-		List<Notice> notice_list=noticeDao.selectAll(admin_id);
+		List<Notice> notice_list=noticeDao.selectAdmin(admin_id);
 		System.out.print("관리자 책검색");
 		System.out.print(booklist);
 		model.addAttribute("book_list",booklist);

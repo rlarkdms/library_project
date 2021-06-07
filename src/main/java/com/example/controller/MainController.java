@@ -28,11 +28,13 @@ public class MainController {
 	private BookDao bookDao;
 	
 	
-	@RequestMapping(value="/", method = RequestMethod.GET)
+	@RequestMapping("/index")
 	public String list(Model model) {
-	//List<Notice> noticeList = noticeDao.selectAll();
-	//model.addAttribute("notice", noticeList);//멤버 리스트를 다 주는 것.
-	return "index";
+
+		List<Notice> notice=noticeDao.selectAll();
+		model.addAttribute("notice", notice);
+		
+	return "/index";
 	}
 	
 	@PostMapping("/search/searchBook")
