@@ -11,7 +11,7 @@ pageEncoding="utf-8" %>
     <div>
     	<script type="text/javascript">
     		alert('<c:out value="${delete}" />');
-    		window.location.href="http://localhost:9200/admin/adminPage?member_id=<c:out value="${member_id}" />";
+    		window.location.href="http://localhost:9200/admin/adminPage?admin_id=<c:out value="${member_id}" />";
     	</script>
     </div>
   </body>
