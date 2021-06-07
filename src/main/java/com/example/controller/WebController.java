@@ -37,18 +37,19 @@ public class WebController {
     public String handleStep3(RegisterRequest regReq,Model model) {
         try {
               memberRegisterService.regist(regReq);
-              System.out.print("여기까지 들어오는지 확인");
+              System.out.print("회원가입 완료");
               
               
            
-              return "register/step3";
+              return "/register/step3";
         } catch (Exception ex) {
 
         	System.out.print(ex);
             
-        	System.out.print("여기까지 들어오는지 확인");
-            model.addAttribute("error","중복된 이메일 입니다.");
-        	return "redirect:/regisgitter/error";
+        	System.out.print("회원가입 실패");
+            model.addAttribute("result","중복된 이메일 입니다.");
+            System.out.print("result");
+        	return "/register/step3";
         }
     }
     @GetMapping("/register/error")
