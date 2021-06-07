@@ -30,15 +30,24 @@ public class AdminController {
 	public String adminPage(@RequestParam("admin_id") String admin_id,
 			Model model) {
 		List<Book> booklist=adminDao.selectAll();
+		String admin_name=adminDao.selectadminName(admin_id);
 		System.out.print("관리자 책검색");
 		System.out.print(booklist);
 		model.addAttribute("book_list",booklist);
+		model.addAttribute("admin_name",admin_name);
 		
 		return "admin/adminPage";
 	}
 	
-	@RequestMapping("/admin/bookInsert")
-	public String bookInsert(@RequestParam("admin_id") Long book_id,
+	@GetMapping("/admin/bookInsert")
+	public String bookInsert() {
+		return "/admin/bookInsert";
+	}
+	
+	@RequestMapping("/admin/bookInsertCheck")
+	public String bookInsert(
+			@RequestParam("admin_id") String admin_id,
+			@RequestParam("book_id") Long book_id,
 			@RequestParam("book_name") String book_name,
 			@RequestParam("writer") String writer,
 			@RequestParam("publisher") String publisher,
@@ -50,13 +59,22 @@ public class AdminController {
         String book_insert=adminDao.insert(newbook);
 		
         model.addAttribute("book", book_insert);
+        model.addAttribute("admin_id", admin_id);
         
-		return "/admin/bookInsert";
+		return "/admin/bookInsertCheck";
 	}
 	
 	
 	@RequestMapping("/admin/bookDelete")
-	public String bookDelete(@RequestParam("book_id") Long book_id, Model model) {
+	public String bookDelete(
+			@RequestParam("admin_id") String admin_id,
+			@RequestParam("book_id") Long book_id, Model model) {
+		
+		String delete_status=adminDao.delete(book_id);
+		
+		System.out.print(delete_status);
+		model.addAttribute("delete",delete_status);
+		model.addAttribute("admin_id",admin_id);
 		
 		
 		

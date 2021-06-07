@@ -63,5 +63,33 @@ public class AdminDao {
     
     }
     
+	public String selectadminName(String admin_id) {
+		try {
+        String result = jdbcTemplate.queryForObject ("select name from admin where Admin_id=?",
+        		String.class,admin_id);
+
+        return result.isEmpty() ? null : result;
+		}catch(Exception e) {
+		
+			System.out.print(e);
+		return null; 
+		}
+	}
+
+
+	public String delete(Long book_id) {
+		try {
+	    	
+    		String sql1="delete from book where book_id=?";
+    		this.jdbcTemplate.update(sql1,book_id);
+    		System.out.print("삭제 완료");
+    		
+    	return "도서가 삭제되었습니다.";
+    	}catch(Exception e) {
+    		System.out.print(e);
+    		
+    	return "해당 도서를 누가 빌려 삭제에 실패하였습니다.";	
+    	}
+	}
     
 }

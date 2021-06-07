@@ -35,6 +35,7 @@ public class MyPageController {
 		System.out.print("확인");
 		System.out.print(turn);
 		System.out.print(expired);
+		System.out.print(member_name);
 		model.addAttribute("member_name",member_name);
 		model.addAttribute("book",turn);
 		model.addAttribute("expired",expired);
