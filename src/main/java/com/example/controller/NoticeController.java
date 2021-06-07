@@ -33,8 +33,13 @@ public class NoticeController {
 
 		return "notice2";
 	}
+	@GetMapping("/admin/noticeInsert")
+	public String notice_insert() {
+		
+		return "/admin/noticeInsert";
+	}
 	
-	@PostMapping("/notice/noticeInsert")
+	@PostMapping("/admin/noticeInsertCheck")
 	public String insert(@RequestParam("admin_id") String admin_id,
 			@RequestParam("notice_title") String notice_title,
 			@RequestParam("notice_content") String notice_content, Model model) {
@@ -43,9 +48,9 @@ public class NoticeController {
 		
 		String result=noticeDao.insert(notice);
 		
-		model.addAttribute("notice", notice);//멤버 리스트를 다 주는 것.
+		model.addAttribute("result", result);//멤버 리스트를 다 주는 것.
 	
-		return "notice/noticeInsert";
+		return "notice/noticeInsertCheck";
 	}
 	@PostMapping("/notice/noticeDelete")
 	public String delete(@RequestParam("notice_id") String notice_id,Model model) {
