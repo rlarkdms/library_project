@@ -157,7 +157,7 @@ pageEncoding="utf-8" %>
       </div>
 
       <div class="content">
-		<c:forEach var="detail" items="${user}" varStatus="status">
+		<c:forEach var="user" items="${user}" varStatus="status">
         	<div class="userName">${user.name}님, 환영합니다.</div>
 		</c:forEach>
 		

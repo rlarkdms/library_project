@@ -149,7 +149,7 @@ pageEncoding="utf-8" %>
       </div>
 
       <div class="content">
-		<c:forEach var="detail" items="${user}" varStatus="status">
+		<c:forEach var="user" items="${user}" varStatus="status">
         	<div class="userName">관리자 ${user.name}님</div>
         	<button onclick="location='http://localhost:9200/admin/bookInsert.jsp'">도서 추가</button> 
 		</c:forEach>      
