@@ -142,6 +142,9 @@ pageEncoding="utf-8" %>
           </label>
         </form>
         <div class="user">
+           <span class="goHome">
+            <a href="../">홈으로</a>
+          </span>
  			<%
         	String id = (String)session.getAttribute("id");
         	String admin = (String)session.getAttribute("admin");
