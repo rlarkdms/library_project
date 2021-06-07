@@ -146,7 +146,6 @@ pageEncoding="utf-8" %>
         <%
         	String id = (String)session.getAttribute("id");
         	String admin = (String)session.getAttribute("admin");
-        	 System.out.print("index admin check " + admin);
         	if(id == null && admin==null) { %>
 		        <span class="login">
 		          <a href="/login/login">로그인</a>
