@@ -28,14 +28,22 @@ public class MainController {
 	private BookDao bookDao;
 	
 	
-	@RequestMapping("/index")
+	@RequestMapping("/")
 	public String list(Model model) {
 
+		System.out.print("공지사항 되는지 확인1");
 		List<Notice> notice=noticeDao.selectAll();
 		model.addAttribute("notice", notice);
-		
+
+		System.out.print("공지사항 되는지 확인2");
 	return "/index";
 	}
+//	@GetMapping("/index")
+//	public String index(Model model) {
+//
+//
+//	return "/index";
+//	}
 	
 	@PostMapping("/search/searchBook")
 	public String book(@RequestParam("keyword") String keyword, Model model) {

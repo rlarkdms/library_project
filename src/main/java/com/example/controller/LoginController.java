@@ -83,8 +83,4 @@ public class LoginController {
 		return "/login/logout";
 	}
 
-	@GetMapping("/index")//메인 페이지
-	public String index() {
-		return "/index";
-	}
 }
