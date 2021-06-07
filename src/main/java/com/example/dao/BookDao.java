@@ -21,7 +21,7 @@ public class BookDao {
 	List<Book> results = jdbcTemplate.query(("select * from Book where book_name like '%"+keyword+"%' or writer like '%"+keyword+"%' or publisher like '%"+keyword+"%' "),
 	(ResultSet rs, int rowNum) -> {
 		Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+				rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
 		book.setBook_id(rs.getLong("book_id"));
 	
 	return book;
@@ -34,7 +34,7 @@ public class BookDao {
 	    List<Book> results = jdbcTemplate.query("select * from book where book_id="+id+";",
 	        (ResultSet rs, int rowNum)->{
 	        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-	        	rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+	        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
 	        	book.setBook_id(rs.getLong("book_id"));
 	        		return book;
 	    });
@@ -140,7 +140,7 @@ public class BookDao {
 	    List<Book> results = jdbcTemplate.query("SELECT * from book order by times DESC",
 		        (ResultSet rs, int rowNum)->{
 		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-		        	rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+		        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
 		        	book.setBook_id(rs.getLong("book_id"));
 		        		return book;
 		    });
@@ -153,7 +153,24 @@ public class BookDao {
 	    List<Book> results = jdbcTemplate.query("SELECT * from book where year(registrationdate) = year(now()) and month(registrationdate) = month(now()) order by book_id ASC",
 		        (ResultSet rs, int rowNum)->{
 		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-		        	rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+		        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+		        	book.setBook_id(rs.getLong("book_id"));
+		        		return book;
+		    });
+
+		    return results;
+		 	
+		
+	}
+	public List<Book> recommend(Long book_id){//추천 서비스
+		
+		
+		String genre = jdbcTemplate.queryForObject("select genre from book where book_id=?",String.class,book_id);
+		
+	    List<Book> results = jdbcTemplate.query("select * from book where genre='"+genre+"';",
+		        (ResultSet rs, int rowNum)->{
+		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+		        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
 		        	book.setBook_id(rs.getLong("book_id"));
 		        		return book;
 		    });

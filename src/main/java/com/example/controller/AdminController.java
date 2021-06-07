@@ -60,6 +60,7 @@ public class AdminController {
 			@RequestParam("story") String story,
 			@RequestParam("image") String image_thing,Model model) {
         
+		
 		System.out.print(admin_id);
 		System.out.print(book_name);
 		System.out.print(writer);
@@ -68,7 +69,7 @@ public class AdminController {
 		System.out.print(story);
 		System.out.print(image_thing);
 		
-		Book newbook = new Book((long)0,book_name,writer,publisher,(long) 0,genre,story,image_thing);
+		Book newbook = new Book((long)0,book_name,writer,publisher,"가능",(long) 0,genre,story,image_thing);
         
         String book_insert=adminDao.insert(newbook);
 		

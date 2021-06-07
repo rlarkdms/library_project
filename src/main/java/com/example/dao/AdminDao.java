@@ -36,7 +36,7 @@ public class AdminDao {
 	List<Book> results = jdbcTemplate.query(("select * from Book ORDER BY book_id ASC" ),
 	(ResultSet rs, int rowNum) -> {
 		Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-				rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+				rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
 		book.setBook_id(rs.getLong("book_id"));
 	
 	return book;

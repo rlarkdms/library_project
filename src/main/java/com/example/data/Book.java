@@ -9,16 +9,17 @@ public class Book {
 	private String publisher;
 	private Long times;
 	private String genre;
-	private Boolean borrow_confirm;
+	private String borrow_confirm;
 	private LocalDateTime registrationdate;
 	private String story;
 	private String image;
-	public Book(Long book_id,String book_name, String writer, String publisher,Long times,String genre,String story,String image)
+	public Book(Long book_id,String book_name, String writer, String publisher,String borrow_confirm,Long times,String genre,String story,String image)
 	{
 	this.book_id=book_id;
 	this.book_name = book_name;
 	this.writer = writer;
 	this.publisher= publisher;
+	this.borrow_confirm=borrow_confirm;
 	this.genre=genre;
 	this.times=times;
 	this.story=story;
@@ -78,10 +79,10 @@ public class Book {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public Boolean getBorrow_confirm() {
+	public String getBorrow_confirm() {
 		return borrow_confirm;
 	}
-	public void setBorrow_confirm(Boolean borrow_confirm) {
+	public void setBorrow_confirm(String borrow_confirm) {
 		this.borrow_confirm = borrow_confirm;
 	}
 	public LocalDateTime getRegistrationdate() {

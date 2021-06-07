@@ -31,7 +31,10 @@ public class BookController {
 		List<Book> book=bookDao.selectBook(book_id);
 		System.out.print("책 디테일 페이지 가는 값 :");
 		System.out.println(book);
+		List<Book> book_recommend=bookDao.recommend(book_id);
 		
+		
+		model.addAttribute("recommend",book_recommend);//detail에 book 값 전달.
 		model.addAttribute("detail",book);//detail에 book 값 전달.
 		return "/book/bookDetail"; }
 
