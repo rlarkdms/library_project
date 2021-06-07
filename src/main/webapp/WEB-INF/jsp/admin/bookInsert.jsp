@@ -86,6 +86,9 @@ pageEncoding="utf-8" %>
         align-items: center;
         justify-content: center;
       }
+      form input {
+      	margin-left : 10px;
+      }
       .signupLabel {
         margin: 10px 0;
         display: flex;
@@ -123,6 +126,12 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
+      .pageTitle {
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: 3px solid #ff6d00;
+        margin-bottom: 20px;
+      }      
     </style>
   </HEAD>
   <body>    
@@ -141,7 +150,7 @@ pageEncoding="utf-8" %>
           </span>
           <% String admin = (String)session.getAttribute("admin"); 
           	if(admin != null) { %>
-	          <span class="signup">
+	          <span class="goHome">
 	            <a href="../login/logout">로그아웃</a>
 	          </span>
           <% } %>
@@ -151,8 +160,15 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
+      	<div class="pageTitle">도서 추가</div>
         <form action="bookInsertCheck" method="POST" class="search" id="signUpForm">
           <label class="signupLabel">
+            <input 
+              type="hidden"
+              readonly="readonly"
+              name="admin_id"
+              value="<c:out value='${param.admin_id}'/>"
+             />           
            <span>도서 제목</span>
            <input 
              type="text"
@@ -191,7 +207,7 @@ pageEncoding="utf-8" %>
             />
           </label>
           <label class="signupLabel">
-            <span>story</span>
+            <span>줄거리</span>
             <input
               type="text"
               name="story"
@@ -207,7 +223,7 @@ pageEncoding="utf-8" %>
               value="${book.image}"
             />
           </label>
-          <input type="button" value="추가하기" class="signup"/>
+          <input type="submit" value="추가하기" class="signup"/>
         </form>
       </div>
       <footer>
