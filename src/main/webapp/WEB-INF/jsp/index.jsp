@@ -182,17 +182,12 @@ pageEncoding="utf-8" %>
       <div class="notice">
         <div class="boardTitle">공지사항</div>
         <ul>
-          <li>
-            <a href="/noti1">▪ 도서관 이용 규칙
-            </a>
-            <span class="date">2021-06-01</span>
-          </li>
-          <li>
-            <a href="/noti2"
-              >▪ 마스크 착용 의무화 및 제재 안내</a
-            >
-            <span class="date">2021-06-01</span>
-          </li>
+        	<c:forEach var="notice" items="${notice}" varStatus="status">
+	          <li>
+	            <a href="http://localhost:9200/notice?notice_id=${notice.notice_id}">${notice.notice_title}</a>
+	            <span class="date">${notice.notice_date}</span>
+	          </li>        	
+        	</c:forEach>
         </ul>
       </div>
       <div class="thisMonth">
