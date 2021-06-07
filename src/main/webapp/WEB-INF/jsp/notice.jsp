@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <HTML>
   <HEAD>
-    <TITLE>도서 검색</TITLE>
+    <TITLE>공지사항</TITLE>
     <style>
       body {
         display: flex;
@@ -13,7 +12,7 @@ pageEncoding="utf-8" %>
         align-items: center;
         justify-content: center;
         background-color: whitesmoke;
-        width: 100%;
+        width: 100%;      
         margin: 0;
       }
       .white {
@@ -21,6 +20,7 @@ pageEncoding="utf-8" %>
         width: 50%;
         background-color: white;
         box-sizing: border-box;
+        height: 100vh;
       }
       header {
         padding: 30px;
@@ -77,6 +77,28 @@ pageEncoding="utf-8" %>
         color: #ff6d00;
         margin: 20px 0;
       }
+      .textBox {
+        margin: 30px;
+        font-size: 20px;
+      }
+      .pageTitle {
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: 3px solid #ff6d00;
+      }
+      .notiTitle {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .date {
+        color: gray;
+        font-size: 18px;
+        margin-top: 5px;
+      }
+      li {
+        margin-bottom: 5px;
+      }
       footer {
         width: 50%;
         background-color: white;
@@ -87,31 +109,18 @@ pageEncoding="utf-8" %>
         justify-content: center;
         border-top: 1px solid lightgray;
       }
-      .searchedTerm {
-        margin: 20px 0;
-        margin-left: 30px;
-        font-size: 20px;
+      .subTitle {
+        font-size: 15px;
         font-weight: bold;
-      }
-      table {
-        margin: 0 auto;
-        width: 80%;
-        font-size: 18px;
-      }
-      th,
-      td {
-        padding: 5px;
-      }
-      th {
-      	border-top : 1px solid black;
-      	border-bottom: 1px solid black;
+        color: rgb(83, 77, 77);
+        margin: 0 10px;
       }
     </style>
   </HEAD>
   <body>
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search">
+        <form action="/search/searchBook" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="keyword" />
@@ -120,32 +129,32 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="../">홈으로</a>
+            <a href="index">홈으로</a>
           </span>
- 			<%
+ 		<%
         	String id = (String)session.getAttribute("id");
         	String admin = (String)session.getAttribute("admin");
         	if(id == null && admin==null) { %>
 		        <span class="login">
-		          <a href="../login/login">로그인</a>
+		          <a href="/login/login">로그인</a>
 		        </span>
 		        <span class="signup">
-		          <a href="../register/step2">회원가입</a>
+		          <a href="/register/step2">회원가입</a>
 		        </span> <%
 	        } else if(admin != null &&id==null) { %> 
  	        	<span class="login">
-		          <a href="../admin/adminPage?admin_id=<%out.print(admin);%>">관리자페이지</a>
+		          <a href="/admin/adminPage?admin_id=<%out.print(admin);%>">관리자페이지</a>
 		        </span>
 		        <span class="signup">
-		          <a href="../login/logout">로그아웃</a>
+		          <a href="/login/logout">로그아웃</a>
 		        </span> <%    	        	
 	        }
         	else if(admin == null &&id!=null) { %>
 	        	<span class="login">
-		          <a href="../session/mypage?member_id=<%out.print(id);%>">마이페이지</a>
+		          <a href="/session/mypage?member_id=<%out.print(id);%>">마이페이지</a>
 		        </span>
 		        <span class="signup">
-		          <a href="../login/logout">로그아웃</a>
+		          <a href="/login/logout">로그아웃</a>
 		        </span> <%
 	        } %>
         </div>
@@ -153,33 +162,13 @@ pageEncoding="utf-8" %>
       <div class="background">
         <div class="title">Spring Library</div>
       </div>
-      <div class="content">
-	      <div class="searchedTerm">
-	      	<%
-	      		out.println("검색어 : " + request.getParameter("keyword"));
-	      	%>
-	      </div>
-	      <table>
-	      	<tr>
-		        <th>도서 ID</th>
-		        <th>도서 제목</th>
-		        <th>작가</th>
-		        <th>출판사</th>
-		        <th>장르</th>
-		        <th>자세히보기</th>
-	        </tr>
-	        <c:forEach var="book" items="${book}" varStatus="status">
-		        <tr align="center">
-		          <td>${book.book_id}</td>
-		          <c:url value="../book/bookDetail?book_id" var="bookURL" />
-		          <td>${book.book_name}</td>
-		          <td>${book.writer}</td>
-		          <td>${book.publisher}</td>
-		          <td>${book.genre}</td>
-		          <td><a href="${bookURL}=${book.book_id}">➡</a></td>
-		        </tr>
-	        </c:forEach>
-	      </table>
+      <div class="textBox">
+        <div class="pageTitle">공지사항</div>
+        <div class="notiTitle">도서관 이용 규칙</div>
+        <div class="date">2021-06-01</div>
+        <div class="content">
+          
+        </div>
       </div>
     </div>
      <footer>
