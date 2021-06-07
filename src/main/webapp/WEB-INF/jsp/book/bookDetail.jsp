@@ -228,6 +228,7 @@ pageEncoding="utf-8" %>
 		        <th>작가</th>
 		        <th>출판사</th>
 		        <th>장르</th>
+		        <th>대여여부</th>
 		        <th>자세히보기</th>
 	        </tr>
 	        <c:forEach var="book" items="${recommend}" varStatus="status">
@@ -238,6 +239,7 @@ pageEncoding="utf-8" %>
 		          <td>${book.writer}</td>
 		          <td>${book.publisher}</td>
 		          <td>${book.genre}</td>
+		          <td>${book.borrow_confirm}</td>
 		          <td><a href="${bookURL}=${book.book_id}">➡</a></td>
 		        </tr>
 	        </c:forEach>
