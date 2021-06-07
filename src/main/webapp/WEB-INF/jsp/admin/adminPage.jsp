@@ -167,7 +167,7 @@ pageEncoding="utf-8" %>
 	          	<td>${book.book_id}</td>
 	            <td>${book.book_name}</td>
 	            <td>${book.writer}</td>
-	            <td>${book.publiser}</td>
+	            <td>${book.publisher}</td>
 	            <td>${book.genre}</td>
           		<form action="bookDelete" method="POST">
 		            <input 
