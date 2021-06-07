@@ -7,7 +7,11 @@ pageEncoding="utf-8" %>
   </head>
   <body>
   	<%
-  		session.removeAttribute("id");
+		String id = (String)session.getAttribute("id");
+		String admin = (String)session.getAttribute("admin");
+  	    
+		if(id != null) session.removeAttribute("id");
+		else if(admin != null) session.removeAttribute("admin");
   	%>
   	<jsp:forward page="../index.jsp"></jsp:forward>
   </body>
