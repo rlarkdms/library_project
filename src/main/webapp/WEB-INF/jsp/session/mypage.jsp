@@ -210,12 +210,12 @@ pageEncoding="utf-8" %>
         </table>
 		
 	    <div class="tableName">연체중인 도서</div>
-	        <table>
-	          <th>도서 ID</th>
-	          <th>도서 제목</th>
-	          <th>반납일</th>
-	          <th>반납하기</th>
-			  <form action="../book/bookReturn" method="POST">			
+        <table>
+          <th>도서 ID</th>
+          <th>도서 제목</th>
+          <th>반납일</th>
+          <th>반납하기</th>
+		  <form action="../book/bookReturn" method="POST">			
 			  <c:forEach var="expired" items="${expired}" varStatus="status">
 	          	<tr align="center">
 		            <input 
@@ -238,8 +238,29 @@ pageEncoding="utf-8" %>
 		            </td>
 	 	         </tr>
 		       </c:forEach>
-      		</form>
-	     </table>      	
+     	  </form>
+	     </table>
+	     
+	     <div class="tableName">도서 대여 히스토리</div> 
+	     <table>
+	        <th>도서 ID</th>
+	        <th>도서 제목</th>
+	        <th>작가</th>
+	        <th>출판사</th>
+	        <th>장르</th>
+	        <th>자세히보기</th>
+          <c:forEach var="book" items="${history}" varStatus="status">
+	        <tr align="center">
+		          <td>${book.book_id}</td>
+		          <c:url value="../book/bookDetail?book_id" var="bookURL" />
+		          <td>${book.book_name}</td>
+		          <td>${book.writer}</td>
+		          <td>${book.publisher}</td>
+		          <td>${book.genre}</td>
+		          <td><a href="${bookURL}=${book.book_id}">➡</a></td>	        
+	        </tr>
+	       </c:forEach>        
+	     </table>     	
       </div>
     </div>
   </body>
