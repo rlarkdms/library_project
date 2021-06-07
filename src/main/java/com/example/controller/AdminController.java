@@ -23,9 +23,9 @@ public class AdminController {
 	
 	//관리자 페이지 책 기능 (책 생성,수정,삭제)///////////////////////////////////////////////////////////////// 
 	
-	@GetMapping("/admin/bookInsertPage")
-	public String BookInsertPage() {
-		return "admin/bookInsertPage";
+	@GetMapping("/admin/adminPage")
+	public String amdinPage() {
+		return "admin/adminPage";
 	}
 	 
 	
@@ -44,6 +44,12 @@ public class AdminController {
         model.addAttribute("book", book_insert);
         
 		return "/admin/bookInsert";
+	}
+	@RequestMapping("/admin/bookDelete")
+	public String bookDelete(@RequestParam("book_id") Long book_id, Model model) {
+		
+		
+		return "/admin/bookDelete";
 	}
 	
 }
