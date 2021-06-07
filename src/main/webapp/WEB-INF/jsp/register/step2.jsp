@@ -124,6 +124,12 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
+      .pageTitle {
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: 3px solid #ff6d00;
+        margin-bottom: 20px;
+      } 
     </style>
     <script type = "text/javascript">
       function CheckForm(){
@@ -161,6 +167,7 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
+      	<div class="pageTitle">회원 가입</div>
         <form action="step3" method="POST" class="search" id="signUpForm">
           <label class="signupLabel">
             <span>ID</span>
