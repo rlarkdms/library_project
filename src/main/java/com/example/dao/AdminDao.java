@@ -32,6 +32,7 @@ public class AdminDao {
     	}
     }
 	public List<Book> selectAll() {//전부다 고르는거
+	System.out.print("책 전체 검색");
 	List<Book> results = jdbcTemplate.query(("select * from Book ORDER BY book_id ASC" ),
 	(ResultSet rs, int rowNum) -> {
 		Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
@@ -61,4 +62,6 @@ public class AdminDao {
     }
     
     }
+    
+    
 }

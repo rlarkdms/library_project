@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,10 +26,12 @@ public class AdminController {
 	
 	//관리자 페이지 책 기능 (책 생성,수정,삭제)///////////////////////////////////////////////////////////////// 
 	
-	@GetMapping("/admin/adminPage")
-	public String amdinPage(Model model) {
+	@RequestMapping("/admin/adminPage")
+	public String adminPage(@RequestParam("admin_id") String admin_id,
+			Model model) {
 		List<Book> booklist=adminDao.selectAll();
-		
+		System.out.print("관리자 책검색");
+		System.out.print(booklist);
 		model.addAttribute("book_list",booklist);
 		
 		return "admin/adminPage";
