@@ -38,5 +38,17 @@ public class MyPageDao {
 	});
 	return results;
 	}
+	public String selectmemberName(String member_id) {
+		try {
+        String result = jdbcTemplate.queryForObject ("select name from member where member_id=?",
+        		String.class,member_id);
+
+        return result.isEmpty() ? null : result;
+		}catch(Exception e) {
+		
+			System.out.print(e);
+		return null; 
+		}
+	}
 	
 }

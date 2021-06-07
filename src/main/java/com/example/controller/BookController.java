@@ -22,50 +22,31 @@ public class BookController {
 	private MemberDao memberDao;
 	@Autowired
 	private BookDao bookDao;
-//	@PostMapping("/search/searchBook")
-//	public String book(@RequestParam("keyword") String keyword, Model model) {
-//		System.out.print("값이오는지"+keyword);
-//		List<Book> bookList = bookDao.selectAll(keyword);
-//		System.out.print("제대로 오고 있음");
-//		model.addAttribute("book", bookList);//멤버 리스트를 다 주는 것.
-//		System.out.print(bookList);git 
-//		
-//		return "/search/searchBook";
-//	}
- 
-//	@GetMapping("/book/bookDetail")
-//	public String Detail() {
-//		return "/book/bookDetail";
-//	}
-//	
+	
+	// 책 서비스(책 디테일,대여,반납,연장 서비스) 컨트롤러//////////////////////////////////////////////
+	
 	@RequestMapping("/book/bookDetail")//책 디테일 페이지.
-	public String handleStep2Get(@RequestParam("book_id")Long book_id,Model model)
-	{  
-		
+	public String handleStep2Get(@RequestParam("book_id")Long book_id,
+			Model model){  	
 		List<Book> book=bookDao.selectBook(book_id);
-		System.out.print("이거 가고있음");
-		System.out.print(book);
+		System.out.print("책 디테일 페이지 가는 값 :");
+		System.out.println(book);
 		
-		model.addAttribute("detail",book);
+		model.addAttribute("detail",book);//detail에 book 값 전달.
 		return "/book/bookDetail"; }
 
-	    
-	@GetMapping("/book/bookLoan")
-	public String loan() {
-		return "/book/bookLoan";
-	}
-	
 	
 	@PostMapping("/book/bookLoan")//대출 서비스
 	public  String loan(@RequestParam(value="id") String id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
+	
+		String loan=bookDao.loan(id, book_id);
 		
-		String value=bookDao.loan(id, book_id);
-		model.addAttribute("loan",value);
+		System.out.print("대여 서비스 확인 값 :");
+		System.out.println(loan);
 		
-		System.out.print("loan 값 중에 하나");
-		System.out.print(value);
+		model.addAttribute("loan",loan);//loan에 value값 전달.
 		
 		return "/book/bookLoan";
 		
@@ -76,31 +57,18 @@ public class BookController {
 			@RequestParam("book_id") Long book_id,
 			Model model) {
 		
-		System.out.print("반납 확인_get");
-		System.out.print(member_id);
-		System.out.print(book_id);
 		
-		String value=bookDao.turn(member_id,book_id);
-		model.addAttribute("turn",value);
-		model.addAttribute("member_id",member_id);
+		String book_return=bookDao.turn(member_id,book_id);
+		System.out.print("반납 확인 서비스 상태 : ");
+		System.out.println(book_return);
+		model.addAttribute("turn",book_return);
+		model.addAttribute("member_id",member_id);//북에서 해당 Mypage로 돌아오기 위한 값 전달.
+		
 		return "/book/bookReturn";
 	}
 	
-//	@PostMapping("/book/bookReturn")//반납 서비스
-//	public String turn(@RequestParam("member_id") String member_id,
-//			@RequestParam("book_id") Long book_id,
-//			Model model) {
-//		
-//		System.out.print("반납 확인_postS");
-//		System.out.print(member_id);
-//		System.out.print(book_id);
-//		
-//		String value=bookDao.turn(member_id,book_id);
-//		model.addAttribute("turn",value);
-//		return "/book/bookReturn";
-//	}
-	
-	@RequestMapping("/book/bookExtend")
+
+	@RequestMapping("/book/bookExtend")//연장 서비스
 	public String extension(@RequestParam("book_id") Long book_id,
 			@RequestParam("member_id") String member_id,
 			Model model) {
@@ -110,5 +78,6 @@ public class BookController {
 		return "/book/bookExtend";
 		
 	}
+	
 
 }

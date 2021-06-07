@@ -60,7 +60,7 @@ public class MemberDao {
         return result.isEmpty() ? null : result;
     	
     }catch(EmptyResultDataAccessException e) {
-    	System.out.print("회원가입 실패");
+    	System.out.print(e);
     	return null;
     }
     

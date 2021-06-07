@@ -23,6 +23,7 @@ public class MainController {
 	
 	@Autowired
 	private NoticeDao noticeDao;
+	
 	@Autowired
 	private BookDao bookDao;
 	

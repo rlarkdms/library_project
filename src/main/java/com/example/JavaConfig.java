@@ -17,6 +17,7 @@ public class JavaConfig {
 	public DataSource dataSource() {
 	DataSource ds = new DataSource();
 	ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+	//내장 로컬 DB 사용.
 	ds.setUrl("jdbc:mysql://localhost:3306/project?characterEncoding=utf8&serverTimezone=UTC");
 	ds.setUsername("root");
 	ds.setPassword("1234");
@@ -27,20 +28,21 @@ public class JavaConfig {
 	ds.setTimeBetweenEvictionRunsMillis(10 * 1000);
 	return ds;
 	}
+	
 	@Bean
-	public MemberDao memberDao() {
+	public MemberDao memberDao() { //MemberDao Bean 객체 등록.
 	return new MemberDao(dataSource());
 	}
 	@Bean
-	public NoticeDao noticeDao() {
+	public NoticeDao noticeDao() { //NoticeDao Bean 객체 등록.
 		return new NoticeDao(dataSource());
 	}
     @Bean
-    public MemberRegisterService memberRegSvc() {
+    public MemberRegisterService memberRegSvc(){ //RegisterServiceDao Bean 객체 등록.
           return new MemberRegisterService(memberDao());
     }
     @Bean
-    public BookDao bookDao() {
+    public BookDao bookDao() {   ////BookDao Bean 객체 등록.
     	return new BookDao(dataSource());
     }
     @Bean
