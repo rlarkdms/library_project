@@ -15,6 +15,9 @@ pageEncoding="utf-8" %>
            session.setAttribute("admin",  request.getAttribute("admin"));
         }
      %>
+   	<script type="text/javascript">
+    		alert('<c:out value="${result}" />');
+   	</script>
      <jsp:forward page="../index.jsp"></jsp:forward>
   </body>
 </html>
