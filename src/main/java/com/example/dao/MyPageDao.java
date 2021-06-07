@@ -50,5 +50,20 @@ public class MyPageDao {
 		return null; 
 		}
 	}
+	public List<Book> history(String member_id){//히스토리 서비스
+		
+		
+	    List<Book> results = jdbcTemplate.query("select * from borrow_list Inner join book on borrow_list.book_id=book.book_id where borrow_list.member_id='"+member_id+"';",
+		        (ResultSet rs, int rowNum)->{
+		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+		        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+		        	book.setBook_id(rs.getLong("book_id"));
+		        		return book;
+		    });
+
+		    return results;
+		 	
+		
+	}
 	
 }

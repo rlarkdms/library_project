@@ -167,7 +167,7 @@ public class BookDao {
 		
 		String genre = jdbcTemplate.queryForObject("select genre from book where book_id=?",String.class,book_id);
 		
-	    List<Book> results = jdbcTemplate.query("select * from book where genre='"+genre+"';",
+	    List<Book> results = jdbcTemplate.query("select * from book where genre='"+genre+"' and not book_id in ('"+book_id+"');",
 		        (ResultSet rs, int rowNum)->{
 		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
 		        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));

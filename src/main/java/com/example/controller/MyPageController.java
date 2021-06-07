@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.MemberDao;
 import com.example.dao.MyPageDao;
+import com.example.data.Book;
 import com.example.data.Return_List;
 
 
@@ -32,10 +33,12 @@ public class MyPageController {
 		List<Return_List> turn = mypageDao.selectReturnAll(member_id);
 		List<Return_List> expired = mypageDao.selectexpiredAll(member_id);
 		String member_name=mypageDao.selectmemberName(member_id);
+		List<Book> history=mypageDao.history(member_id);
 		System.out.print("확인");
 		System.out.print(turn);
 		System.out.print(expired);
 		System.out.print(member_name);
+		model.addAttribute("history",history);
 		model.addAttribute("member_name",member_name);
 		model.addAttribute("book",turn);
 		model.addAttribute("expired",expired);
