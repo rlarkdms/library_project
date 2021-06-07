@@ -23,29 +23,29 @@ public class NoticeDao {
 	public List<Notice> selectAll(String admin_id) {
 	List<Notice> results = jdbcTemplate.query("select * from notice where admin_id='"+admin_id+"'",
 	(ResultSet rs, int rowNum) -> {
-		Notice notice = new Notice(rs.getLong("Notice_id"), rs.getString("Notice_title"), rs.getString("admin_id"),
-	rs.getString("notice_content") );
+		Notice notice = new Notice(rs.getLong("notice_id"), rs.getString("notice_title"), rs.getString("admin_id"),
+				rs.getString("notice_date") ,rs.getString("notice_content") );
 	notice.setNotice_id(rs.getLong("notice_id"));
 	
 	return notice;
 	});
 	return results;
 	}
-//	public List<Notice> selectOne(String id){
-//		List<Notice> results = jdbcTemplate.query("select * from notice",
-//				(ResultSet rs, int rowNum) -> {
-//					Notice notice = new Notice( rs.getString("Notice_title"), rs.getString("admin_id"),
-//				rs.getTimestamp("Notice_date").toLocalDateTime(),rs.getString("notice_content") );
-//				notice.setNotice_id(rs.getLong("notice_id"));
-//				return notice;
-//				});
-//				return results;
-//		
-//		
-//	
-//		
-//	}
-//	
+	public List<Notice> selectOne(Long notice_id){
+		List<Notice> results = jdbcTemplate.query("select * from notice where notice_id='"+notice_id+"';",
+				(ResultSet rs, int rowNum) -> {
+					Notice notice = new Notice( rs.getLong("notice_id"),rs.getString("notice_title"), rs.getString("admin_id"),
+							rs.getString("notice_date"),rs.getString("notice_content") );
+				notice.setNotice_id(rs.getLong("notice_id"));
+				return notice;
+				});
+				return results;
+		
+		
+	
+		
+	}
+	
     public String insert(Notice notice) {
 
     	try {

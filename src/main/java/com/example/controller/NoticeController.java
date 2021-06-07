@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.NoticeDao;
+import com.example.data.Book;
 import com.example.data.Member;
 import com.example.data.Notice;
 
@@ -45,16 +46,16 @@ public class NoticeController {
 			@RequestParam("notice_title") String notice_title,
 			@RequestParam("notice_content") String notice_content, Model model) {
 		
-		Notice notice=new Notice((long)0,notice_title,admin_id,notice_content);
+		Notice notice=new Notice((long)0,admin_id,notice_title,notice_content, notice_content);
 		
 		String result=noticeDao.insert(notice);
 		
 		model.addAttribute("result", result);//멤버 리스트를 다 주는 것.
 		model.addAttribute("admin_id", admin_id);
 	
-		return "notice/noticeInsertCheck";
+		return "/admin/noticeInsertCheck";
 	}
-	@RequestMapping("/notice/noticeDelete")
+	@RequestMapping("/admin/noticeDelete")
 	public String delete(@RequestParam("admin_id") String admin_id,
 			@RequestParam("notice_id") Long notice_id,Model model) {
 		
@@ -64,7 +65,15 @@ public class NoticeController {
 		model.addAttribute("admin_id",admin_id);
 		
 		
-		return "/notice/noticeDelete";
+		return "/admin/noticeDelete";
 	}
-
+	@RequestMapping("/notice")//공지사항 디테일 페이지.
+	public String notice_detail(@RequestParam("notice_id")Long notice_id,
+			Model model){  	
+		List<Notice> notice=noticeDao.selectOne(notice_id);
+		System.out.print("책 디테일 페이지 가는 값 :");
+		System.out.println(notice);
+		
+		model.addAttribute("notice",notice);//detail에 book 값 전달.
+		return "/notice"; }
 }
