@@ -154,7 +154,7 @@ pageEncoding="utf-8" %>
 		        </span> <%
 	        } else if(admin != null &&id==null) { %> 
  	        	<span class="login">
-		          <a href="../admin/adminPage?member_id=<%out.print(admin);%>">관리자페이지</a>
+		          <a href="../admin/adminPage?admin_id=<%out.print(admin);%>">관리자페이지</a>
 		        </span>
 		        <span class="signup">
 		          <a href="../login/logout">로그아웃</a>
