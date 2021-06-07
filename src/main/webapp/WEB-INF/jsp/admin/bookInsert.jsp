@@ -167,7 +167,7 @@ pageEncoding="utf-8" %>
               type="hidden"
               readonly="readonly"
               name="admin_id"
-              value="<c:out value='${param.admin_id}'/>"
+              value="${param.admin_id}"
              />           
            <span>도서 제목</span>
            <input 
