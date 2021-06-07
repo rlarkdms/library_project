@@ -58,13 +58,13 @@ public class MainController {
 
 	//book_id book_name writer
 	
-	@GetMapping("/bestSeller")
+	@RequestMapping("/bestSeller")
 		public String bestSeller(Model model) {
 		
-//		List<Book> book_list=bookDao.bookbestSeller();
-//		
-//		model.addAttribute("bestSeller", book_list);
-//		
+		List<Book> book_list=bookDao.bookbestSeller();
+		
+		model.addAttribute("bestSeller", book_list);
+		
 		return "/bestSeller";
 	}
 	

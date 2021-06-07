@@ -69,9 +69,15 @@ public class BookDao {
     	this.jdbcTemplate.update(sql,id,book_id,dateString);
     	System.out.print("이거 되는지 확인");
     	
+    	int times = jdbcTemplate.queryForObject("select times from Book where book_id=?",int.class,book_id);
+    	
 		String sql_update1="UPDATE book set borrow_confirm='대여중' where book_id=?";
 
 		this.jdbcTemplate.update(sql_update1,book_id);
+		
+		String sql_update2="UPDATE book set times="+(times+1)+" where book_id=?";
+
+		this.jdbcTemplate.update(sql_update2,book_id);
     	
     	
     	return "대여가 완료되었습니다.";
@@ -129,6 +135,20 @@ public class BookDao {
 			System.out.print(e);
 			return "연장에 실패하였습니다. 관리자에게 문릐해주세요.";
 		}
+	}
+	public List<Book> bookbestSeller(){
+	    List<Book> results = jdbcTemplate.query("SELECT * from book order by times DESC",
+		        (ResultSet rs, int rowNum)->{
+		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
+		        	rs.getString("publisher"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
+		        	book.setBook_id(rs.getLong("book_id"));
+		        		return book;
+		    });
+
+		    return results;
+		 	
+		
+		
 	}
 	
 }
