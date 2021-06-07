@@ -66,7 +66,7 @@ public class AdminController {
         
         String book_insert=adminDao.insert(newbook);
 		
-        model.addAttribute("book", book_insert);
+        model.addAttribute("insert", book_insert);
         model.addAttribute("admin_id", admin_id);
         
 		return "/admin/bookInsertCheck";
