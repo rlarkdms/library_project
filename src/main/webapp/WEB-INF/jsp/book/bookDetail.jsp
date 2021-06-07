@@ -20,7 +20,6 @@ pageEncoding="utf-8" %>
         width: 50%;
         background-color: white;
         box-sizing: border-box;
-        height: 100vh;
       }
       header {
         padding: 30px;
@@ -93,9 +92,6 @@ pageEncoding="utf-8" %>
         margin-right: 10px;
       }
       footer {
-        position: absolute;
-        bottom: 0%;
-        width: 50%;
         padding: 30px 0;
         display: flex;
         align-items: center;

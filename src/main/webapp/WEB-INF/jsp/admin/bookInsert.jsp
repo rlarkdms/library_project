@@ -221,6 +221,7 @@ pageEncoding="utf-8" %>
               type="text"
               name="image"
               value="${book.image}"
+              required
             />
           </label>
           <input type="submit" value="추가하기" class="signup"/>
