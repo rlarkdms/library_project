@@ -47,7 +47,7 @@ public class BookDao {
 		
 		int zero_num=0;
 		try {
-
+			
 		String results = jdbcTemplate.queryForObject("select borrow_confirm from Book where book_id=?",String.class,book_id);
         System.out.print(results);
 		if (results.equals("대여중")) {
