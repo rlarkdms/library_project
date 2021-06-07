@@ -10,6 +10,7 @@ pageEncoding="utf-8" %>
   <body>
     <div>
     	<script type="text/javascript">
+    		console.log("<c:out value="${result}" />");
     		alert('<c:out value="${result}" />');
     		window.location.href="http://localhost:9200" />";
     	</script>
