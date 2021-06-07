@@ -52,7 +52,7 @@ public class NoticeController {
 		model.addAttribute("result", result);//멤버 리스트를 다 주는 것.
 		model.addAttribute("admin_id", admin_id);
 	
-		return "notice/noticeInsertCheck";
+		return "/admin/noticeInsertCheck";
 	}
 	@RequestMapping("/notice/noticeDelete")
 	public String delete(@RequestParam("admin_id") String admin_id,
