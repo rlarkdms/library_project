@@ -17,10 +17,10 @@ pageEncoding="utf-8" %>
         margin: 0;
       }
       .white {
+        height: 100vh;
         width: 50%;
         background-color: white;
         box-sizing: border-box;
-        height: 100vh;
       }
       header {
         padding: 30px;
@@ -78,9 +78,9 @@ pageEncoding="utf-8" %>
         margin: 20px 0;
       }
       footer {
-        position: absolute;
-        bottom: 0%;
         width: 50%;
+        background-color: white;
+        box-sizing: border-box;
         padding: 30px 0;
         display: flex;
         align-items: center;
@@ -241,11 +241,10 @@ pageEncoding="utf-8" %>
       		</form>
 	     </table>      	
       </div>
-
+    </div>
       <footer>
         <span class="subTitle">2017301080 최은정</span>
         <span class="subTitle">2017301004 김가은</span>
       </footer>
-    </div>
   </body>
 </HTML>

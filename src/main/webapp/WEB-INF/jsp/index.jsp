@@ -111,8 +111,7 @@ pageEncoding="utf-8" %>
       }
       input[type="submit"] {
         padding: 5px 10px;
-        background-color: #ff6d00;
-        
+        background-color: #ff6d00;        
         color: white;
         border: none;
         cursor: pointer;

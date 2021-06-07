@@ -17,10 +17,10 @@ pageEncoding="utf-8" %>
         margin: 0;
       }
       .white {
+        height: 100vh;
         width: 50%;
         background-color: white;
         box-sizing: border-box;
-        height: 100vh;
       }
       header {
         padding: 30px;
@@ -59,6 +59,7 @@ pageEncoding="utf-8" %>
       .row {
       	display: flex;
       	align-items: center;
+        margin: 20px 0;
       }
       button {
       	margin-left: 20px;
@@ -86,9 +87,9 @@ pageEncoding="utf-8" %>
         margin: 20px 0;
       }
       footer {
-        position: absolute;
-        bottom: 0%;
         width: 50%;
+        background-color: white;
+        box-sizing: border-box;
         padding: 30px 0;
         display: flex;
         align-items: center;
@@ -112,7 +113,6 @@ pageEncoding="utf-8" %>
       }
       .tableName {
         font-size: 18px;
-        margin: 20px 0;
         font-weight: bold;
       }
       table {
@@ -157,12 +157,12 @@ pageEncoding="utf-8" %>
       </div>
 
       <div class="content">
-      	<div class="row">
-			<div class="userName">관리자 <c:out value='${admin_name}'/>님, 환영합니다.</div>	           
-	        <button onclick="location='http://localhost:9200/admin/bookInsert?admin_id=<%out.print(admin);%>'">도서 추가</button>       	
-      	</div>
+		<div class="userName">관리자 <c:out value='${admin_name}'/>님, 환영합니다.</div>
         
-        <div class="tableName">총 도서 목록</div>
+        <div class="row">
+        	<div class="tableName">총 도서 목록</div>
+	        <button onclick="location='http://localhost:9200/admin/bookInsert?admin_id=<%out.print(admin);%>'">도서 추가</button> 
+        </div>
         <table>
        	  <th>도서 ID</th>
           <th>도서 제목</th>
@@ -182,7 +182,7 @@ pageEncoding="utf-8" %>
 		              type="hidden"
 		              readonly="readonly"
 		              name="book_id"
-		              value="<c:out value='${book.book_id}'/>"
+		              value="${book.book_id}"
 		             />				             					
 	            	<td>
 	            		<input type="submit" value="삭제" /> 
@@ -190,13 +190,56 @@ pageEncoding="utf-8" %>
 	            </form>
           	</tr>
 	      </c:forEach>
-        </table>	  
+        </table>
+        
+        <div class="row">
+        	<div class="tableName">총 공지 목록</div>
+	        <button onclick="location='http://localhost:9200/admin/noticeInsert?admin_id=<%out.print(admin);%>'">공지 추가</button> 
+        </div>
+        <table>
+       	  <th>공지 ID</th>
+          <th>공지 제목</th>
+          <th>작성자</th>
+          <th>수정</th>
+          <th>삭제</th>
+          <th>자세히 보기</th>
+          <c:forEach var="noti" items="${notice_list}" varStatus="status">
+          	<tr align="center">		          	             	
+	          	<td>${noti.notice_id}</td>
+	            <td>${noti.notice_title}</td>
+	            <td>${noti.admin_id}</td>
+          		<form action="noticeEdit?admin_id=<%out.print(admin);%>" method="POST">
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="notice_id"
+		              value="${noti.notice_id}"
+		             />		             				             					
+	            	<td>
+	            		<input type="submit" value="삭제" /> 
+	            	</td>
+	            </form>	            
+          		<form action="noticeDelete?admin_id=<%out.print(admin);%>" method="POST">
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="notice_id"
+		              value="${noti.notice_id}"
+		             />		             				             					
+	            	<td>
+	            		<input type="submit" value="수정" /> 
+	            	</td>
+	            </form>
+	            <td><a href="http://localhost:9200/notice?notice_id=${noti.notice_id}">➡</a></td>
+          	</tr>
+	      </c:forEach>
+        </table>        
+        	  
 	  </div>		
-
+    </div>
       <footer>
         <span class="subTitle">2017301080 최은정</span>
         <span class="subTitle">2017301004 김가은</span>
       </footer>
-    </div>
   </body>
 </HTML>
