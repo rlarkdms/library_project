@@ -222,7 +222,20 @@ pageEncoding="utf-8" %>
 	            <td><a href="http://localhost:9200/notice?notice_id=${noti.notice_id}">➡</a></td>
           	</tr>
 	      </c:forEach>
-        </table>           	  
+        </table>   
+        
+        <div class="row">
+        	<div class="tableName">연체자 블랙리스트</div>
+        </div>
+        <table>
+			<th>유저 ID</th>
+        	<th>이름</th>
+        	<th>핸드폰</th>
+        	<th>이메일</th>
+        	<th>연체 도서 ID</th>
+        	<th>연체 도서 제목</th>
+        	<th>자세히 보기</th>
+        </table>        	  
 	  </div>		
     </div>
   </body>
