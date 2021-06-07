@@ -61,10 +61,10 @@ public class MainController {
 	@GetMapping("/bestSeller")
 		public String bestSeller(Model model) {
 		
-		List<Book> book_list=bookDao.bookbestSeller();
-		
-		model.addAttribute("bestSeller", book_list);
-		
+//		List<Book> book_list=bookDao.bookbestSeller();
+//		
+//		model.addAttribute("bestSeller", book_list);
+//		
 		return "/bestSeller";
 	}
 	
