@@ -208,7 +208,7 @@ pageEncoding="utf-8" %>
 	          	<td>${noti.notice_id}</td>
 	            <td>${noti.notice_title}</td>
 	            <td>${noti.admin_id}</td>
-          		<form action="noticeEdit?admin_id=<%out.print(admin);%>" method="POST">
+          		<form action="noticeDelete?admin_id=<%out.print(admin);%>" method="POST">
 		            <input 
 		              type="hidden"
 		              readonly="readonly"
