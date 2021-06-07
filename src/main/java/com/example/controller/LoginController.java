@@ -66,9 +66,8 @@ public class LoginController {
 				}
 				else {
 			
-			
-					model.addAttribute("admin", adminlist);
 					System.out.print(adminlist);
+					model.addAttribute("admin", adminlist);
 					return "/login/loginCheck";
 				}
 			
