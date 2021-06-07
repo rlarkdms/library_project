@@ -125,6 +125,19 @@ pageEncoding="utf-8" %>
       	display: flex;
         align-items: center;
       }
+      table {
+        margin: 10px auto;
+        width: 80%;
+        font-size: 18px;
+      }
+      th,
+      td {
+        padding: 5px;
+      }
+      th {
+      	border-top : 1px solid black;
+      	border-bottom: 1px solid black;
+      }      
     </style>
   </HEAD>
   <body>
@@ -207,6 +220,28 @@ pageEncoding="utf-8" %>
               <input type="submit" value="대여하기" /> 
            <% } %>       
         </form>
+        <div class="bookTitle">같은 장르의 추천 도서</div>
+	      <table>
+	      	<tr>
+		        <th>도서 ID</th>
+		        <th>도서 제목</th>
+		        <th>작가</th>
+		        <th>출판사</th>
+		        <th>장르</th>
+		        <th>자세히보기</th>
+	        </tr>
+	        <c:forEach var="book" items="${recommend}" varStatus="status">
+		        <tr align="center">
+		          <td>${book.book_id}</td>
+		          <c:url value="bookDetail?book_id" var="bookURL" />
+		          <td>${book.book_name}</td>
+		          <td>${book.writer}</td>
+		          <td>${book.publisher}</td>
+		          <td>${book.genre}</td>
+		          <td><a href="${bookURL}=${book.book_id}">➡</a></td>
+		        </tr>
+	        </c:forEach>
+	      </table>        
       </div>
       <footer>
         <span class="subTitle">2017301080 최은정</span>
