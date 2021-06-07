@@ -19,7 +19,7 @@ public class AdminDao {
 	
     public String ConfirmIDPWD(String ID,String PWD) {
     	try {
-        String result = jdbcTemplate.queryForObject ("select member_id from member where member_id=? and password=?",
+        String result = jdbcTemplate.queryForObject ("select Admin_id from admin where Admin_id=? and password=?",
         		String.class,ID,PWD);
 
         return result.isEmpty() ? null : result;
