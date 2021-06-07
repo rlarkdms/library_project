@@ -128,7 +128,7 @@ pageEncoding="utf-8" %>
         </form>
         <div class="user">
           <span class="goHome">
-            <a href="index">홈으로</a>
+            <a href="http://localhost:9200/">홈으로</a>
           </span>
  			<%
         	String id = (String)session.getAttribute("id");
@@ -156,6 +156,7 @@ pageEncoding="utf-8" %>
 		          <a href="/login/logout">로그아웃</a>
 		        </span> <%
 	        } %>
+	     </div>
       </header>
       <div class="background">
         <div class="title">Spring Library</div>
