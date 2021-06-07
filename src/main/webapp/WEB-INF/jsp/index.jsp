@@ -195,7 +195,7 @@ pageEncoding="utf-8" %>
         <ul>
           <li>
             <a href="/bestSeller"
-              >▪ 인기 도서 TOP 10</a
+              >▪ 인기 도서</a
             >
             <span class="date">2021-06-01</span>
           </li>
