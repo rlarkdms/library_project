@@ -120,6 +120,12 @@ pageEncoding="utf-8" %>
       .warning {
       	color: crimson
       }
+      .pageTitle {
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: 3px solid #ff6d00;
+        margin-bottom: 20px;
+      }      
     </style>
     <script type="text/javascript">
       $("input:radio[name='status']:radio[value='normal']").prop("checked", true); // 선택하기
@@ -146,6 +152,7 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
+      	<div class="pageTitle">로그인</div>
         <form action="loginCheck" method="POST" class="search">
 	        <div class="loginType">
 	          <input

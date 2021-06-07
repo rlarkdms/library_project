@@ -242,9 +242,5 @@ pageEncoding="utf-8" %>
 	     </table>      	
       </div>
     </div>
-      <footer>
-        <span class="subTitle">2017301080 최은정</span>
-        <span class="subTitle">2017301004 김가은</span>
-      </footer>
   </body>
 </HTML>

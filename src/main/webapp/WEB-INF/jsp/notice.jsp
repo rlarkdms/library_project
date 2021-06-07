@@ -164,16 +164,16 @@ pageEncoding="utf-8" %>
       </div>
       <div class="textBox">
         <div class="pageTitle">공지사항</div>
-        <div class="notiTitle">도서관 이용 규칙</div>
-        <div class="date">2021-06-01</div>
         <div class="content">
-          
+          <c:forEach var="notice" items="${notice}" varStatus="status">
+			  <div>${notice.notice_id}</div>
+			  <div class="notiTitle">${notice.notice_title}</div>
+			  <div class="date">${notice.notice_date}</div>
+			  <div>${notice.admin_id}</div>
+			  <div>${notice.notice_content}</div>
+           </c:forEach>  
         </div>
       </div>
     </div>
-     <footer>
-       <span class="subTitle">2017301080 최은정</span>
-       <span class="subTitle">2017301004 김가은</span>
-     </footer>
   </body>
 </HTML>

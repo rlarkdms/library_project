@@ -110,16 +110,6 @@ pageEncoding="utf-8" %>
         border-radius: 10px;
         margin-top: 20px;
       }
-      footer {
-        position: absolute;
-        bottom: 0%;
-        width: 50%;
-        padding: 30px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: 1px solid lightgray;
-      }
       .subTitle {
         font-size: 15px;
         font-weight: bold;
@@ -131,7 +121,16 @@ pageEncoding="utf-8" %>
         font-weight: bold;
         border-bottom: 3px solid #ff6d00;
         margin-bottom: 20px;
+      }
+      .noticeTitle {
+      	margin: 10px 0;
+      	font-size: 20px;
+      	font-weight: bold;
       }      
+      textarea {
+      	width : 500px;
+      	height: 300px;
+      }
     </style>
   </HEAD>
   <body>    
@@ -160,7 +159,7 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
-      	<div class="pageTitle">도서 추가</div>
+      	<div class="pageTitle">공지 추가</div>
         <form action="noticeInsertCheck" method="POST" class="search" id="signUpForm">
           <label class="signupLabel">
             <input 
@@ -177,23 +176,17 @@ pageEncoding="utf-8" %>
              value="${notice.notice_title}"
             />
           </label>
-          <label class="signupLabel">
-            <span>공지 내용</span>
-            <input
-              type="textarea"
+            <div class="noticeTitle">공지 내용</div>
+            <textarea
               id="password"
               name="notice_content"
-              value="${notice.notice_content}"
               required
-            />
-          </label>
+            >
+            ${notice.notice_content}
+            </textarea>
           <input type="submit" value="추가하기" class="signup"/>
         </form>
       </div>
-      <footer>
-        <span class="subTitle">2017301080 최은정</span>
-        <span class="subTitle">2017301004 김가은</span>
-      </footer>
     </div>
   </body>
 </HTML>
