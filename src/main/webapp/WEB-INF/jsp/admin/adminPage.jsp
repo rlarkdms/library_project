@@ -112,7 +112,7 @@ pageEncoding="utf-8" %>
       }
       .tableName {
         font-size: 18px;
-        margin: 10px 0;
+        margin: 20px 0;
         font-weight: bold;
       }
       table {

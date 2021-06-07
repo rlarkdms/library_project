@@ -158,7 +158,7 @@ pageEncoding="utf-8" %>
              type="text"
              name="book_name"
              required
-             value="<c:out value='${book.book_name}'/>"
+             value="${book.book_name}"
             />
           </label>
           <label class="signupLabel">
