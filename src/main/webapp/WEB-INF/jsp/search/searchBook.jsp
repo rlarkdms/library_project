@@ -20,7 +20,9 @@ pageEncoding="utf-8" %>
         width: 50%;
         background-color: white;
         box-sizing: border-box;
-        height: 100vh;
+      }
+      .content {
+      	height: 100vh;
       }
       header {
         padding: 30px;
@@ -78,9 +80,6 @@ pageEncoding="utf-8" %>
         margin: 20px 0;
       }
       footer {
-        position: absolute;
-        bottom: 0%;
-        width: 50%;
         padding: 30px 0;
         display: flex;
         align-items: center;
@@ -153,32 +152,34 @@ pageEncoding="utf-8" %>
       <div class="background">
         <div class="title">Spring Library</div>
       </div>
-      <div class="searchedTerm">
-      	<%
-      		out.println("검색어 : " + request.getParameter("keyword"));
-      	%>
-      </div>
-      <table>
-      	<tr>
-	        <th>도서 ID</th>
-	        <th>도서 제목</th>
-	        <th>작가</th>
-	        <th>출판사</th>
-	        <th>장르</th>
-	        <th>자세히보기</th>
-        </tr>
-        <c:forEach var="book" items="${book}" varStatus="status">
-	        <tr align="center">
-	          <td>${book.book_id}</td>
-	          <c:url value="../book/bookDetail?book_id" var="bookURL" />
-	          <td>${book.book_name}</td>
-	          <td>${book.writer}</td>
-	          <td>${book.publisher}</td>
-	          <td>${book.genre}</td>
-	          <td><a href="${bookURL}=${book.book_id}">➡</a></td>
+      <div class="content">
+	      <div class="searchedTerm">
+	      	<%
+	      		out.println("검색어 : " + request.getParameter("keyword"));
+	      	%>
+	      </div>
+	      <table>
+	      	<tr>
+		        <th>도서 ID</th>
+		        <th>도서 제목</th>
+		        <th>작가</th>
+		        <th>출판사</th>
+		        <th>장르</th>
+		        <th>자세히보기</th>
 	        </tr>
-        </c:forEach>
-      </table>
+	        <c:forEach var="book" items="${book}" varStatus="status">
+		        <tr align="center">
+		          <td>${book.book_id}</td>
+		          <c:url value="../book/bookDetail?book_id" var="bookURL" />
+		          <td>${book.book_name}</td>
+		          <td>${book.writer}</td>
+		          <td>${book.publisher}</td>
+		          <td>${book.genre}</td>
+		          <td><a href="${bookURL}=${book.book_id}">➡</a></td>
+		        </tr>
+	        </c:forEach>
+	      </table>
+      </div>
       <footer>
         <span class="subTitle">2017301080 최은정</span>
         <span class="subTitle">2017301004 김가은</span>
