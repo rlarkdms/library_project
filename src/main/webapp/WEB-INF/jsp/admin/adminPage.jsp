@@ -159,7 +159,7 @@ pageEncoding="utf-8" %>
       <div class="content">
       	<div class="row">
 			<div class="userName">관리자 <c:out value='${admin_name}'/>님, 환영합니다.</div>	           
-	        <button onclick="location='http://localhost:9200/admin/bookInsert.jsp'">도서 추가</button>       	
+	        <button onclick="location='http://localhost:9200/admin/bookInsert?admin_id=<%out.print(admin);%>'">도서 추가</button>       	
       	</div>
         
         <div class="tableName">총 도서 목록</div>
@@ -177,7 +177,7 @@ pageEncoding="utf-8" %>
 	            <td>${book.writer}</td>
 	            <td>${book.publisher}</td>
 	            <td>${book.genre}</td>
-          		<form action="bookDelete" method="POST">
+          		<form action="bookDelete?admin_id=<%out.print(admin);%>" method="POST">
 		            <input 
 		              type="hidden"
 		              readonly="readonly"
