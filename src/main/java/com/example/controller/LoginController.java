@@ -43,8 +43,8 @@ public class LoginController {
 			String memberlist= memberDao.ConfirmIDPWD(id, pwd);//아이디 대비 비밀번호가 맞는지 확인.
 
 				if (memberlist==null) {//만약 NULL값이 오면 뭔가 잘못된거
-						model.addAttribute("error","아이디와 비밀번호가 맞지 않습니다.");
-						return "redirect:/login/login";
+						model.addAttribute("result","아이디와 비밀번호가 맞지 않습니다.");
+						return "/login/loginCheck";
 			
 				}
 				else {
@@ -60,8 +60,8 @@ public class LoginController {
 			
 			String adminlist=adminDao.ConfirmIDPWD(id,pwd);
 				if (adminlist==null) {
-					model.addAttribute("error","아이디와 비밀번호가 맞지 않습니다.");
-					return "redirect:/login/login";
+					model.addAttribute("result","아이디와 비밀번호가 맞지 않습니다.");
+					return "/login/loginCheck";
 	
 				}
 				else {
