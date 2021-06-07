@@ -5,7 +5,7 @@ pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <HTML>
   <HEAD>
-    <TITLE>도서 검색</TITLE>
+    <TITLE>관리자 페이지</TITLE>
     <style>
       body {
         display: flex;
@@ -87,31 +87,45 @@ pageEncoding="utf-8" %>
         justify-content: center;
         border-top: 1px solid lightgray;
       }
-      .searchedTerm {
-        margin: 20px 0;
-        margin-left: 30px;
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 30px;
+      }
+      .userName {
         font-size: 20px;
         font-weight: bold;
       }
-      table {
-        margin: 0 auto;
-        width: 80%;
+      .userName {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .tableName {
         font-size: 18px;
+        margin: 10px 0;
+        font-weight: bold;
+      }
+      table {
+        font-size: 16px;
+        width: 80%;
+        border: 1px solid black;
+        margin-bottom: 30px;
+      }
+      th {
+        border-bottom: 1px solid black;
       }
       th,
       td {
         padding: 5px;
-      }
-      th {
-      	border-top : 1px solid black;
-      	border-bottom: 1px solid black;
-      }
+      }      
     </style>
   </HEAD>
   <body>
     <div class="white">
       <header>
-        <form action="searchBook" method="POST" class="search">
+        <form action="../search/searchBook" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="keyword" />
@@ -122,63 +136,53 @@ pageEncoding="utf-8" %>
           <span class="goHome">
             <a href="../">홈으로</a>
           </span>
-        <%
-        	String id = (String)session.getAttribute("id");
-        	String admin = (String)session.getAttribute("admin");      
-        	if(id == null) { %>
-		        <span class="login">
-		          <a href="../login/login">로그인</a>
-		        </span>
-		        <span class="signup">
-		          <a href="../register/step2">회원가입</a>
-		        </span> <%
-	        } else if(admin != null) { %> 
- 	        	<span class="login">
-		          <a href="../admin/adminPage?member_id=<%out.print(admin);%>">관리자페이지</a>
-		        </span>
-		        <span class="signup">
-		          <a href="../login/logout">로그아웃</a>
-		        </span> <%    	        	
-	        }
-        	else { %>
-	        	<span class="login">
-		          <a href="../session/mypage?member_id=<%out.print(id);%>">마이페이지</a>
-		        </span>
-		        <span class="signup">
-		          <a href="../login/logout">로그아웃</a>
-		        </span> <%
-	        } %>
+          <% String admin = (String)session.getAttribute("admin"); 
+          	if(admin != null) { %>
+	          <span class="signup">
+	            <a href="../login/logout">로그아웃</a>
+	          </span>
+          <% } %>
         </div>
       </header>
       <div class="background">
         <div class="title">Spring Library</div>
       </div>
-      <div class="searchedTerm">
-      	<%
-      		out.println("검색어 : " + request.getParameter("keyword"));
-      	%>
-      </div>
-      <table>
-      	<tr>
-	        <th>도서 ID</th>
-	        <th>도서 제목</th>
-	        <th>작가</th>
-	        <th>출판사</th>
-	        <th>장르</th>
-	        <th>자세히보기</th>
-        </tr>
-        <c:forEach var="book" items="${book}" varStatus="status">
-	        <tr align="center">
-	          <td>${book.book_id}</td>
-	          <c:url value="../book/bookDetail?book_id" var="bookURL" />
-	          <td>${book.book_name}</td>
-	          <td>${book.writer}</td>
-	          <td>${book.publisher}</td>
-	          <td>${book.genre}</td>
-	          <td><a href="${bookURL}=${book.book_id}">➡</a></td>
-	        </tr>
-        </c:forEach>
-      </table>
+
+      <div class="content">
+		<c:forEach var="detail" items="${user}" varStatus="status">
+        	<div class="userName">관리자 ${user.name}님</div>
+        	<button onclick="location='http://localhost:9200/admin/bookInsert.jsp'">도서 추가</button> 
+		</c:forEach>      
+      
+        <div class="tableName">총 도서 목록</div>
+        <table>
+       	  <th>도서 ID</th>
+          <th>도서 제목</th>
+          <th>수정하기</th>
+          <th>삭제하기</th>
+          <c:forEach var="book" items="${book}" varStatus="status">
+          	<tr align="center">		          	             	
+	          	<td>${book.book_id}</td>
+	            <td>${book.book_name}</td>
+	            <td>
+	            	<button onclick="location='http://localhost:9200/admin/bookEdit.jsp'">수정</button> 
+	            </td>
+          		<form action="bookDelete" method="POST">
+		            <input 
+		              type="hidden"
+		              readonly="readonly"
+		              name="book_id"
+		              value="<c:out value='${book.book_id}'/>"
+		             />				             					
+	            	<td>
+	            		<input type="submit" value="삭제" /> 
+	            	</td>
+	            </form>
+          	</tr>
+	      </c:forEach>
+        </table>	  
+	  </div>		
+
       <footer>
         <span class="subTitle">2017301080 최은정</span>
         <span class="subTitle">2017301004 김가은</span>

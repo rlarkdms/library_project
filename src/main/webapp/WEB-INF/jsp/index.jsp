@@ -144,7 +144,8 @@ pageEncoding="utf-8" %>
       </form>
       <div class="user">
         <%
-        	String id = (String)session.getAttribute("id");      
+        	String id = (String)session.getAttribute("id");
+        	String admin = (String)session.getAttribute("admin");      
         	if(id == null) { %>
 		        <span class="login">
 		          <a href="/login/login">로그인</a>
@@ -152,7 +153,15 @@ pageEncoding="utf-8" %>
 		        <span class="signup">
 		          <a href="/register/step2">회원가입</a>
 		        </span> <%
-	        } else { %>
+	        } else if(admin != null) { %> 
+ 	        	<span class="login">
+		          <a href="/admin/adminPage?member_id=<%out.print(admin);%>">관리자페이지</a>
+		        </span>
+		        <span class="signup">
+		          <a href="/login/logout">로그아웃</a>
+		        </span> <%    	        	
+	        }
+        	else { %>
 	        	<span class="login">
 		          <a href="/session/mypage?member_id=<%out.print(id);%>">마이페이지</a>
 		        </span>
