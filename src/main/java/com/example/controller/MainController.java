@@ -56,9 +56,14 @@ public class MainController {
 		return "/search/searchBook";
 	}
 
+	//book_id book_name writer
 	
 	@GetMapping("/bestSeller")
-		public String bestSeller() {
+		public String bestSeller(Model model) {
+		
+		List<Book> book_list=bookDao.bookbestSeller();
+		
+		model.addAttribute("bestSeller", book_list);
 		
 		return "/bestSeller";
 	}
