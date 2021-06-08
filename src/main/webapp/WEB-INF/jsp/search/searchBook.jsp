@@ -97,6 +97,7 @@ pageEncoding="utf-8" %>
         margin: 0 auto;
         width: 80%;
         font-size: 18px;
+        border-bottom: 1px solid black;
       }
       th,
       td {

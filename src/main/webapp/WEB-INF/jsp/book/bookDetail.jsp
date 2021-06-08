@@ -129,6 +129,7 @@ pageEncoding="utf-8" %>
         margin: 10px auto;
         width: 80%;
         font-size: 18px;
+        border-bottom: 1px solid black;
       }
       th,
       td {
@@ -137,7 +138,7 @@ pageEncoding="utf-8" %>
       th {
       	border-top : 1px solid black;
       	border-bottom: 1px solid black;
-      }      
+      }         
     </style>
   </HEAD>
   <body>

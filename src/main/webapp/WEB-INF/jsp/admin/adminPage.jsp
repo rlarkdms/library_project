@@ -17,7 +17,7 @@ pageEncoding="utf-8" %>
         margin: 0;
       }
       .white {
-        height: 100vh;
+        height: 150vh;
         width: 50%;
         background-color: white;
         box-sizing: border-box;
@@ -225,14 +225,23 @@ pageEncoding="utf-8" %>
         </table>   
         
         <div class="row">
-        	<div class="tableName">연체자 블랙리스트</div>
+        	<div class="tableName">회목 목록</div>
         </div>
         <table>
 			<th>유저 ID</th>
         	<th>이름</th>
         	<th>핸드폰</th>
         	<th>이메일</th>
-         	
+        	<th>현재 연체 여부</th>
+           <c:forEach var="member" items="${member}" varStatus="status">
+          	<tr align="center">
+ 	          	<td>${member.member_id}</td>
+	            <td>${member.name}</td>
+	            <td>${member.phone}</td>        
+	            <td>${member.email}</td> 
+	            <td>${member.delay_confirm}</td>       	
+          	</tr>
+          	</c:forEach>        	
         </table>        	  
 	  </div>		
     </div>
