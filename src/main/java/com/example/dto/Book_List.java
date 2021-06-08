@@ -1,15 +1,15 @@
-package com.example.data;
+package com.example.dto;
 
 import java.sql.Date;
 
-public class Return_List {
+public class Book_List {
 
 	private Long book_id;
 	private String book_name;
 	private String return_date;
 	private Long extend_confirm;
 	
-	public Return_List(Long book_id,String book_name,String return_date,Long extend_confirm) {
+	public Book_List(Long book_id,String book_name,String return_date,Long extend_confirm) {
 		this.book_id=book_id;
 		this.book_name=book_name;
 		this.return_date=return_date;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.MemberRegisterService;
-import com.example.data.RegisterRequest;
+import com.example.dto.RegisterRequest;
 
 @Controller
 public class WebController {

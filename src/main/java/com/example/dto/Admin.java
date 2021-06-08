@@ -1,4 +1,4 @@
-package com.example.data;
+package com.example.dto;
 
 public class Admin {
 	private String Admin_id;

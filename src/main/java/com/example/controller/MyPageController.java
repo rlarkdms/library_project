@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.MemberDao;
 import com.example.dao.MyPageDao;
-import com.example.data.Book;
-import com.example.data.Return_List;
+import com.example.dto.Book;
+import com.example.dto.Book_List;
 
 
 
@@ -30,8 +30,8 @@ public class MyPageController {
 	@GetMapping("/session/mypage")
 	public String page(@RequestParam(value="member_id",required=true) String member_id,Model model) {
 	
-		List<Return_List> turn = mypageDao.selectReturnAll(member_id);
-		List<Return_List> expired = mypageDao.selectexpiredAll(member_id);
+		List<Book_List> turn = mypageDao.selectReturnAll(member_id);
+		List<Book_List> expired = mypageDao.selectexpiredAll(member_id);
 		String member_name=mypageDao.selectmemberName(member_id);
 		List<Book> history=mypageDao.history(member_id);
 		System.out.print("확인");

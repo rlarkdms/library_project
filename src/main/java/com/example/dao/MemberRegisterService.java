@@ -1,7 +1,7 @@
 package com.example.dao;
 
-import com.example.data.Member;
-import com.example.data.RegisterRequest;
+import com.example.dto.Member;
+import com.example.dto.RegisterRequest;
 
 public class MemberRegisterService {
     private MemberDao memberDao;

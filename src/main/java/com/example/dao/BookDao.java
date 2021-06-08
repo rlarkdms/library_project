@@ -9,8 +9,8 @@ import java.util.List;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.example.data.Book;
-import com.example.data.Member;
+import com.example.dto.Book;
+import com.example.dto.Member;
 
 public class BookDao {
 	private JdbcTemplate jdbcTemplate;
@@ -136,32 +136,7 @@ public class BookDao {
 			return "연장에 실패하였습니다. 관리자에게 문릐해주세요.";
 		}
 	}
-	public List<Book> bookbestSeller(){
-	    List<Book> results = jdbcTemplate.query("SELECT * from book order by times DESC",
-		        (ResultSet rs, int rowNum)->{
-		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-		        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
-		        	book.setBook_id(rs.getLong("book_id"));
-		        		return book;
-		    });
 
-		    return results;
-		 	
-		
-	}
-	public List<Book> newBooks(){
-	    List<Book> results = jdbcTemplate.query("SELECT * from book where year(registrationdate) = year(now()) and month(registrationdate) = month(now()) order by book_id ASC",
-		        (ResultSet rs, int rowNum)->{
-		        Book book=new Book(rs.getLong("book_id"), rs.getString("book_name"), rs.getString("writer"),
-		        	rs.getString("publisher"),rs.getString("borrow_confirm"),rs.getLong("times"),rs.getString("genre"),rs.getString("story"),rs.getString("image"));
-		        	book.setBook_id(rs.getLong("book_id"));
-		        		return book;
-		    });
-
-		    return results;
-		 	
-		
-	}
 	public List<Book> recommend(Long book_id){//추천 서비스
 		
 		

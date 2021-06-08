@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.BookDao;
+import com.example.dao.MainDao;
 import com.example.dao.MemberDao;
 import com.example.dao.NoticeDao;
-import com.example.data.Book;
-import com.example.data.Member;
-import com.example.data.Notice;
+import com.example.dto.Book;
+import com.example.dto.Member;
+import com.example.dto.Notice;
 
 @Controller
 public class MainController {
@@ -26,6 +27,9 @@ public class MainController {
 	
 	@Autowired
 	private BookDao bookDao;
+	
+	@Autowired
+	private MainDao mainDao;
 	
 	
 	@RequestMapping("/")
@@ -61,7 +65,7 @@ public class MainController {
 	@RequestMapping("/bestSeller")
 		public String bestSeller(Model model) {
 		
-		List<Book> book_list=bookDao.bookbestSeller();
+		List<Book> book_list=mainDao.bookbestSeller();
 		
 		model.addAttribute("bestSeller", book_list);
 		
@@ -71,7 +75,7 @@ public class MainController {
 	@RequestMapping("/newBooks")
 	public String newBooks(Model model) {
 	
-		List<Book> book_list=bookDao.newBooks();
+		List<Book> book_list=mainDao.newBooks();
 		model.addAttribute("newBooks", book_list);
 	return "/newBooks";
 }

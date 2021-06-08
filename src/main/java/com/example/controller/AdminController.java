@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.dao.AdminDao;
 import com.example.dao.BookDao;
 import com.example.dao.NoticeDao;
-import com.example.data.Book;
-import com.example.data.Member;
-import com.example.data.Notice;
+import com.example.dto.Book;
+import com.example.dto.Member;
+import com.example.dto.Notice;
 
 @Controller
 public class AdminController {
@@ -37,20 +37,22 @@ public class AdminController {
 		List<Book> booklist=adminDao.selectAll();
 		String admin_name=adminDao.selectadminName(admin_id);
 		List<Notice> notice_list=noticeDao.selectAdmin(admin_id);
+		List<Member> memberlist=adminDao.selectAllmember();
 		System.out.print("관리자 책검색");
 		System.out.print(booklist);
+		model.addAttribute("member",memberlist);
 		model.addAttribute("book_list",booklist);
 		model.addAttribute("admin_name",admin_name);
 		model.addAttribute("notice_list",notice_list);
 		return "admin/adminPage";
 	}
 	
-	@GetMapping("/admin/bookInsert")
+	@GetMapping("/admin/bookInsert")//책 삽입 페이지
 	public String bookInsert() {
 		return "/admin/bookInsert";
 	}
-	
-	@RequestMapping("/admin/bookInsertCheck")
+
+	@RequestMapping("/admin/bookInsertCheck")//책 삽입하는 액션 페이지
 	public String bookInsert(
 			@RequestParam("admin_id") String admin_id,
 			@RequestParam("book_name") String book_name,
@@ -60,14 +62,6 @@ public class AdminController {
 			@RequestParam("story") String story,
 			@RequestParam("image") String image_thing,Model model) {
         
-		
-		System.out.print(admin_id);
-		System.out.print(book_name);
-		System.out.print(writer);
-		System.out.print(publisher);
-		System.out.print(genre);
-		System.out.print(story);
-		System.out.print(image_thing);
 		
 		Book newbook = new Book((long)0,book_name,writer,publisher,"가능",(long) 0,genre,story,image_thing);
         
@@ -80,7 +74,7 @@ public class AdminController {
 	}
 	
 	
-	@RequestMapping("/admin/bookDelete")
+	@RequestMapping("/admin/bookDelete")//책 삭제 이벤트
 	public String bookDelete(
 			@RequestParam("admin_id") String admin_id,
 			@RequestParam("book_id") Long book_id, Model model) {

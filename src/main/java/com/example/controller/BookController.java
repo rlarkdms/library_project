@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.dao.BookDao;
 import com.example.dao.MemberDao;
 import com.example.dao.NoticeDao;
-import com.example.data.Book;
+import com.example.dto.Book;
 
 @Controller
 public class BookController {
@@ -60,7 +60,7 @@ public class BookController {
 			@RequestParam("book_id") Long book_id,
 			Model model) {
 		
-		
+		System.out.print(member_id);
 		String book_return=bookDao.turn(member_id,book_id);
 		System.out.print("반납 확인 서비스 상태 : ");
 		System.out.println(book_return);

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.example.dao.AdminDao;
 import com.example.dao.BookDao;
+import com.example.dao.MainDao;
 import com.example.dao.MemberDao;
 import com.example.dao.MemberRegisterService;
 import com.example.dao.MyPageDao;
@@ -53,6 +54,11 @@ public class JavaConfig {
     @Bean
     public MyPageDao mypageDao() {
     	return new MyPageDao(dataSource());
+    }
+    
+    @Bean
+    public MainDao mainDao() {
+    	return new MainDao(dataSource());
     }
     
 }

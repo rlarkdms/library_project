@@ -10,8 +10,8 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.example.data.Book;
-import com.example.data.Member;
+import com.example.dto.Book;
+import com.example.dto.Member;
 
 public class AdminDao {
 	private JdbcTemplate jdbcTemplate;
@@ -44,6 +44,17 @@ public class AdminDao {
 	});
 	return results;
 	}
+	
+	public List<Member> selectAllmember() {
+	List<Member> results = jdbcTemplate.query("select * from MEMBER",
+	(ResultSet rs, int rowNum) -> {
+	Member member = new Member(rs.getString("member_id"), rs.getString("email"), rs.getString("password"),
+	rs.getString("name"),rs.getString("phone"));
+	member.setId(rs.getString("member_id"));
+	return member;
+	});
+	return results;
+	}	
 	
     public String insert(Book book) {
     	try {

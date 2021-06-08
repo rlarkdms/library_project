@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.NoticeDao;
-import com.example.data.Book;
-import com.example.data.Member;
-import com.example.data.Notice;
+import com.example.dto.Book;
+import com.example.dto.Member;
+import com.example.dto.Notice;
 
 @Controller
 public class NoticeController {

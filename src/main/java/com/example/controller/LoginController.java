@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.dao.AdminDao;
 import com.example.dao.MemberDao;
-import com.example.data.Member;
+import com.example.dto.Member;
 
 @Controller
 public class LoginController {

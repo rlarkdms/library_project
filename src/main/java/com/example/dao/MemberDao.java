@@ -20,7 +20,7 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-import com.example.data.Member;
+import com.example.dto.Member;
 
 
 public class MemberDao {
