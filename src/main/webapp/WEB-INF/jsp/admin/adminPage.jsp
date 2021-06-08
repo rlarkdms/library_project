@@ -225,7 +225,7 @@ pageEncoding="utf-8" %>
         </table>   
         
         <div class="row">
-        	<div class="tableName">회목 목록</div>
+        	<div class="tableName">회원 목록</div>
         </div>
         <table>
 			<th>유저 ID</th>
@@ -233,12 +233,12 @@ pageEncoding="utf-8" %>
         	<th>핸드폰</th>
         	<th>이메일</th>
            <c:forEach var="member" items="${member}" varStatus="status">
-          	<tr align="center">
- 	          	<td>${member.member_id}</td>
-	            <td>${member.name}</td>
-	            <td>${member.phone}</td>        
-	            <td>${member.email}</td>        	
-          	</tr>
+	          	<tr align="center">
+	 	          	<td>${member.member_id}</td>
+		            <td>${member.name}</td>
+		            <td>${member.phone}</td>        
+		            <td>${member.email}</td>        	
+	          	</tr>
           	</c:forEach>        	
         </table>        	  
 	  </div>		
