@@ -14,6 +14,7 @@ pageEncoding="utf-8" %>
 		else if(admin != null) session.removeAttribute("admin");
   	%>
 	<script type="text/javascript">
+		alert('<c:out value="${result}" />');
    		window.location.href="http://localhost:9200";
    	</script>
   </body>
