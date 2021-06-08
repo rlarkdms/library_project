@@ -234,7 +234,7 @@ pageEncoding="utf-8" %>
         	<th>이메일</th>
            <c:forEach var="member" items="${member}" varStatus="status">
 	          	<tr align="center">
-	 	          	<td>${member.member_id}</td>
+	          		<td>${member.member_id}</td>
 		            <td>${member.name}</td>
 		            <td>${member.phone}</td>        
 		            <td>${member.email}</td>        	
