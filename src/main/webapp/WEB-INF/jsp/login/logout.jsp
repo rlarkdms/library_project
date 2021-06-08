@@ -13,6 +13,8 @@ pageEncoding="utf-8" %>
 		if(id != null) session.removeAttribute("id");
 		else if(admin != null) session.removeAttribute("admin");
   	%>
-  	<jsp:forward page="../index.jsp"></jsp:forward>
+	<script type="text/javascript">
+   		window.location.href="http://localhost:9200";
+   	</script>
   </body>
 </html>
