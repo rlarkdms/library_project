@@ -17,7 +17,7 @@ pageEncoding="utf-8" %>
         margin: 0;
       }
       .white {
-        height: 100vh;
+        height: 150vh;
         width: 50%;
         background-color: white;
         box-sizing: border-box;
