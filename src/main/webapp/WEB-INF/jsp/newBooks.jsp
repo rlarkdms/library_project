@@ -119,7 +119,7 @@ pageEncoding="utf-8" %>
   <body>
     <div class="white">
       <header>
-        <form action="search.jsp" method="POST" class="search">
+        <form action="/search/searchBook" method="POST" class="search">
           <label style="display: block">
             🔎
             <input type="text" name="title" />
