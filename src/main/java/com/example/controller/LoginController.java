@@ -79,7 +79,8 @@ public class LoginController {
 		
 	}
 	@GetMapping("/login/logout")//로그아웃
-	public String logout() {
+	public String logout(Model model) {
+		model.addAttribute("result","로그아웃이 완료되었습니다.");
 		return "/login/logout";
 	}
 
