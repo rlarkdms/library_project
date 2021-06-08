@@ -137,7 +137,10 @@ pageEncoding="utf-8" %>
       th {
       	border-top : 1px solid black;
       	border-bottom: 1px solid black;
-      }      
+      }
+      tr {
+        border-bottom: 1px solid black;
+      }            
     </style>
   </HEAD>
   <body>

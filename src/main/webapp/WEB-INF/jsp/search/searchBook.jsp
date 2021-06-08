@@ -102,6 +102,9 @@ pageEncoding="utf-8" %>
       td {
         padding: 5px;
       }
+      tr {
+        border-bottom: 1px solid black;
+      }
       th {
       	border-top : 1px solid black;
       	border-bottom: 1px solid black;
