@@ -123,6 +123,11 @@ pageEncoding="utf-8" %>
         color: rgb(83, 77, 77);
         margin: 0 10px;
       }
+      .pageTitle {
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: 3px solid #ff6d00;
+      }
     </style>
     <script type = "text/javascript">
       function CheckForm(){
@@ -168,6 +173,7 @@ pageEncoding="utf-8" %>
         <div class="title">Spring Library</div>
       </div>
       <div class="formBox">
+      	<div class="pageTitle">회원 정보 수정</div>
         <form action="editCheck" method="POST" class="search" id="signUpForm">
           <label class="signupLabel">
            <span>ID (수정불가)</span>

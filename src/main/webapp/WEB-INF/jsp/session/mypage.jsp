@@ -222,7 +222,7 @@ pageEncoding="utf-8" %>
 		              type="hidden"
 		              readonly="readonly"
 		              name="member_id"
-		              value="<c:out value='${param.member_id}'/>"
+		              value="${param.member_id}"
 		             />
 		            <input 
 		              type="hidden"
