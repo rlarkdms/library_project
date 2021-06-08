@@ -22,19 +22,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeDao noticeDao;
 
-//	@GetMapping("/noti1")
-//	public String notice1(Model model) {
-//	List<Notice> noticeList = noticeDao.selectAll();
-//	model.addAttribute("notice", noticeList);//멤버 리스트를 다 주는 것.
-//		return "noti1";
-//	}
 
-	@GetMapping(value = "/notice2")
-	public String notice2(@RequestParam(value = "number") Long id, Model model) {
-//여기서 부터 다시하기.		
-
-		return "notice2";
-	}
 	@GetMapping("/admin/noticeInsert")
 	public String notice_insert() {
 		
@@ -42,7 +30,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/admin/noticeInsertCheck")
-	public String insert(@RequestParam("admin_id") String admin_id,
+	public String noticeInsertCheck(@RequestParam("admin_id") String admin_id,
 			@RequestParam("notice_title") String notice_title,
 			@RequestParam("notice_content") String notice_content, Model model) {
 		
@@ -56,7 +44,7 @@ public class NoticeController {
 		return "/admin/noticeInsertCheck";
 	}
 	@RequestMapping("/admin/noticeDelete")
-	public String delete(@RequestParam("admin_id") String admin_id,
+	public String noticeDelete(@RequestParam("admin_id") String admin_id,
 			@RequestParam("notice_id") Long notice_id,Model model) {
 		
 		String delete_status=noticeDao.delete(notice_id);
@@ -68,7 +56,7 @@ public class NoticeController {
 		return "/admin/noticeDelete";
 	}
 	@RequestMapping("/notice")//공지사항 디테일 페이지.
-	public String notice_detail(@RequestParam("notice_id")Long notice_id,
+	public String noticeDetail(@RequestParam("notice_id")Long notice_id,
 			Model model){  	
 		List<Notice> notice=noticeDao.selectOne(notice_id);
 		System.out.print("책 디테일 페이지 가는 값 :");

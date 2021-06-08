@@ -33,7 +33,7 @@ public class MainController {
 	
 	
 	@RequestMapping("/")
-	public String list(Model model) {
+	public String notice_list(Model model) {
 
 		System.out.print("공지사항 되는지 확인1");
 		List<Notice> notice=noticeDao.selectAll();
@@ -50,11 +50,11 @@ public class MainController {
 	}
 	
 	@PostMapping("/search/searchBook")
-	public String book(@RequestParam("keyword") String keyword, Model model) {
+	public String searchBook(@RequestParam("keyword") String keyword, Model model) {
 		System.out.print("값이오는지"+keyword);
 		List<Book> bookList = bookDao.selectAll(keyword);
 		System.out.print("제대로 오고 있음");
-		model.addAttribute("book", bookList);//멤버 리스트를 다 주는 것.
+		model.addAttribute("book", bookList);//도서 리스트를 다 주는 것.
 		System.out.print(bookList);
 		
 		return "/search/searchBook";

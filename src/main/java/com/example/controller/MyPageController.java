@@ -28,7 +28,7 @@ public class MyPageController {
 	
 	
 	@GetMapping("/session/mypage")
-	public String page(@RequestParam(value="member_id",required=true) String member_id,Model model) {
+	public String mypage(@RequestParam(value="member_id",required=true) String member_id,Model model) {
 	
 		List<Book_List> turn = mypageDao.selectReturnAll(member_id);
 		List<Book_List> expired = mypageDao.selectexpiredAll(member_id);
@@ -45,16 +45,6 @@ public class MyPageController {
 		return "/session/mypage";
 	}
 	
-//    
-//	@PostMapping("/session/mypage")
-//	public String mypage(@RequestParam(value="member_id",required=true) String member_id,Model model) {
-//	
-//		List<Return_List> turn = mypageDao.selectReturnAll(member_id);
-//		System.out.print("확인");
-//		System.out.print(turn);
-//		model.addAttribute("book",turn);
-//		return "/session/mypage";
-//	}
 
 	@GetMapping("/session/edit")
 	public String edit() {

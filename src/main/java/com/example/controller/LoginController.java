@@ -25,14 +25,14 @@ public class LoginController {
 	//로그인 세션 로그인,로그아웃,로그인 체크 기능 존재 컨트롤러/////////////////////////////////////
 	
 	@GetMapping("/login/login")//로그인 컨트롤러
-	public String loing(Model model) {
+	public String login(Model model) {
 		model.addAttribute("error","");
 		return "/login/login";
 	}
 	
 	
 	@PostMapping("/login/loginCheck")//로그인 체크 컨트롤러
-	public String hello(
+	public String loginCheck(
 			@RequestParam(value="status",required=true) String status,//관리자인지 일반 사용자인지 확인
 			@RequestParam(value = "member_id", required = true) String id, //멤버 or 관리자 아이디
 			@RequestParam(value = "password", required = true) String pwd,Model model) { //멤버 or 관리자 비밀번호 모델.

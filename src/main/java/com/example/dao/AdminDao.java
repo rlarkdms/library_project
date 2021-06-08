@@ -51,6 +51,10 @@ public class AdminDao {
 	Member member = new Member(rs.getString("member_id"), rs.getString("email"), rs.getString("password"),
 	rs.getString("name"),rs.getString("phone"));
 	member.setId(rs.getString("member_id"));
+	
+	System.out.print("member GetId 값 보기");
+	System.out.print(member.getId());
+	
 	return member;
 	});
 	return results;

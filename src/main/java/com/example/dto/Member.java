@@ -3,15 +3,15 @@ package com.example.dto;
 import java.time.LocalDateTime;
 
 public class Member {
-	private String id;
+	private String member_id;
 	private String email;
 	private String password;
 	private String name;
 	private String phone;
 	//private LocalDateTime registerDateTime;
-	public Member(String id,String email, String password, String name, String phone)
+	public Member(String member_id,String email, String password, String name, String phone)
 	{
-	this.id=id;
+	this.member_id=member_id;
 	this.email = email;
 	this.password = password;
 	this.name = name;
@@ -19,10 +19,10 @@ public class Member {
 	//this.registerDateTime = regDateTime;
 	}
 	public String getId() {
-		return id;
+		return member_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String member_id) {
+		this.member_id = member_id;
 	}
 	public String getEmail() {
 		return email;

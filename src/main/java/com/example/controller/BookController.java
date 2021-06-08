@@ -26,7 +26,7 @@ public class BookController {
 	// 책 서비스(책 디테일,대여,반납,연장 서비스) 컨트롤러//////////////////////////////////////////////
 	
 	@RequestMapping("/book/bookDetail")//책 디테일 페이지.
-	public String handleStep2Get(@RequestParam("book_id")Long book_id,
+	public String bookDetail(@RequestParam("book_id")Long book_id,
 			Model model){  	
 		List<Book> book=bookDao.selectBook(book_id);
 		System.out.print("책 디테일 페이지 가는 값 :");
@@ -40,7 +40,7 @@ public class BookController {
 
 	
 	@PostMapping("/book/bookLoan")//대출 서비스
-	public  String loan(@RequestParam(value="id") String id,
+	public  String bookLoan(@RequestParam(value="id") String id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
 	
@@ -56,7 +56,7 @@ public class BookController {
 	}
 
 	@RequestMapping("/book/bookReturn")//반납 서비스
-	public String re_turn(@RequestParam("member_id") String member_id,
+	public String bookRe_turn(@RequestParam("member_id") String member_id,
 			@RequestParam("book_id") Long book_id,
 			Model model) {
 		
@@ -72,7 +72,7 @@ public class BookController {
 	
 
 	@RequestMapping("/book/bookExtend")//연장 서비스
-	public String extension(@RequestParam("book_id") Long book_id,
+	public String bookExtend(@RequestParam("book_id") Long book_id,
 			@RequestParam("member_id") String member_id,
 			Model model) {
 		String value=bookDao.extension(member_id,book_id);

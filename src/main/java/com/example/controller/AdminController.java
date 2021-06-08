@@ -40,6 +40,7 @@ public class AdminController {
 		List<Member> memberlist=adminDao.selectAllmember();
 		System.out.print("관리자 책검색");
 		System.out.print(booklist);
+		System.out.print(memberlist);
 		model.addAttribute("member",memberlist);
 		model.addAttribute("book_list",booklist);
 		model.addAttribute("admin_name",admin_name);
@@ -53,7 +54,7 @@ public class AdminController {
 	}
 
 	@RequestMapping("/admin/bookInsertCheck")//책 삽입하는 액션 페이지
-	public String bookInsert(
+	public String bookInsertCheck(
 			@RequestParam("admin_id") String admin_id,
 			@RequestParam("book_name") String book_name,
 			@RequestParam("writer") String writer,
