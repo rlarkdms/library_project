@@ -232,14 +232,12 @@ pageEncoding="utf-8" %>
         	<th>이름</th>
         	<th>핸드폰</th>
         	<th>이메일</th>
-        	<th>현재 연체 여부</th>
            <c:forEach var="member" items="${member}" varStatus="status">
           	<tr align="center">
  	          	<td>${member.member_id}</td>
 	            <td>${member.name}</td>
 	            <td>${member.phone}</td>        
-	            <td>${member.email}</td> 
-	            <td>${member.delay_confirm}</td>       	
+	            <td>${member.email}</td>        	
           	</tr>
           	</c:forEach>        	
         </table>        	  
