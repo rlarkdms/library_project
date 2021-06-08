@@ -12,7 +12,7 @@ pageEncoding="utf-8" %>
   			session.removeAttribute("id");
   		%>
 		<script type="text/javascript">
-    		alert('<c:out value="${leave}" />');
+    		alert('${leave}');
     		window.location.href="http://localhost:9200";
     	</script>
   </body>
