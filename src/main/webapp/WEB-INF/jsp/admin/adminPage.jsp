@@ -232,9 +232,7 @@ pageEncoding="utf-8" %>
         	<th>이름</th>
         	<th>핸드폰</th>
         	<th>이메일</th>
-        	<th>연체 도서 ID</th>
-        	<th>연체 도서 제목</th>
-        	<th>자세히 보기</th>
+         	
         </table>        	  
 	  </div>		
     </div>
