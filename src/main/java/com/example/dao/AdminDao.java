@@ -46,18 +46,15 @@ public class AdminDao {
 	}
 	
 	public List<Member> selectAllmember() {
-	List<Member> results = jdbcTemplate.query("select * from MEMBER",
-	(ResultSet rs, int rowNum) -> {
-	Member member = new Member(rs.getString("member_id"), rs.getString("email"), rs.getString("password"),
-	rs.getString("name"),rs.getString("phone"));
-	member.setId(rs.getString("member_id"));
+
+        List<Member> results = jdbcTemplate.query("select * from member",
+        		(ResultSet rs, int rowNum)->new Member(rs.getString("member_id"), rs.getString("EMAIL"), rs.getString("PASSWORD"),
+        			rs.getString("NAME"),rs.getString("PHONE")));
 	
-	System.out.print("member GetId 값 보기");
-	System.out.print(member.getId());
 	
-	return member;
-	});
+	
 	return results;
+	
 	}	
 	
     public String insert(Book book) {

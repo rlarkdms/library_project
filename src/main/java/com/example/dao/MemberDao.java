@@ -28,16 +28,16 @@ public class MemberDao {
 	public MemberDao(DataSource dataSource) {
 	this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	public List<Member> selectAll() {
-	List<Member> results = jdbcTemplate.query("select * from MEMBER",
-	(ResultSet rs, int rowNum) -> {
-	Member member = new Member(rs.getString("member_id"), rs.getString("EMAIL"), rs.getString("PASSWORD"),
-	rs.getString("NAME"),rs.getString("PHONE"));
-	member.setId(rs.getString("member_ID"));
-	return member;
-	});
-	return results;
-	}	
+//	public List<Member> selectAll() {
+//	List<Member> results = jdbcTemplate.query("select * from MEMBER",
+//	(ResultSet rs, int rowNum) -> {
+//	Member member = new Member(rs.getString("member_id"), rs.getString("EMAIL"), rs.getString("PASSWORD"),
+//	rs.getString("NAME"),rs.getString("PHONE"));
+//	member.setId(rs.getString("member_ID"));
+//	return member;
+//	});
+//	return results;
+//	}	
     public Member selectByID(String id) { 
         List<Member> results = jdbcTemplate.query("select * from member where member_id=?",
         		(ResultSet rs, int rowNum)->new Member(rs.getString("member_id"), rs.getString("EMAIL"), rs.getString("PASSWORD"),

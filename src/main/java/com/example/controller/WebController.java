@@ -47,13 +47,11 @@ public class WebController {
         	System.out.print(ex);
             
         	System.out.print("회원가입 실패");
-            model.addAttribute("result","중복된 이메일 입니다.");
+            model.addAttribute("result","중복된 아이디 입니다.");
             System.out.print("result");
         	return "/register/step3";
         }
     }
-    @GetMapping("/register/error")
-    public String handleErrorGet() {  return "/register/error"; }
- 
+
 
 }
