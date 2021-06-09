@@ -10,7 +10,7 @@
 
 
 
-<br>
+
 ### ERD
 
 ![ERD](https://user-images.githubusercontent.com/31676033/121297398-38e25380-c92d-11eb-987e-75566a29408f.png)
@@ -19,7 +19,7 @@
 
 
 ### 구현한 서비스
-1. 세션 생성 및 제거(#세션 생성)<br>
+1. 세션 생성 및 제거(# 세션생성)<br>
 &nbsp;1) 회원가입<br>
 &nbsp; 2) 로그인<br>
 &nbsp;&nbsp;   -일반 로그인<br>
@@ -60,4 +60,4 @@
 spring서버에서 jsp 파일을 찾지 못해 404에러 존재(해결)<br>
 -> pom.xml에 groupId와 package이름이 달라서 생겼던 에러
 
-## 세션 
+## 세션생성
