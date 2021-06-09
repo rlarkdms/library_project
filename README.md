@@ -60,4 +60,4 @@
 spring서버에서 jsp 파일을 찾지 못해 404에러 존재(해결)<br>
 -> pom.xml에 groupId와 package이름이 달라서 생겼던 에러
 
-
+## 세션 
